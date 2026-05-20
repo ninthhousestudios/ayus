@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ayurveda Dravya Extraction",
+  "description": "Intermediate JSON format for dravyas extracted from Charaka Samhita (Kaviratna translation). Each entry represents one substance with its pharmacological properties and citation.",
+  "type": "object",
+  "required": ["source", "dravyas"],
+  "properties": {
+    "source": {
+      "type": "object",
+      "required": ["text", "sthana", "chapter", "translator"],
+      "properties": {
+        "text": { "const": "Charaka Samhita" },
+        "sthana": { "type": "string", "enum": ["Sutra Sthana", "Nidana Sthana", "Vimana Sthana", "Sharira Sthana", "Indriya Sthana", "Chikitsa Sthana", "Kalpa Sthana", "Siddhi Sthana"] },
+        "chapter": { "type": "integer" },
+        "translator": { "const": "Kaviratna" },
+        "translator_year": { "const": "1890-1908" },
+        "license": { "const": "public domain" }
+      }
+    },
+    "dravyas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "sanskrit_name", "verses", "confidence"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Lowercase Sanskrit name, used as the TTL identifier. E.g., 'yava', 'mudga', 'godhuma'."
+          },
+          "sanskrit_name": {
+            "type": "string",
+            "description": "Sanskrit name as given in the text, preserving diacritics where known."
+          },
+          "botanical_name": {
+            "type": ["string", "null"],
+            "description": "Latin binomial as given by Kaviratna. Null if not provided."
+          },
+          "common_name": {
+            "type": ["string", "null"],
+            "description": "English common name as given or inferred."
+          },
+          "category": {
+            "type": "string",
+            "description": "Substance category from the text grouping. E.g., 'shuka-dhanya' (grains), 'shami-dhanya' (pulses), 'mamsa' (meats), 'shaka' (vegetables), 'phala' (fruits), 'harita' (greens), 'madya' (wines), 'jala' (water), 'kshira' (milk), 'dadhi' (curds), 'ghrita' (ghee), 'taila' (oils), 'ikshu' (sugarcane products)."
+          },
+          "rasa": {
+            "type": "array",
+            "items": { "enum": ["madhura", "amla", "lavana", "katu", "tikta", "kashaya"] },
+            "description": "Tastes. Map: sweet=madhura, sour=amla, salty/saltish=lavana, pungent=katu, bitter=tikta, astringent=kashaya."
+          },
+          "guna": {
+            "type": "array",
+            "items": { "enum": ["guru", "laghu", "sheeta", "ushna", "snigdha", "ruksha", "manda", "tikshna", "sthira", "sara", "mridu", "kathina", "vishada", "picchila", "shlakshna", "khara", "sukshma", "sthula", "sandra", "drava"] },
+            "description": "Qualities. Map: heavy=guru, light=laghu, cold/cooling=sheeta, hot/warm=ushna, oily/unctuous=snigdha, dry=ruksha, sharp=tikshna, etc."
+          },
+          "veerya": {
+            "type": ["string", "null"],
+            "enum": ["sheeta", "ushna", null],
+            "description": "Potency. Map: cooling/cold=sheeta, warm/hot=ushna. Null if not stated."
+          },
+          "vipaka": {
+            "type": ["string", "null"],
+            "enum": ["madhura", "amla", "katu", null],
+            "description": "Post-digestive effect (called 'assimilation' in Kaviratna). Map: sweet=madhura, sour=amla, pungent=katu. Null if not stated."
+          },
+          "karma": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Therapeutic actions in Sanskrit. Use standard terms: rasayana, deepana, pachana, anulomana, medhya, balya, vajikarana, virechana, etc. Add new ones as needed with a comment."
+          },
+          "dosha_effects": {
+            "type": "object",
+            "properties": {
+              "pacifies": {
+                "type": "array",
+                "items": { "enum": ["vata", "pitta", "kapha"] }
+              },
+              "aggravates": {
+                "type": "array",
+                "items": { "enum": ["vata", "pitta", "kapha"] }
+              }
+            },
+            "description": "Map: 'destructive of wind'=pacifies vata, 'provocative of bile'=aggravates pitta, 'destructive of phlegm'=pacifies kapha, 'enhances/increases wind'=aggravates vata, etc."
+          },
+          "verses": {
+            "type": "array",
+            "items": { "type": "integer" },
+            "description": "Verse number(s) from which this entry is extracted. The superscript numbers in the text."
+          },
+          "source_excerpt": {
+            "type": "string",
+            "description": "The relevant passage from the Kaviratna text, verbatim (OCR cleaned). This is the evidence for the extraction."
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "Extraction confidence. 0.9+ = all properties explicitly stated. 0.7-0.9 = some inference needed (e.g., dosha effect inferred from rasa). 0.5-0.7 = significant ambiguity or OCR damage. Below 0.5 = do not extract."
+          },
+          "notes": {
+            "type": ["string", "null"],
+            "description": "Extraction notes: ambiguities, OCR issues, translator disagreements, properties that required inference."
+          }
+        }
+      }
+    }
+  }
+}

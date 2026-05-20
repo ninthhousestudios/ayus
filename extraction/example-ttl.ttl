@@ -1,0 +1,64 @@
+# Example of what the final TTL looks like with real verse-level citations.
+# This replaces the provenance-less dravya entries in the old seed.
+
+@prefix rdf:      <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
+@prefix vidya:    <http://vidya.ninthhouse.studio/ontology/> .
+@prefix ayurveda: <http://vidya.ninthhouse.studio/domain/ayurveda/> .
+
+# ── Dravya: Yava (barley) ──
+ayurveda:yava  a ayurveda:Dravya ;
+    rdfs:label              "yava" ;
+    ayurveda:commonName     "barley" ;
+    ayurveda:botanicalName  "Hordeum hexastichum" ;
+    ayurveda:hasRasa        ayurveda:kashaya ;
+    ayurveda:hasGuna        ayurveda:ruksha, ayurveda:sheeta, ayurveda:guru ;
+    ayurveda:hasVeerya      ayurveda:sheeta ;
+    ayurveda:hasKarma       ayurveda:balya ;
+    ayurveda:pacifiesDosha  ayurveda:kapha ;
+    ayurveda:aggravatesDosha ayurveda:vata .
+
+<< ayurveda:yava ayurveda:hasRasa ayurveda:kashaya >>
+    vidya:assertedBy [
+        vidya:tradition  ayurveda:tradition-atreya ;
+        vidya:source     ayurveda:source-charaka ;
+        vidya:sthana     "Sutra Sthana" ;
+        vidya:chapter    "27"^^xsd:integer ;
+        vidya:verse      "21"^^xsd:integer ;
+        vidya:pramana    vidya:shabda ;
+        vidya:confidence "0.9"^^xsd:float
+    ] .
+
+<< ayurveda:yava ayurveda:hasGuna ayurveda:ruksha >>
+    vidya:assertedBy [
+        vidya:tradition  ayurveda:tradition-atreya ;
+        vidya:source     ayurveda:source-charaka ;
+        vidya:sthana     "Sutra Sthana" ;
+        vidya:chapter    "27"^^xsd:integer ;
+        vidya:verse      "21"^^xsd:integer ;
+        vidya:pramana    vidya:shabda ;
+        vidya:confidence "0.9"^^xsd:float
+    ] .
+
+<< ayurveda:yava ayurveda:pacifiesDosha ayurveda:kapha >>
+    vidya:assertedBy [
+        vidya:tradition  ayurveda:tradition-atreya ;
+        vidya:source     ayurveda:source-charaka ;
+        vidya:sthana     "Sutra Sthana" ;
+        vidya:chapter    "27"^^xsd:integer ;
+        vidya:verse      "21"^^xsd:integer ;
+        vidya:pramana    vidya:shabda ;
+        vidya:confidence "0.9"^^xsd:float
+    ] .
+
+<< ayurveda:yava ayurveda:aggravatesDosha ayurveda:vata >>
+    vidya:assertedBy [
+        vidya:tradition  ayurveda:tradition-atreya ;
+        vidya:source     ayurveda:source-charaka ;
+        vidya:sthana     "Sutra Sthana" ;
+        vidya:chapter    "27"^^xsd:integer ;
+        vidya:verse      "21"^^xsd:integer ;
+        vidya:pramana    vidya:shabda ;
+        vidya:confidence "0.9"^^xsd:float
+    ] .

@@ -10,9 +10,15 @@ publish = false
 name = "ayus"
 path = "src/main.rs"
 
+[[bin]]
+name = "json2ttl"
+path = "src/json2ttl.rs"
+
 [dependencies]
 vidya-core = { path = "../vidya/vidya-core" }
 iced = { version = "0.14", default-features = true }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
 anyhow = "1"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }

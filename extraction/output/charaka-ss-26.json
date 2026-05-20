@@ -1,0 +1,448 @@
+{
+  "source": {
+    "text": "Charaka Samhita",
+    "section": "Sutra Sthana, Chapter 26 (Atreya-Bhadrakapya)",
+    "translation": "Kaviratna (1890-1908)",
+    "notes": "OCR'd text from 19th-century print. Verse numbers may be garbled by OCR: common confusions include 3/8 and 6/8 in the typeface. Some verse numbers corrected by sequential context. The chapter uses two numbering schemes: main verses (continuous) and a prose section on viruddha ahara renumbered from 1 by the translator."
+  },
+
+  "rasa_dosha_mappings": [
+    {
+      "rasa": "madhura",
+      "pacifies": ["vata", "pitta"],
+      "aggravates": ["kapha"],
+      "verses": [57, 58],
+      "source_excerpt": "It destroys (excited) bile, poisons, and (excited) wind. ... It is oily, cool, and heavy. ... This Taste, though possessed of these attributes, yet if used exclusively (and largely), generates corpulency, softness of the body, idleness ... and such other diseases as are born of (the excitement of) the Phlegm.",
+      "confidence": 0.95,
+      "notes": "All three dosha relationships explicitly stated. 'Destroys bile' = pacifies pitta, 'destroys wind' = pacifies vata. Excess causes 'diseases born of phlegm' = aggravates kapha."
+    },
+    {
+      "rasa": "amla",
+      "pacifies": ["vata"],
+      "aggravates": ["pitta", "kapha"],
+      "verses": [59, 60],
+      "source_excerpt": "The Sour Taste adds relish to food; excites the digestive fire; ... makes the wind flow in its natural course; ... It is light, warm, and oily. ... it produces tenderness of the teeth ... melts thick phlegm (and gradually liquifies it); enhances the bile; corrupts the blood ...",
+      "confidence": 0.85,
+      "notes": "Vata pacification explicit ('makes wind flow in its natural course'). Pitta aggravation explicit ('enhances the bile'). Kapha aggravation less direct: 'generates impurities' (v.59) and 'melts thick phlegm' (v.60, in excess section) imply kapha disturbance. The oily quality also contributes to kapha increase. Confidence lowered for the kapha relationship."
+    },
+    {
+      "rasa": "lavana",
+      "pacifies": ["vata"],
+      "aggravates": ["pitta", "kapha"],
+      "verses": [61, 62],
+      "source_excerpt": "It destroys the (excited) wind. ... It is heavy, oily, and warm, but not excessively so. ... it provokes the bile; it increases the blood (abnormally); it causes thirst ...",
+      "confidence": 0.80,
+      "notes": "Vata pacification explicit ('destroys the excited wind'). Pitta aggravation explicit ('provokes the bile'). Kapha aggravation inferred: the text does not state 'provokes phlegm' directly, but salt is heavy and oily (kapha-increasing qualities), and its vipaka is sweet (v.14), which 'increases phlegm' (v.17). OCR likely garbled verse 62 marker."
+    },
+    {
+      "rasa": "katu",
+      "pacifies": ["kapha"],
+      "aggravates": ["vata", "pitta"],
+      "verses": [63, 64],
+      "source_excerpt": "The Pungent Taste corrects (the dulness of) the mouth; provokes the digestive fire; dries up the food that has been eaten; ... alleviates and destroys Tympanites, swellings or intumescences, plethoric growth of the body, urticaria, opthalmia, oiliness, sweat, impure secretions, and all kinds of impurities. ... It is light, warm, and dry. ... In consequence of the preponderance in it of Wind and Fire, it generates mental wanderings ... sharp shooting pains, piercing pains, and other diseases, due to the wind ...",
+      "confidence": 0.90,
+      "notes": "Kapha pacification inferred from destruction of kapha-type symptoms (oiliness, sweat, impurities, swellings). Vata aggravation explicit ('diseases due to the wind' in excess). Pitta aggravation inferred from fire preponderance and 'burns the throat, causes great heat of the body'. OCR shows verse 63 as '68' (3/8 confusion) and verse 64 as '84' (6/8 confusion)."
+    },
+    {
+      "rasa": "tikta",
+      "pacifies": ["pitta", "kapha"],
+      "aggravates": ["vata"],
+      "verses": [65, 66],
+      "source_excerpt": "The Bitter taste ... cures disgust for food. It destroys the action of poisons. It is anthelmintic. It alleviates swoons, burning sensation of the skin, itching, leprosy, and thirst. ... It is destructive of fevers. ... It dries up phlegmonous secretions, fat, serum ... bile, and phlegm. Its attributes are dry, cool, and light. ... it dries up the juices (of the body), blood, flesh, fat, bones, the marrow of the bones, and vital seed. ... and generates many other diseases brought about by excitement of the Wind.",
+      "confidence": 0.95,
+      "notes": "All three relationships explicit. Pitta pacification: 'alleviates burning sensation, itching, leprosy, thirst', 'destructive of fevers'. Kapha pacification: 'dries up phlegmonous secretions... phlegm'. Vata aggravation: 'diseases brought about by excitement of the Wind'. OCR shows verse 65 as '85' (6/8 confusion)."
+    },
+    {
+      "rasa": "kashaya",
+      "pacifies": ["pitta", "kapha"],
+      "aggravates": ["vata"],
+      "verses": [67, 68],
+      "source_excerpt": "The Astringent Taste restores harmony among the faults. ... It alleviates phlegm and hemorrhages caused by excitement of the bile. ... It is dry, cool, and heavy. ... In consequence of its being rough, clear, and dry, it brings about Hemiplegia, Paralysis, Spasmodic contractions, facial paralysis, and other diseases of the kind that spring from excited wind.",
+      "confidence": 0.95,
+      "notes": "All three relationships explicit. Kapha pacification: 'alleviates phlegm'. Pitta pacification: 'hemorrhages caused by excitement of the bile'. Vata aggravation: 'diseases that spring from excited wind'."
+    }
+  ],
+
+  "rasa_guna_associations": [
+    {
+      "rasa": "madhura",
+      "guna": ["snigdha", "sheeta", "guru"],
+      "verses": [57],
+      "source_excerpt": "It is oily, cool, and heavy."
+    },
+    {
+      "rasa": "amla",
+      "guna": ["laghu", "ushna", "snigdha"],
+      "verses": [59],
+      "source_excerpt": "It is light, warm, and oily."
+    },
+    {
+      "rasa": "lavana",
+      "guna": ["guru", "snigdha", "ushna"],
+      "verses": [61],
+      "source_excerpt": "It is heavy, oily, and warm, but not excessively so."
+    },
+    {
+      "rasa": "katu",
+      "guna": ["laghu", "ushna", "ruksha"],
+      "verses": [63],
+      "source_excerpt": "It is light, warm, and dry."
+    },
+    {
+      "rasa": "tikta",
+      "guna": ["ruksha", "sheeta", "laghu"],
+      "verses": [65],
+      "source_excerpt": "Its attributes are dry, cool, and light."
+    },
+    {
+      "rasa": "kashaya",
+      "guna": ["ruksha", "sheeta", "guru"],
+      "verses": [67],
+      "source_excerpt": "It is dry, cool, and heavy."
+    }
+  ],
+
+  "rasa_guna_rankings": {
+    "ruksha": {
+      "foremost": "kashaya",
+      "middling": "katu",
+      "inferior": "tikta",
+      "verses": [9],
+      "source_excerpt": "In consequence of its dryness, the Astringent Taste is, of all things that are dry, the foremost; the Pungent is middling; the Bitter is inferior."
+    },
+    "ushna": {
+      "foremost": "lavana",
+      "middling": "amla",
+      "inferior": "katu",
+      "verses": [9],
+      "source_excerpt": "In consequence of its heating properties, the Saline, among all things heating, is the foremost; the Sour is middling; and the Pungent is inferior."
+    },
+    "snigdha": {
+      "foremost": "madhura",
+      "middling": "amla",
+      "inferior": "lavana",
+      "verses": [10],
+      "source_excerpt": "In consequence of its oilness, among all things oily the Sweet taste is the foremost; the Sour taste is middling; and the Saline taste is inferior."
+    },
+    "sheeta": {
+      "foremost": "madhura",
+      "middling": "kashaya",
+      "inferior": "tikta",
+      "verses": [11],
+      "source_excerpt": "As regards cooling properties, the Sweet taste is the foremost; the Astringent taste is middling; and the Bitter taste is inferior."
+    },
+    "guru": {
+      "foremost": "madhura",
+      "middling": "kashaya",
+      "inferior": "tikta",
+      "verses": [11],
+      "source_excerpt": "As regards the property of heaviness, the Sweet taste is the foremost; the Astringent taste is middling; and the Bitter taste is inferior.",
+      "notes": "The Saline taste is said to be inferior in both heaviness and lightness (v.12-13), i.e. it is middling/neutral."
+    },
+    "laghu": {
+      "foremost": "tikta",
+      "middling": "katu",
+      "inferior": "amla",
+      "verses": [12],
+      "source_excerpt": "As regards the property of lightness, the Bitter taste is the foremost; the Pungent taste is middling; and the Sour taste is inferior. Some are of opinion that the Saline taste is the most inferior in respect of all things that are light."
+    }
+  },
+
+  "vipaka_rules": {
+    "description": "Vipaka (assimilation/post-digestive effect) — the transformation of taste after digestion. Only three vipakas exist.",
+    "rules": [
+      {
+        "input_rasas": ["katu", "tikta", "kashaya"],
+        "vipaka": "katu",
+        "verses": [14],
+        "source_excerpt": "Of the Pungent, the Bitter, and the Astringent, the change, upon assimilation, is generally Pungent."
+      },
+      {
+        "input_rasas": ["amla"],
+        "vipaka": "amla",
+        "verses": [14],
+        "source_excerpt": "The Sour taste changes into the Sour."
+      },
+      {
+        "input_rasas": ["madhura", "lavana"],
+        "vipaka": "madhura",
+        "verses": [14],
+        "source_excerpt": "The Sweet and the Saline change into the Sweet."
+      }
+    ],
+    "vipaka_effects": [
+      {
+        "vipaka": "katu",
+        "effects": "destructive of semen; leads to retention of faeces and urine, and to increase of wind",
+        "verses": [17],
+        "source_excerpt": "The Pungent taste, in respect of its after effects, is destructive of the semen; leads to retention of faeces and urine, and to increase of wind."
+      },
+      {
+        "vipaka": "madhura",
+        "effects": "easy and copious discharges of urine and stools; increases phlegm and semen; produces heaviness",
+        "verses": [17, 18],
+        "source_excerpt": "The Sweet taste, in respect of its after effects, leads to easy and copious discharges of urine and stools, and increases phlegm and semen. ... the assimilation of the Sweet taste produces the properties of heaviness, while those of the Pungent and the Sour tastes are otherwise."
+      },
+      {
+        "vipaka": "amla",
+        "effects": "increase of bile; evacuation of stools and urine; destruction of semen",
+        "verses": [18],
+        "source_excerpt": "The assimilation of the Sour taste leads to increase of the bile, evacuation of stools and urine, and destruction of semen."
+      }
+    ]
+  },
+
+  "veerya_rules": {
+    "description": "Veerya (energy/potency) — the power by which a substance acts. Two primary types: sheeta (cooling) and ushna (heating). Some authorities recognize eight types.",
+    "two_fold": {
+      "types": ["sheeta", "ushna"],
+      "verses": [20, 21],
+      "source_excerpt": "Others are of opinion that objects have only two kinds of Energy, viz., cooling and hot. That is called the Energy of an object in consequence of which the object acts or operates on the system. An object which has no Energy can have no action (upon the system.) Every action proceeds from Energy."
+    },
+    "eight_fold": {
+      "types": ["manda", "tikshna", "guru", "laghu", "snigdha", "ruksha", "ushna", "sheeta"],
+      "verses": [20],
+      "source_excerpt": "Some say that mild and keen, heavy and light, oily and dry, and hot and cooling, are the eight kinds of Energy which objects may have."
+    },
+    "default_veerya_by_rasa": {
+      "description": "General rule for inferring veerya from rasa and vipaka",
+      "rules": [
+        {
+          "condition": "sweet in taste and assimilation",
+          "veerya": "sheeta",
+          "source_excerpt": "That object which is sweet in Taste and Assimilation, should be known as cooling in Energy."
+        },
+        {
+          "condition": "sour in taste and assimilation",
+          "veerya": "ushna",
+          "source_excerpt": "That which is sour in Taste and Assimilation, should be known as heating in Energy."
+        },
+        {
+          "condition": "pungent in taste and assimilation",
+          "veerya": "ushna",
+          "source_excerpt": "So also that object which is pungent in Taste and Assimilation, should be known as heating in energy."
+        }
+      ],
+      "verses_note": "These verses occur in a section after verse 69 of the main chapter, renumbered as verses 1-2 by Kaviratna."
+    }
+  },
+
+  "hierarchy": {
+    "description": "The relative force of rasa, vipaka, veerya, and prabhava when they conflict in determining the action of a substance.",
+    "order": ["prabhava", "veerya", "vipaka", "rasa"],
+    "strongest": "prabhava",
+    "weakest": "rasa",
+    "verses": [28],
+    "source_excerpt": "In cases where there is uniformity of attributes in Taste and the others (viz., in Energy, Assimilation, and Potency), Taste is subjugated by Assimilation; both of them, again, are subjugated by Energy; and all three are subjugated by Potency. Even such is the natural force of each of these.",
+    "verses_note": "Verse 28 of the post-rasa-description section (second numbering sequence). Kaviratna translates prabhava as 'Potency' and veerya as 'Energy'."
+  },
+
+  "prabhava_definition": {
+    "description": "Prabhava (potency) — the unexplainable specific action of a substance that cannot be predicted from rasa, vipaka, or veerya.",
+    "verses": [23, 24, 25, 26],
+    "source_excerpt": "Where uniformity is observed (between two objects) in respect of taste, energy, and assimilation, but a difference or distinction occurs in their operation or effect, such distinction is said to arise from what is called the potency of the objects. ... Chitraka (Plumbago Zeylanica, Linn.) is pungent in taste, and pungent in assimilation, and hot in energy. So is Danti (Baliospermum montanum). But Danti operates as a purgative (while Chitraka does not). This occurs through the potency of Danti. ... Potency is said to be inconceivable.",
+    "example": {
+      "substance_1": "Chitraka (Plumbago Zeylanica)",
+      "substance_2": "Danti (Baliospermum montanum)",
+      "shared": "both pungent in taste, pungent in assimilation, hot in energy",
+      "difference": "Danti is purgative, Chitraka is not",
+      "explanation": "The difference is due to prabhava (potency) of Danti"
+    },
+    "verses_note": "Verses 23-26 of the post-rasa-description section."
+  },
+
+  "viruddha": [
+    {
+      "combination": "fish with milk",
+      "effect": "corrupts blood; stops pores and passages; causes heaviness of body",
+      "verses": [4],
+      "source_excerpt": "Fish should never be taken with milk. Both of these are sweet in taste. They are, again, sweet in assimilation. Being highly emollient, they retain the secretions (without allowing them to escape) and thus cause a heaviness or fulness of the body. One of them (milk) is of cooling energy; the other (fish) of heating energy; they are thus of opposite energies. In consequence of their being thus of opposite energies, they corrupt or defile the blood.",
+      "confidence": 0.95,
+      "notes": "Prose section verse 4. Rationale given: opposite energies (sheeta vs ushna) despite same rasa and vipaka."
+    },
+    {
+      "combination": "Chilichima fish with milk",
+      "effect": "diseases of blood or suppression of impurities; possibly death",
+      "verses": [5, 6],
+      "source_excerpt": "All varieties of fish may be taken with milk, with the single exception of Chilichima. ... If this fish is eaten with milk, without doubt some disease arising either from (defiled) blood or suppression of impurities would arise; or, the eater may even meet with death.",
+      "confidence": 0.90,
+      "notes": "Prose section verses 5-6. Bhadrakapya initially limits the prohibition to Chilichima only, but Punarvasu (Atreya) overrules: the prohibition extends to ALL fish with milk, with Chilichima being the worst case. Chilichima is 'a kind of sprat; probably Clupea Cultrata.'"
+    },
+    {
+      "combination": "meat of domesticated, marshy, or aquatic animals with honey, sesame oil, molasses, milk, Masha, Mulaka, lotus stalks, or sprouted paddy",
+      "effect": "deafness, blindness, paralysis agitans, rigidity, lassitude, dumbness, nasal voice, or death",
+      "verses": [7],
+      "source_excerpt": "The meat of domesticated animals, of those that live in marshy regions, and of those that are aquatic, should never be taken in conjunction with such things as honey, sesame oil, molasses, milk, Masha (Phaseolus radiatus), Mulaka (Raphanus sativus, i.e., garden radish), lotus stalks, and such paddy as have put forth sprouts. If these be taken, such diseases may be generated as Deafness, Blindness, Paralyses Agitans, Rigidity (of the body), Lassitude, dumbness (or partial suppression of the voice), and nasal voice. Or, such food may bring about death itself.",
+      "confidence": 0.95,
+      "notes": "Prose section verse 7. Multiple incompatible pairs listed as a group."
+    },
+    {
+      "combination": "Paushkara (lotus leaves) and Rohinika (Picrorhiza Kurroa) potherbs, or pigeons fried in oil, with honey and milk",
+      "effect": "corruption of blood, exhaustion of nerves, delusions, pain and heat with puffiness in temples and forehead, bronchocele, red eruptions (Rohinika), or death",
+      "verses": [8],
+      "source_excerpt": "The potherbs called Paushkara, and those called Rohinika, as also pigeons fried in oil, should not be taken with honey and milk. If these be thus taken, then corruption (through excess of impurities) of blood, exhaustion (or lassitude) of the nerves, Delusions, pain and heat with a puffiness in the temples and forehead, Bronchocele, and the red eruptions called Rohinika, may be generated. Such food may even bring about death.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "Mulaka (radish), Laguna (garlic), Krishnagandha (Moringa pterygosperma), Arjjaka, Sumukha, or Surasa (varieties of Ocimum) with milk",
+      "effect": "leprosy",
+      "verses": [9],
+      "source_excerpt": "Having taken Mulaka, Laguna, Krishnagandha, Arjjaka, Sumukha, Surasa, and such other things, one should not take milk, through fear of Leprosy.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "bamboo leaves and ripe Lakuchas (Artocarpus Lakoocha) with honey and milk",
+      "effect": "death, or loss of strength, complexion, energy, vital seed; various violent diseases; impotence",
+      "verses": [10],
+      "source_excerpt": "Bamboo leaves and ripe Lakuchas should never be taken with honey and milk. If taken, it may bring about death, or loss of strength, of complexion, of energy, and of vital seed. Indeed, such food may bring about various diseases with violent symptoms, or even impotence.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "ripe Lakuchas with broth of Phaseolus radiatus, or molasses, or ghee",
+      "effect": "hostile in properties (unspecified)",
+      "verses": [11],
+      "source_excerpt": "Ripe Lakuchas should not be taken with the juice (or broth) of Phaseolus radiatus, or molasses, or ghee, in consequence of these being hostile to the former in properties.",
+      "confidence": 0.85,
+      "notes": "Specific effect not stated; described only as 'hostile in properties'."
+    },
+    {
+      "combination": "sour fruits (Amrataka, Matulunga, Lakucha, Karamardda, Mocha, Dantasatha, Vadara, Kalamra, Bhavya, Jamvava, Kapittha, Tintidika, Paravata, Akshota, Panasa, Narikela, Dadima, Amlaka) with milk",
+      "effect": "hostile (unspecified)",
+      "verses": [12],
+      "source_excerpt": "Amrataka, Matulunga, Lakucha, Karamardda, Mocha, Dantasatha, Vadara, Kalamra, Bhavya, Jamvava, Kapittha, Tintidika, Paravata, Akshota, Panasa, Narikela, Dadima, Amlaka, and such other sour things, liquid or solid, are hostile to milk.",
+      "confidence": 0.90,
+      "notes": "General principle: all sour substances are hostile to milk. No specific disease effects enumerated."
+    },
+    {
+      "combination": "Kangu (Setaria Italica), Varaka, Mukushthaka (Phaseolus aconitifolius), Kulattha (Dolichos uniflorus), Masha (Phaseolus radiatus), or Nishpava (Vigna catjang) with milk",
+      "effect": "hostile (unspecified)",
+      "verses": [13],
+      "source_excerpt": "So Kangu, Varaka, Mukushthaka, Kulattha, Masha, and Nishpava, are hostile if taken with milk.",
+      "confidence": 0.85,
+      "notes": "Specific effects not enumerated."
+    },
+    {
+      "combination": "Padmottarika (Carthamus tinctorius) with Sugar-Maireya (wine) and honey",
+      "effect": "excites/provokes the wind exceedingly",
+      "verses": [13],
+      "source_excerpt": "The potherb called Padmottarika, Sugar-Maireya, and honey, if taken together, become hostile (owing to their incompatibility), and excite or provoke the wind exceedingly.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "Mantha (barley gruel with ghee and water) after Payasa (rice boiled in sugar and milk)",
+      "effect": "exceedingly provokes the phlegm",
+      "verses": [14],
+      "source_excerpt": "The drinking of Mantha after taking frumenty (Payasa) exceedingly provokes the phlegm. Such drink is hostile to the food mentioned.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "Upodika (Basella rubra) boiled with pounded sesame",
+      "effect": "induces diarrhoea",
+      "verses": [14],
+      "source_excerpt": "Upodika (Basella rubra, Linn) boiled with pounded sesame, induces diarrhoea.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "meat of cranes (Valaka) with Varuni wine and Kulmasha (sour rice gruel)",
+      "effect": "hostile; fried in boar fat, capable of bringing about death the same day",
+      "verses": [15],
+      "source_excerpt": "The meat of cranes is hostile to the wine called Varuni and Kulmasha. That meat, if fried in the fat of the boar, is capable of bringing about death in course of the very day.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "flesh of peacock with castor-oil, roasted on fire made of castor-oil plant",
+      "effect": "death the very day",
+      "verses": [16],
+      "source_excerpt": "The flesh of the peacock, if taken with castor-oil and roasted on fire made of the castor-oil plant, is capable of bringing about death the very day.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "flesh of Haritaka (green/wood pigeon) roasted on fire of Kadamba wood (Nauclea Cadamba)",
+      "effect": "death the very day",
+      "verses": [17],
+      "source_excerpt": "The flesh of the bird called Haritaka (the green or wood pigeon), roasted on a fire made of the wood of Kadamba (Nauclea Cadamba, Roxb.) brings about death the very day.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "Haritaka (green pigeon) with Kadamba fire ashes, mixed with Kshaudra wine",
+      "effect": "death",
+      "verses": [17],
+      "source_excerpt": "If taken, with the ashes of such fire or dust on it, mixed with the wine called Kshaudra, it induces death.",
+      "confidence": 0.85,
+      "notes": "Variant of the previous combination, specifying ashes + wine."
+    },
+    {
+      "combination": "Pippali (Piper longum) or Kakamachi (Solanum nigrum) boiled in oil from frying fish, taken with honey",
+      "effect": "death",
+      "verses": [18],
+      "source_excerpt": "Pippali boiled in oil obtained from frying fish, as also Kakamachi (boiled similarly), if taken with honey, induces death.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "honey taken in a heated state, or by a person afflicted with heat",
+      "effect": "death",
+      "verses": [19],
+      "source_excerpt": "Honey taken in a heated state, or taken by a person afflicted with heat, induces death.",
+      "confidence": 0.95
+    },
+    {
+      "combination": "honey and ghee in equal portions",
+      "effect": "incompatible (poisonous)",
+      "verses": [20],
+      "source_excerpt": "Honey and Ghee in equal portions ... are incompatible combinations.",
+      "confidence": 0.95,
+      "notes": "Classic viruddha ahara example. Also referenced in Chakrapani's commentary at v.15 of the main chapter: 'honey mixed with ghee... is as baneful as poison.'"
+    },
+    {
+      "combination": "honey and rain water in equal measures",
+      "effect": "incompatible",
+      "verses": [20],
+      "source_excerpt": "honey and rain water mingled in equal measures ... are incompatible combinations.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "honey and Pushkara seeds (lotus seeds)",
+      "effect": "incompatible",
+      "verses": [20],
+      "source_excerpt": "honey and Pushkara seeds ... are incompatible combinations.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "warm water drunk after taking honey",
+      "effect": "incompatible",
+      "verses": [20],
+      "source_excerpt": "warm water drink after the taking of honey ... are incompatible combinations.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "Bhallataka (Semecarpus Anacardium) and warm water",
+      "effect": "incompatible",
+      "verses": [20],
+      "source_excerpt": "Bhallataka and warm water ... are incompatible combinations.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "Kampillaka (Mallotus Philippensis) boiled in whey",
+      "effect": "incompatible",
+      "verses": [20],
+      "source_excerpt": "Kampillaka boiled in whey ... are incompatible combinations.",
+      "confidence": 0.90
+    },
+    {
+      "combination": "stale Kakamachi (Solanum nigrum)",
+      "effect": "incompatible (harmful when stale)",
+      "verses": [20],
+      "source_excerpt": "stale Kakamachi ... are incompatible combinations.",
+      "confidence": 0.85,
+      "notes": "Not a combination per se but a preparation-based incompatibility (kala-viruddha). Included because Kaviratna lists it among the incompatible items."
+    },
+    {
+      "combination": "flesh of Bhasa (aquatic fowl) roasted on a spit",
+      "effect": "incompatible",
+      "verses": [20],
+      "source_excerpt": "the flesh of Bhasa roasted on a spit, are incompatible combinations.",
+      "confidence": 0.85,
+      "notes": "Not a combination of two substances but a preparation-based incompatibility (samskara-viruddha)."
+    }
+  ]
+}

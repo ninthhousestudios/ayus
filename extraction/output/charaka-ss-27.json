@@ -1,0 +1,1672 @@
+{
+  "source": {
+    "text": "Charaka Samhita",
+    "sthana": "Sutra Sthana",
+    "chapter": 27,
+    "translator": "Kaviratna",
+    "translator_year": "1890-1908",
+    "license": "public domain"
+  },
+  "dravyas": [
+    {
+      "id": "rakta-shali",
+      "sanskrit_name": "Rakta Shali",
+      "botanical_name": null,
+      "common_name": "red Shali rice",
+      "category": "shuka-dhanya",
+      "rasa": ["madhura"],
+      "guna": ["snigdha", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": "madhura",
+      "karma": ["brimhana", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [8, 9, 10, 11, 12],
+      "source_excerpt": "The red Shali, the Mahashali, Kalama, Shakulakrita, Churnaka, Dirghatshuka, Gaura, Panduka, Langula, Sugandhika, Lauhavala, Sharika, Pramodaka, Patanga, Tapaniya, and all other varieties of Shali that are beneficial, are cooling in potency; in taste and assimilation, they are sweet, capable of exciting the wind a little, a little constipating, oily, nutritive, and increasing semen and wine. Amongst these, that which has been mentioned first, vis, the red Shali, is the foremost. The red Shali allays thirst, and subjugates all the three faults when they are excited.",
+      "confidence": 0.9,
+      "notes": "Red Shali is stated as the foremost of all Shali varieties. 'Subjugates all three faults when excited' = tridosha-pacifying. The group of Shali varieties shares properties: cooling potency, sweet taste and assimilation, slightly aggravates vata. Individual entry for red Shali due to its special status."
+    },
+    {
+      "id": "shashtika",
+      "sanskrit_name": "Shashtika",
+      "botanical_name": null,
+      "common_name": "sixty-day rice",
+      "category": "shuka-dhanya",
+      "rasa": ["madhura"],
+      "guna": ["sheeta", "snigdha", "guru"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["balya"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [14],
+      "source_excerpt": "That variety of paddy which is called Shashtika is cooling, oily, heavy, agreeable, destructive of all the three faults, and invigorates the body and makes it hard.",
+      "confidence": 0.9,
+      "notes": "Vipaka not stated. 'Destructive of all three faults' = tridosha pacifying. 'Invigorates' mapped to balya."
+    },
+    {
+      "id": "vrihi",
+      "sanskrit_name": "Vrihi",
+      "botanical_name": null,
+      "common_name": null,
+      "category": "shuka-dhanya",
+      "rasa": ["madhura"],
+      "guna": ["guru"],
+      "veerya": null,
+      "vipaka": "amla",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": ["pitta"]
+      },
+      "verses": [16],
+      "source_excerpt": "That variety of paddy which is called Vrihi is sweet, sour in assimilation, provocative of the bile, and heavy.",
+      "confidence": 0.9,
+      "notes": "'Sour in assimilation' = amla vipaka. 'Provocative of bile' = aggravates pitta."
+    },
+    {
+      "id": "koradusha",
+      "sanskrit_name": "Koradusha",
+      "botanical_name": null,
+      "common_name": null,
+      "category": "shuka-dhanya",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["laghu", "sheeta", "ruksha"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["grahi"],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": ["vata"]
+      },
+      "verses": [18],
+      "source_excerpt": "The paddy called Koradusha, and that called Shyamaka, are astringent, sweet, and light. They provoke the wind, destroy phlegm and bile, are cooling and constipating, and dry up the fluids of the body.",
+      "confidence": 0.85,
+      "notes": "Koradusha and Shyamaka share properties. Shyamaka identified as Panicum frumentaceum, Roxb. 'Constipating' mapped to grahi. 'Dry up fluids' = ruksha guna."
+    },
+    {
+      "id": "shyamaka",
+      "sanskrit_name": "Shyamaka",
+      "botanical_name": "Panicum frumentaceum",
+      "common_name": null,
+      "category": "shuka-dhanya",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["laghu", "sheeta", "ruksha"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["grahi"],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": ["vata"]
+      },
+      "verses": [18],
+      "source_excerpt": "The paddy called Koradusha, and that called Shyamaka, are astringent, sweet, and light. They provoke the wind, destroy phlegm and bile, are cooling and constipating, and dry up the fluids of the body.",
+      "confidence": 0.85,
+      "notes": "Same properties as Koradusha. Botanical name from footnote: Panicum frumentaceum, Roxb."
+    },
+    {
+      "id": "yava",
+      "sanskrit_name": "Yava",
+      "botanical_name": "Hordeum hexastichum",
+      "common_name": "barley",
+      "category": "shuka-dhanya",
+      "rasa": ["kashaya"],
+      "guna": ["ruksha", "sheeta", "guru"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["balya"],
+      "dosha_effects": {
+        "pacifies": ["kapha"],
+        "aggravates": ["vata"]
+      },
+      "verses": [21],
+      "source_excerpt": "Yava (Hordeum hexastichum, Linn.) or barley, is dry, cooling, heavy, agreeable, and enhances the wind and the faeces. It makes the body consistent and hard, is of astringent taste, invigorating, and destructive of all affections due to phlegm.",
+      "confidence": 0.9,
+      "notes": "OCR has 'kexastichum' — corrected to 'hexastichum'. Vipaka not stated. 'Enhances wind' = aggravates vata. 'Destructive of phlegm' = pacifies kapha."
+    },
+    {
+      "id": "venuyava",
+      "sanskrit_name": "Venuyava",
+      "botanical_name": null,
+      "common_name": null,
+      "category": "shuka-dhanya",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["ruksha"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["balya", "medoghna", "krimighna"],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [22],
+      "source_excerpt": "Venuyava (a variety of the above) is regarded as dry, astringent as regards its principal taste and sweet as regards its secondary taste, destructive of phlegm and bile, as also of abdominal fat, worms, and poisons, and invigorating.",
+      "confidence": 0.85,
+      "notes": "A variety of Yava. 'Destructive of abdominal fat' = medoghna. 'Destructive of worms' = krimighna. Also destroys poisons (vishahara)."
+    },
+    {
+      "id": "godhuma",
+      "sanskrit_name": "Godhuma",
+      "botanical_name": null,
+      "common_name": "wheat",
+      "category": "shuka-dhanya",
+      "rasa": ["madhura"],
+      "guna": ["sheeta", "snigdha", "guru"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["vranaropana", "rasayana", "brimhana", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [23],
+      "source_excerpt": "Godhuma (wheat) unites fractures, is destructive of wind, agreeable in taste, cooling, prolongs life, promotes nutrition and increases corpulency, enhances the semen, is oily, makes the body consistent and hard, and is heavy.",
+      "confidence": 0.9,
+      "notes": "'Unites fractures' = vranaropana (wound/fracture healing). 'Prolongs life' = rasayana. 'Promotes nutrition and corpulency' = brimhana. 'Enhances semen' = vajikarana."
+    },
+    {
+      "id": "mudga",
+      "sanskrit_name": "Mudga",
+      "botanical_name": "Phaseolus Mungo",
+      "common_name": "mung bean",
+      "category": "shami-dhanya",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["ruksha", "sheeta", "laghu", "vishada"],
+      "veerya": "sheeta",
+      "vipaka": "katu",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [25],
+      "source_excerpt": "Mudga (Phaseolus Mungo, Linn.) is astringent sweet in taste, dry and cooling; in assimilation it is pungent; it is, besides, light, clear, and destructive of both phlegm and bile. It is the foremost of all things whose soup or boiled juice is taken.",
+      "confidence": 0.95,
+      "notes": "All properties explicitly stated. 'Clear' = vishada. Foremost of all soups/yusha."
+    },
+    {
+      "id": "masha",
+      "sanskrit_name": "Masha",
+      "botanical_name": "Phaseolus radiatus",
+      "common_name": "black gram",
+      "category": "shami-dhanya",
+      "rasa": ["madhura"],
+      "guna": ["snigdha", "ushna", "guru"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["vajikarana", "balya"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [26],
+      "source_excerpt": "Masha (Phaseolus radiatus Roxb.) increases the semen, is greatly destructive of wind, oily, warm, sweet, heavy, invigorating, increases the quantity of faeces, and if weakness or loss of virile power takes place, it restores that power quickly.",
+      "confidence": 0.9,
+      "notes": "'Warm' = ushna guna, likely also ushna veerya given dominant characterization. 'Greatly destructive of wind' = strongly pacifies vata. 'Increases semen' and 'restores virile power' = vajikarana."
+    },
+    {
+      "id": "rajamasha",
+      "sanskrit_name": "Rajamasha",
+      "botanical_name": "Vigna sinensis",
+      "common_name": null,
+      "category": "shami-dhanya",
+      "rasa": ["kashaya"],
+      "guna": ["ruksha", "guru", "vishada"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": ["vata", "pitta", "kapha"]
+      },
+      "verses": [27],
+      "source_excerpt": "That variety of this article which is called Rajamasha (Vigna sinensis, Savi, syn. Dolichos sinensis, Linn.) has consistency, creates a relish for food, causes phlegm, semen, acidity, and bile. It is agreeable, provocative of wind, dry, astringent in taste, is, clear, and heavy.",
+      "confidence": 0.8,
+      "notes": "'Creates relish for food' = deepana. 'Causes phlegm' = aggravates kapha. 'Causes acidity and bile' = aggravates pitta. 'Provocative of wind' = aggravates vata. All three doshas aggravated. 'Clear' = vishada."
+    },
+    {
+      "id": "kulattha",
+      "sanskrit_name": "Kulattha",
+      "botanical_name": "Dolichos biflorus",
+      "common_name": "horse gram",
+      "category": "shami-dhanya",
+      "rasa": ["kashaya"],
+      "guna": ["ushna"],
+      "veerya": "ushna",
+      "vipaka": "amla",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": []
+      },
+      "verses": [28],
+      "source_excerpt": "That variety of Masha which is known by the name of Kulattha (Dolichos biflorus, Roxb.) is warm and astringent; in assimilation it is sour; is destructive of phlegm, semen, and wind. It is an inspissant, and is beneficial in consumption, hiccup, asthma, and piles.",
+      "confidence": 0.9,
+      "notes": "'Warm' = ushna. 'Sour in assimilation' = amla vipaka. 'Destructive of phlegm and wind' = pacifies kapha and vata. Also destructive of semen (shukra-kshaya)."
+    },
+    {
+      "id": "makushtaka",
+      "sanskrit_name": "Makushtaka",
+      "botanical_name": "Phaseolus lobatus",
+      "common_name": "wild mung",
+      "category": "shami-dhanya",
+      "rasa": ["madhura"],
+      "guna": ["ruksha", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": "madhura",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [29],
+      "source_excerpt": "Makushtaka (called also Van-Mudga, Phaseolus lobatus,) is sweet in taste and assimilation, an inspissant, dry, and cooling. It is beneficial in haemorrhages, Fevers, and other diseases.",
+      "confidence": 0.85,
+      "notes": "'Sweet in taste and assimilation' = madhura rasa and vipaka. Also called Van-Mudga (wild Mudga). Inspissant = grahi/stambhana quality."
+    },
+    {
+      "id": "chanaka",
+      "sanskrit_name": "Chanaka",
+      "botanical_name": "Cicer arietinum",
+      "common_name": "chickpea",
+      "category": "shami-dhanya",
+      "rasa": ["madhura", "kashaya"],
+      "guna": ["laghu", "sheeta", "ruksha"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [30, 31],
+      "source_excerpt": "Chanaka (Cicer arietinum, Linn), Masura (Cicer lens, Roxb; syn. Vicia lens, Benth), Khandika (Pisum sativum, Linn), and other kinds of pulses and pease are light, cooling, sweet, astringent, and dry. They are beneficial in affections of bilious, phlegm.",
+      "confidence": 0.85,
+      "notes": "Group properties shared with Masura and Khandika. 'Beneficial in bilious, phlegm affections' = pacifies pitta and kapha."
+    },
+    {
+      "id": "masura",
+      "sanskrit_name": "Masura",
+      "botanical_name": "Cicer lens",
+      "common_name": "lentil",
+      "category": "shami-dhanya",
+      "rasa": ["madhura", "kashaya"],
+      "guna": ["laghu", "sheeta", "ruksha"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["grahi"],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [30, 31],
+      "source_excerpt": "Amongst them all, Masura (Cicer lens, Roxb.) is an inspissant for it dries up the fluids of the body.",
+      "confidence": 0.85,
+      "notes": "Shares group properties with Chanaka. Additionally stated as inspissant (grahi) that dries up body fluids. Botanical synonym: Vicia lens."
+    },
+    {
+      "id": "tila",
+      "sanskrit_name": "Tila",
+      "botanical_name": "Sesamum Indicum",
+      "common_name": "sesame",
+      "category": "shami-dhanya",
+      "rasa": ["madhura", "kashaya", "tikta"],
+      "guna": ["snigdha", "ushna", "tikshna"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["balya"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": ["pitta", "kapha"]
+      },
+      "verses": [32],
+      "source_excerpt": "Tila (Sesamum Indicum, Linn.) is oily, heating, sweet, keen, astringent, and bitter. It keeps the skin soft, promotes the growth of hair, increases strength, is destructive of wind, and creates phlegm and bile.",
+      "confidence": 0.9,
+      "notes": "'Keen' = tikshna. 'Creates phlegm and bile' = aggravates kapha and pitta. 'Destructive of wind' = pacifies vata."
+    },
+    {
+      "id": "adhaki",
+      "sanskrit_name": "Adhaki",
+      "botanical_name": "Cytisus Cajan",
+      "common_name": "pigeon pea",
+      "category": "shami-dhanya",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": ["vata"]
+      },
+      "verses": [35],
+      "source_excerpt": "Adhaki (Cytisus Cajan, Linn; syn. Cajanus Indicus, Spreng.) is destructive of phlegm and bile; provokes wind; and allays phlegm and wind when both are excited together.",
+      "confidence": 0.8,
+      "notes": "Primarily dosha effects stated. Destroys phlegm and bile, provokes wind. Interesting that it allays both phlegm and wind when co-excited — a nuanced clinical indication."
+    },
+    {
+      "id": "aja-mamsa",
+      "sanskrit_name": "Aja",
+      "botanical_name": null,
+      "common_name": "goat meat",
+      "category": "mamsa",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["brimhana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [62],
+      "source_excerpt": "The flesh of the goat is neither very cool, nor very heavy, nor very oily. It does not excite any of the faults. In consequence, again, of its capacity for assimilation with the elements of the human body, it does not restrain the secretions and thereby produce heaviness and fulness of the body. It is also, on that account, nutritive.",
+      "confidence": 0.85,
+      "notes": "Described by negation: not very cool, heavy, or oily. Does not excite any dosha — rare tridosha neutral substance. 'Nutritive' = brimhana. Properties defined relationally rather than absolutely."
+    },
+    {
+      "id": "avi-mamsa",
+      "sanskrit_name": "Avi",
+      "botanical_name": null,
+      "common_name": "sheep meat",
+      "category": "mamsa",
+      "rasa": ["madhura"],
+      "guna": ["sheeta", "guru"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["brimhana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [63],
+      "source_excerpt": "The flesh of sheep is sweet and cool. It is, therefore, heavy, but nutritive.",
+      "confidence": 0.85,
+      "notes": "'Cool' = sheeta guna, likely also veerya given the dominant characterization. Brief description."
+    },
+    {
+      "id": "mayura-mamsa",
+      "sanskrit_name": "Mayura",
+      "botanical_name": null,
+      "common_name": "peacock meat",
+      "category": "mamsa",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["balya", "medhya", "vajikarana", "rasayana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [65],
+      "source_excerpt": "The flesh of the peacock is exceedingly beneficial for the eye, the ear, intelligence, the digestive fire, the consequences of age, complexion, voice, and period of life. It is, besides, strength-giving and wind-destroying. It increases also the semen.",
+      "confidence": 0.85,
+      "notes": "'Beneficial for intelligence' = medhya. 'Consequences of age' and 'period of life' suggest rasayana. 'Strength-giving' = balya. 'Increases semen' = vajikarana. 'Wind-destroying' = pacifies vata."
+    },
+    {
+      "id": "hamsa-mamsa",
+      "sanskrit_name": "Hamsa",
+      "botanical_name": null,
+      "common_name": "swan/goose meat",
+      "category": "mamsa",
+      "rasa": ["madhura"],
+      "guna": ["guru", "ushna", "snigdha"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["brimhana", "balya", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [66],
+      "source_excerpt": "The flesh of swans and geese is heavy, hot, oily, and sweet; it improves the voice, complexion, and strength. It is nutritive and increases the vital seed. It is also destructive of wind.",
+      "confidence": 0.9,
+      "notes": "'Nutritive' = brimhana. 'Increases vital seed' = vajikarana. 'Destructive of wind' = pacifies vata."
+    },
+    {
+      "id": "kukkuta-mamsa",
+      "sanskrit_name": "Kukkuta",
+      "botanical_name": null,
+      "common_name": "cock/chicken meat",
+      "category": "mamsa",
+      "rasa": [],
+      "guna": ["snigdha", "ushna"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["vajikarana", "balya", "swedana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [67],
+      "source_excerpt": "The flesh of those animals which have claws for their weapons (viz., the cock) is oily and hot; it increases the semen and improves the voice. It promotes strength highly. It is destructive of wind and produces perspiration.",
+      "confidence": 0.85,
+      "notes": "'Produces perspiration' = swedana. Clawed animals = nakha-ayudha group, here exemplified by cock."
+    },
+    {
+      "id": "lava-mamsa",
+      "sanskrit_name": "Lava",
+      "botanical_name": null,
+      "common_name": "quail meat",
+      "category": "mamsa",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["laghu"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [71],
+      "source_excerpt": "The flesh of the Lava is astringent, sweet, and light; it increases the strength of the digestive fire. It alleviates excitement of all the faults. On assimilation, it becomes bitter.",
+      "confidence": 0.85,
+      "notes": "Lava is Perdix chinensis (quail). Text says 'bitter on assimilation' but tikta is not a standard vipaka (only madhura/amla/katu allowed). Set to null. This may reflect the translator's rendering of a post-digestive quality (prabhava) rather than strict vipaka. 'Increases digestive fire' = deepana."
+    },
+    {
+      "id": "godha-mamsa",
+      "sanskrit_name": "Godha",
+      "botanical_name": null,
+      "common_name": "iguana meat",
+      "category": "mamsa",
+      "rasa": ["kashaya", "katu"],
+      "guna": [],
+      "veerya": null,
+      "vipaka": "madhura",
+      "karma": ["brimhana", "balya"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta"],
+        "aggravates": []
+      },
+      "verses": [72],
+      "source_excerpt": "The flesh of the Iguana is, on assimilation, sweet. In taste, it is astringent-pungent. It alleviates both wind and bile. It promotes nutrition, and increases strength.",
+      "confidence": 0.9,
+      "notes": "'Sweet on assimilation' = madhura vipaka. 'Alleviates wind and bile' = pacifies vata and pitta."
+    },
+    {
+      "id": "shvavit-mamsa",
+      "sanskrit_name": "Shvavit",
+      "botanical_name": null,
+      "common_name": "porcupine meat",
+      "category": "mamsa",
+      "rasa": ["madhura", "amla"],
+      "guna": [],
+      "veerya": null,
+      "vipaka": "katu",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta"],
+        "aggravates": []
+      },
+      "verses": [73],
+      "source_excerpt": "The flesh of the porcupine is sweet-sour. On assimilation it has been said to be pungent. It is destructive of wind and bile; and alleviates consumption and asthma.",
+      "confidence": 0.9,
+      "notes": "'Pungent on assimilation' = katu vipaka. 'Destructive of wind and bile' = pacifies vata and pitta."
+    },
+    {
+      "id": "kapota-mamsa",
+      "sanskrit_name": "Kapota",
+      "botanical_name": null,
+      "common_name": "domestic pigeon meat",
+      "category": "mamsa",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["sheeta"],
+      "veerya": "sheeta",
+      "vipaka": "madhura",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta"],
+        "aggravates": []
+      },
+      "verses": [74],
+      "source_excerpt": "The flesh of domestic pigeons is astringent-sweet in taste, and cooling, and alleviates hemorrhage arising from excitement of bile. On assimilation it is sweet.",
+      "confidence": 0.9,
+      "notes": "'Sweet on assimilation' = madhura vipaka. 'Alleviates bilious hemorrhage' = pacifies pitta (raktapitta-hara)."
+    },
+    {
+      "id": "shuka-mamsa",
+      "sanskrit_name": "Shuka",
+      "botanical_name": null,
+      "common_name": "parrot meat",
+      "category": "mamsa",
+      "rasa": [],
+      "guna": ["ruksha", "sheeta", "laghu"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["deepana", "grahi"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [76],
+      "source_excerpt": "The flesh of the parrot is astringent-sour on assimilation. It is dry and cooling. It is beneficial in pulmonary consumption and phthisis. It is capable of drying up the fluids of the body. Besides, it is light and increases the digestive fire.",
+      "confidence": 0.8,
+      "notes": "'Astringent-sour on assimilation' is unusual — may describe post-digestive character rather than strict vipaka. 'Drying up fluids' = grahi. 'Increases digestive fire' = deepana."
+    },
+    {
+      "id": "shasha-mamsa",
+      "sanskrit_name": "Shasha",
+      "botanical_name": null,
+      "common_name": "hare meat",
+      "category": "mamsa",
+      "rasa": ["kashaya"],
+      "guna": ["mridu", "ruksha", "sheeta", "laghu"],
+      "veerya": "sheeta",
+      "vipaka": "katu",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [77],
+      "source_excerpt": "The hare is astringent, soft, dry, and cooling; on assimilation, it is pungent. It is, again, light. Agreeable in taste, it is a well-known remedy in diseases due to such excitement of all the faults in which the wind is excited only partially.",
+      "confidence": 0.9,
+      "notes": "'Soft' = mridu. 'Pungent on assimilation' = katu vipaka. Tridosha-pacifying with specific indication when vata is only partially excited."
+    },
+    {
+      "id": "chataka-mamsa",
+      "sanskrit_name": "Chataka",
+      "botanical_name": null,
+      "common_name": "sparrow meat",
+      "category": "mamsa",
+      "rasa": ["madhura"],
+      "guna": ["snigdha"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["balya", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [78],
+      "source_excerpt": "Chatakas (sparrows) are sweet and oily. They increase the strength and the vital seed. They alleviate diseases due to excitement of all the faults. They are, besides, capable of alleviating the wind in especial. They bring on vigour and energy and cure the loss of virile power.",
+      "confidence": 0.9,
+      "notes": "Tridosha-pacifying with emphasis on vata. 'Increases vital seed' and 'cures loss of virile power' = vajikarana."
+    },
+    {
+      "id": "ena-mamsa",
+      "sanskrit_name": "Ena",
+      "botanical_name": null,
+      "common_name": "black antelope meat",
+      "category": "mamsa",
+      "rasa": ["madhura"],
+      "guna": ["laghu", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": "madhura",
+      "karma": ["grahi"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [79],
+      "source_excerpt": "Those animals of the deer species which are known as Enas are sweet in taste, and sweet on assimilation. They are capable of alleviating excitement of all the faults together. Beneficial to the system, they are light and restrain both stools and urine. They are, again, known to be cooling.",
+      "confidence": 0.9,
+      "notes": "Ena = Krishnashara = black antelope. 'Sweet on assimilation' = madhura vipaka. 'Restrain stools and urine' = grahi. Tridosha-pacifying."
+    },
+    {
+      "id": "rohita-mamsa",
+      "sanskrit_name": "Rohita",
+      "botanical_name": null,
+      "common_name": "Rohita fish",
+      "category": "mamsa",
+      "rasa": [],
+      "guna": ["laghu"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana", "balya"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [80],
+      "source_excerpt": "The Rohita fish, in consequence of its feeding on moss and of its never sleeping, increases the digestive fire. It is digested soon, and greatly enhances strength.",
+      "confidence": 0.8,
+      "notes": "'Digested soon' implies laghu guna. 'Increases digestive fire' = deepana. 'Enhances strength' = balya. Brief description, few properties stated."
+    },
+    {
+      "id": "matsya",
+      "sanskrit_name": "Matsya",
+      "botanical_name": null,
+      "common_name": "fish (general)",
+      "category": "mamsa",
+      "rasa": ["madhura"],
+      "guna": ["guru", "ushna", "snigdha"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["balya", "brimhana", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": ["pitta", "kapha"]
+      },
+      "verses": [81],
+      "source_excerpt": "Fish in general are heavy, hot, and sweet. They promote strength and nutrition, and are destructive of wind. They are oily and capable of increasing the vital seed. They have been said to be provocative of various faults.",
+      "confidence": 0.85,
+      "notes": "General properties of fish. 'Provocative of various faults' = aggravates pitta and kapha (inferred from hot, sweet, oily profile). 'Destructive of wind' = pacifies vata."
+    },
+    {
+      "id": "varaha-mamsa",
+      "sanskrit_name": "Varaha",
+      "botanical_name": null,
+      "common_name": "boar meat",
+      "category": "mamsa",
+      "rasa": [],
+      "guna": ["snigdha", "guru"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["brimhana", "vajikarana", "balya", "swedana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [82],
+      "source_excerpt": "The flesh of the boar is Snehana. It promotes nutrition. It increases the vital seed. It is capable of making one endure fatigue. It is destructive of the wind. It increases the strength, being a tonic; and has considerable relish. It is also a Swedana, and heavy.",
+      "confidence": 0.85,
+      "notes": "'Snehana' = oily/unctuous quality (snigdha). 'Swedana' = produces perspiration. 'Destructive of wind' = pacifies vata."
+    },
+    {
+      "id": "kurma-mamsa",
+      "sanskrit_name": "Kurma",
+      "botanical_name": null,
+      "common_name": "tortoise meat",
+      "category": "mamsa",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["balya", "vajikarana", "medhya"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [83],
+      "source_excerpt": "The tortoise is said to be a tonic. It alleviates the wind. It increases the semen, improves the vision, and increases the strength. It improves both intelligence and memory. It is a good regimen for the weak stomach. It cures consumption.",
+      "confidence": 0.85,
+      "notes": "'Improves intelligence and memory' = medhya. 'Increases semen' = vajikarana. 'Alleviates wind' = pacifies vata."
+    },
+    {
+      "id": "go-mamsa",
+      "sanskrit_name": "Go",
+      "botanical_name": null,
+      "common_name": "beef",
+      "category": "mamsa",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [84],
+      "source_excerpt": "Beef is beneficial when the wind only has been excited. It is also a remedy in inflamations of the Schneiderian membrane, as also in cases of chronic fever. It is good also in dry consumption, in exhaustion and fatigue, when the digestive fire is keen, and in cases of loss of flesh.",
+      "confidence": 0.75,
+      "notes": "Described primarily by therapeutic indications rather than pharmacological properties. 'Beneficial when wind excited' = pacifies vata. No rasa, guna, veerya, or vipaka stated explicitly."
+    },
+    {
+      "id": "mahisha-mamsa",
+      "sanskrit_name": "Mahisha",
+      "botanical_name": null,
+      "common_name": "buffalo meat",
+      "category": "mamsa",
+      "rasa": ["madhura"],
+      "guna": ["snigdha", "ushna", "guru"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["brimhana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [85],
+      "source_excerpt": "The flesh of the buffalo is oily, hot, and sweet. It is, again, heavy and promotes nutrition and corpulency. It causes hardness or firmness of the body, increases its dimensions, improves courage and perseverance, and produces sleep.",
+      "confidence": 0.9,
+      "notes": "'Produces sleep' = nidra-janana. 'Promotes nutrition and corpulency' = brimhana."
+    },
+    {
+      "id": "kakamachi",
+      "sanskrit_name": "Kakamachi",
+      "botanical_name": "Solanum nigrum",
+      "common_name": "black nightshade",
+      "category": "shaka",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["rasayana", "vajikarana", "bhedana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [90],
+      "source_excerpt": "Kakamachi is capable of allaying excitement of the three faults. It increases the vital seed. It operates as a Rasayana. In respect of energy, it is neither very hot or very cold. It is also a Bhedana (purges the intestines without producing watery motions). It cures leprosy.",
+      "confidence": 0.85,
+      "notes": "Called Gurkamai in Bengali. 'Allays three faults' = tridosha pacifying. 'Operates as Rasayana' = explicitly stated. 'Increases vital seed' = vajikarana. 'Bhedana' = mild purgative action (purges intestines without watery motions). 'Neither very hot or cold' = moderate veerya."
+    },
+    {
+      "id": "kalashaka",
+      "sanskrit_name": "Kalashaka",
+      "botanical_name": "Corchorus capsularis",
+      "common_name": null,
+      "category": "shaka",
+      "rasa": ["katu"],
+      "guna": ["laghu", "ushna", "ruksha"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["deepana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": ["vata"]
+      },
+      "verses": [92],
+      "source_excerpt": "Kalashaka is pungent in taste. It excites the digestive fire. It destroys the effects of poison and also dropsical swellings. It is light and hot, excites the wind, and is dry.",
+      "confidence": 0.85,
+      "notes": "Also called Kaliyashaka. 'Excites digestive fire' = deepana. 'Excites wind' = aggravates vata."
+    },
+    {
+      "id": "upodika",
+      "sanskrit_name": "Upodika",
+      "botanical_name": "Bassela Rubra",
+      "common_name": null,
+      "category": "shaka",
+      "rasa": ["madhura"],
+      "guna": ["snigdha"],
+      "veerya": null,
+      "vipaka": "madhura",
+      "karma": ["vajikarana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": ["kapha"]
+      },
+      "verses": [94],
+      "source_excerpt": "Upodika is sweet in taste, sweet in assimilation, operates as a Bhedana (i.e., discharges the contents of the intestines without producing watery motions), enhances the phlegm, increases the vital seed, is oily, and alleviates vertigo and inebriety of the head.",
+      "confidence": 0.85,
+      "notes": "'Sweet in assimilation' = madhura vipaka. 'Enhances phlegm' = aggravates kapha. 'Increases vital seed' = vajikarana. Bhedana = mild purgative."
+    },
+    {
+      "id": "patola",
+      "sanskrit_name": "Patola",
+      "botanical_name": "Trichosanthes dioica",
+      "common_name": "pointed gourd",
+      "category": "shaka",
+      "rasa": ["tikta"],
+      "guna": ["sheeta"],
+      "veerya": "sheeta",
+      "vipaka": "katu",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [95, 96],
+      "source_excerpt": "Mandukaparni, Vetagra, Kuchela, Vanatiktaka, Karkotaka, Avalguja, Patola, Shakunadani, Vrishapushpa, Sarngashtha, Kevuka, Katillaka, Nadi, Kalaya, Gojihva, Varttaku, Tilaparnika, Kulaka, Karkkasha, Nimba, and Parppataka, alleviate excitements of phlegm and bile. They are bitter and cooling. They are pungent upon assimilation.",
+      "confidence": 0.85,
+      "notes": "One of a group sharing bitter-cooling-pungent-assimilation properties. Patola is specifically mentioned earlier (v.4) as an exception among bitters for not being provocative of wind."
+    },
+    {
+      "id": "nimba",
+      "sanskrit_name": "Nimba",
+      "botanical_name": "Melia Azadirachta",
+      "common_name": "neem",
+      "category": "shaka",
+      "rasa": ["tikta"],
+      "guna": ["sheeta"],
+      "veerya": "sheeta",
+      "vipaka": "katu",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [95, 96],
+      "source_excerpt": "Mandukaparni, Vetagra, Kuchela, Vanatiktaka, Karkotaka, Avalguja, Patola, Shakunadani, Vrishapushpa, Sarngashtha, Kevuka, Katillaka, Nadi, Kalaya, Gojihva, Varttaku, Tilaparnika, Kulaka, Karkkasha, Nimba, and Parppataka, alleviate excitements of phlegm and bile. They are bitter and cooling. They are pungent upon assimilation.",
+      "confidence": 0.85,
+      "notes": "Part of the bitter-cooling group. 'Pungent upon assimilation' = katu vipaka."
+    },
+    {
+      "id": "trapusha",
+      "sanskrit_name": "Trapusha",
+      "botanical_name": "Cucumis sativus",
+      "common_name": "cucumber",
+      "category": "shaka",
+      "rasa": [],
+      "guna": ["guru", "sheeta", "ruksha"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["mutrala"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [110],
+      "source_excerpt": "Trapusha, and Ervvaruka, are agreeable to the taste, heavy, obstructive of urine and faeces, and cool. As regards Trapusha, it is particularly agreeable to the mouth, and dry, and increases the urine.",
+      "confidence": 0.85,
+      "notes": "Shares some group properties with Ervvaruka but also has distinct individual properties: dry and increases urine (mutrala). The text first says 'obstructive of urine and faeces' for both, then says Trapusha specifically 'increases urine' — possibly a distinction about its effect after digestion."
+    },
+    {
+      "id": "kushmanda",
+      "sanskrit_name": "Kushmanda",
+      "botanical_name": "Cucurbita Pepo",
+      "common_name": "ash gourd",
+      "category": "shaka",
+      "rasa": ["madhura", "amla"],
+      "guna": ["laghu"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["mutrala", "anulomana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [112],
+      "source_excerpt": "Kushmanda has been said to be possessed of Kshara. It is sweet and sour and light. It assists the discharge of both urine and faeces, and alleviates all the faults if excited.",
+      "confidence": 0.85,
+      "notes": "Kshara = alkaline quality. 'Assists discharge of urine and faeces' = mutrala + anulomana. 'Alleviates all faults' = tridosha pacifying."
+    },
+    {
+      "id": "vidari",
+      "sanskrit_name": "Vidari",
+      "botanical_name": "Convolvulus paniculatus",
+      "common_name": null,
+      "category": "shaka",
+      "rasa": [],
+      "guna": ["sheeta"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["rasayana", "brimhana", "vajikarana", "balya", "mutrala"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [120],
+      "source_excerpt": "The bulbous root of the Vidari prolongs life; promotes nutrition and corpulency; increases the vital seed; improves the voice, and is applauded as a tonic for removing the effects of age, increasing the vigor of healthy persons, and curing the ailments of the sick. It also promotes the strength in special, increases the urine, is agreeable to the taste, and cooling.",
+      "confidence": 0.9,
+      "notes": "'Prolongs life' and 'removing effects of age' = rasayana. 'Promotes nutrition and corpulency' = brimhana. 'Increases vital seed' = vajikarana. 'Promotes strength' = balya. 'Increases urine' = mutrala. Syn. Batatas paniculata."
+    },
+    {
+      "id": "mridvika",
+      "sanskrit_name": "Mridvika",
+      "botanical_name": "Vitis vinifera",
+      "common_name": "grape/raisin",
+      "category": "phala",
+      "rasa": ["madhura"],
+      "guna": ["snigdha", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["brimhana", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta"],
+        "aggravates": []
+      },
+      "verses": [124, 125],
+      "source_excerpt": "Mridvika alleviates thirst, burning sensation of the skin, fever, asthma, hemorrhages caused by excitement of the bile, sores and wounds, phthisis, excitement of the wind and the bile, Epistasis or suppression of urine, harshness of voice, delirium tremens, bitterness of the mouth, dryness of the mouth, and consumption. It promotes nutrition and increases corpulency; it enhances the vital seed; it is sweet in taste, oily, and cooling.",
+      "confidence": 0.9,
+      "notes": "Also called Draksha. Uvae passae = dried grapes/raisins. Very extensive list of therapeutic indications. 'Excitement of wind and bile' = pacifies vata and pitta."
+    },
+    {
+      "id": "kharjjura",
+      "sanskrit_name": "Kharjjura",
+      "botanical_name": "Phoenix sylvestris",
+      "common_name": "wild date palm fruit",
+      "category": "phala",
+      "rasa": ["madhura"],
+      "guna": ["guru", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["brimhana", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta"],
+        "aggravates": []
+      },
+      "verses": [126],
+      "source_excerpt": "Kharjjura is sweet in taste. It promotes nutrition and increases corpulency. It enhances the vital seed. It is heavy and cooling. It is beneficial in phthisis, in wounds caused by violence, in burning pains, and in excitements of wind and bile.",
+      "confidence": 0.9,
+      "notes": "'Excitements of wind and bile' = pacifies vata and pitta."
+    },
+    {
+      "id": "amrata",
+      "sanskrit_name": "Amrata",
+      "botanical_name": "Spondias mangifera",
+      "common_name": "hog plum",
+      "category": "phala",
+      "rasa": ["madhura"],
+      "guna": ["guru", "snigdha", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["brimhana", "balya", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": ["kapha"]
+      },
+      "verses": [128],
+      "source_excerpt": "Amrata is sweet in taste. It promotes nutrition and increases corpulency. It operates as a tonic by increasing strength, it is a Tarpana. It is heavy. It is endued with oily matter. It provokes the phlegm, is cooling, increases the vital seed, and becomes digested after causing a sensation of heaviness in the stomach and obstructing faeces and urine.",
+      "confidence": 0.9,
+      "notes": "'Provokes phlegm' = aggravates kapha. Tarpana = satiating/nourishing."
+    },
+    {
+      "id": "narikela",
+      "sanskrit_name": "Narikela",
+      "botanical_name": "Cocos nucifera",
+      "common_name": "coconut",
+      "category": "phala",
+      "rasa": ["madhura"],
+      "guna": ["snigdha", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["brimhana", "balya"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [129],
+      "source_excerpt": "The kernel of the ripe Tala and the fruits of the Narikela promote nutrition and increase corpulency. They are oily and cool, and operate as tonics for increasing the strength, and are sweet in taste.",
+      "confidence": 0.85,
+      "notes": "Shares properties with Tala kernel. 'Promote nutrition' = brimhana. 'Tonics for strength' = balya."
+    },
+    {
+      "id": "bhavya",
+      "sanskrit_name": "Bhavya",
+      "botanical_name": "Dillenia Indica",
+      "common_name": null,
+      "category": "phala",
+      "rasa": ["madhura", "amla", "kashaya"],
+      "guna": ["guru", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["grahi"],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [130],
+      "source_excerpt": "Bhavya is sweet-sour-astringent in taste. It causes a heaviness in the stomach before digestion, and obstructs feces and urine. It is heavy and cooling. It alleviates bile and phlegm. It operates as an inspissant and dries up the fluids of the body. It corrects the taste of the mouth.",
+      "confidence": 0.9,
+      "notes": "Syn. Dillenia speciosa. 'Inspissant' = grahi (drying up body fluids)."
+    },
+    {
+      "id": "kapittha",
+      "sanskrit_name": "Kapittha",
+      "botanical_name": "Feronia Elephantum",
+      "common_name": "wood apple",
+      "category": "phala",
+      "rasa": ["madhura", "amla", "kashaya"],
+      "guna": ["guru"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana", "grahi"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [135, 136],
+      "source_excerpt": "The unripe Kapittha is destructive of poison and also of the voice; it is an inspissant that dries up the fluids of the body. It excites the wind. In consequence of its being sweet, sour, and astringent in taste, and also of its agreeable smell, it creates a relish for food. If ripe, it alleviates all the faults, is destructive of poison, operates as an inspissant by drying the fluids of the body, and is heavy.",
+      "confidence": 0.85,
+      "notes": "Unripe form excites wind; ripe form alleviates all three faults. Properties given for ripe form primarily. 'Creates relish' = deepana. 'Inspissant' = grahi."
+    },
+    {
+      "id": "amra",
+      "sanskrit_name": "Amra",
+      "botanical_name": "Mangifera Indica",
+      "common_name": "mango",
+      "category": "phala",
+      "rasa": ["madhura"],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["brimhana", "vajikarana", "balya"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": ["pitta"]
+      },
+      "verses": [138],
+      "source_excerpt": "The Amra, when undeveloped, produces hemorrhage due to excitement of the bile, and enhances the bile. When ripe, it subdues the wind, and conduces to flesh, vital seed, and strength.",
+      "confidence": 0.85,
+      "notes": "Properties differ by maturity. Unripe: aggravates pitta. Ripe: pacifies vata, brimhana (builds flesh), vajikarana (increases vital seed), balya (increases strength). Entry captures ripe form primarily."
+    },
+    {
+      "id": "jambu",
+      "sanskrit_name": "Tambava",
+      "botanical_name": "Eugenia jambolana",
+      "common_name": "java plum",
+      "category": "phala",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["guru", "sheeta"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["grahi"],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": ["vata"]
+      },
+      "verses": [139],
+      "source_excerpt": "The Tambava is generally astringent-sweet, heavy, obstructs the secretions, and is cooling. It is obstructive of both phlegm and bile, operates as an inspissant by drying up the fluids of the body, and creates wind largely.",
+      "confidence": 0.85,
+      "notes": "Tambava = Jambu (java plum). 'Creates wind largely' = aggravates vata. 'Obstructive of phlegm and bile' = pacifies kapha and pitta."
+    },
+    {
+      "id": "vadara",
+      "sanskrit_name": "Vadara",
+      "botanical_name": "Zizyphus Jujuba",
+      "common_name": "jujube",
+      "category": "phala",
+      "rasa": ["madhura"],
+      "guna": ["snigdha"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta"],
+        "aggravates": []
+      },
+      "verses": [140],
+      "source_excerpt": "Vadara is sweet, oily, operates as a Bhedana, and subdues both wind and bile. When dried up, it is destructive of phlegm and wind, and is not hostile to bile.",
+      "confidence": 0.85,
+      "notes": "'Bhedana' = mild purgative (purges without producing watery stools). Fresh form subdues vata and pitta. Dried form also subdues kapha and vata."
+    },
+    {
+      "id": "amalaka",
+      "sanskrit_name": "Amalaka",
+      "botanical_name": "Phyllanthus Emblica",
+      "common_name": "Indian gooseberry",
+      "category": "phala",
+      "rasa": ["madhura", "amla", "katu", "tikta", "kashaya"],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [147],
+      "source_excerpt": "It should be known that there is every taste in Amalaka except the saline. It cures perspiration, fatty growth, phlegm, nausea, and bile.",
+      "confidence": 0.85,
+      "notes": "Five rasas (all except lavana). 'Cures phlegm and bile' = pacifies kapha and pitta. 'Cures fatty growth' suggests medoghna quality. Also mentioned in v.4 as an exception among sour things for not provoking bile."
+    },
+    {
+      "id": "vibhitaki",
+      "sanskrit_name": "Vibhitaki",
+      "botanical_name": "Terminalia Bellerica",
+      "common_name": null,
+      "category": "phala",
+      "rasa": ["kashaya", "amla"],
+      "guna": ["ruksha"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [148],
+      "source_excerpt": "Vibhitaki is dry, agreeable in taste, astringent-sour, and highly destructive of phlegm and bile. It also destroys the diseases born of the juicy elements in the body, of blood, of flesh, and of fat.",
+      "confidence": 0.9,
+      "notes": "'Highly destructive of phlegm and bile' = pacifies kapha and pitta. Also destroys diseases of rasa, rakta, mamsa, and meda dhatus."
+    },
+    {
+      "id": "dadima",
+      "sanskrit_name": "Dadima",
+      "botanical_name": "Punica Granatum",
+      "common_name": "pomegranate",
+      "category": "phala",
+      "rasa": ["amla", "kashaya", "madhura"],
+      "guna": ["snigdha", "ushna"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["deepana", "grahi"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [149, 150],
+      "source_excerpt": "Dadima is sour-astringent-sweet, destructive of wind, operates as an inspissant and dries up the fluids of the body, promotes the appetite, is oily, heating, promotes cheerfulness and brings about relish for food, and prevents phlegm and bile. That Dadima which is sour and dry, excites bile and wind. Those that are sweet, are destructive of bile. The last variety is regarded as the best.",
+      "confidence": 0.9,
+      "notes": "Also mentioned in v.4 as an exception among sour things for not provoking bile. The sweet variety is considered best. 'Promotes appetite' = deepana. 'Inspissant' = grahi. 'Prevents phlegm and bile' = pacifies kapha and pitta. 'Destructive of wind' = pacifies vata."
+    },
+    {
+      "id": "nagaranga",
+      "sanskrit_name": "Nagaranga",
+      "botanical_name": "Citrus Auranticum",
+      "common_name": "orange",
+      "category": "phala",
+      "rasa": ["madhura", "amla"],
+      "guna": ["guru"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [156],
+      "source_excerpt": "The fruit of Nagaranga is sweet and slightly sour. It promotes cheerfulness and adds relish to food. It is difficult of digestion, alleviates wind, and is heavy.",
+      "confidence": 0.85,
+      "notes": "'Alleviates wind' = pacifies vata. 'Difficult of digestion' suggests guru guna."
+    },
+    {
+      "id": "ingudi",
+      "sanskrit_name": "Ingudi",
+      "botanical_name": "Ximenia Aegyptiaca",
+      "common_name": null,
+      "category": "phala",
+      "rasa": ["tikta", "madhura"],
+      "guna": ["snigdha", "ushna"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": []
+      },
+      "verses": [146],
+      "source_excerpt": "Ingudi is bitter and sweet, oily, and hot, and subdues both phlegm and wind.",
+      "confidence": 0.9,
+      "notes": "'Subdues phlegm and wind' = pacifies kapha and vata."
+    },
+    {
+      "id": "tinduka",
+      "sanskrit_name": "Tinduka",
+      "botanical_name": "Diospyros Embryopteris",
+      "common_name": null,
+      "category": "phala",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["laghu"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [146],
+      "source_excerpt": "Tinduka is obstructive of both phlegm and bile, astringent and sweet, and light.",
+      "confidence": 0.85,
+      "notes": "'Obstructive of phlegm and bile' = pacifies kapha and pitta."
+    },
+    {
+      "id": "vartaka",
+      "sanskrit_name": "Vartaka",
+      "botanical_name": "Solanum Melongena",
+      "common_name": "eggplant",
+      "category": "phala",
+      "rasa": ["katu", "tikta"],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [161],
+      "source_excerpt": "Vartaka is destructive of wind, promotes appetite, and is pungent-bitter in taste.",
+      "confidence": 0.85,
+      "notes": "Listed in the fruit group. 'Destructive of wind' = pacifies vata. 'Promotes appetite' = deepana."
+    },
+    {
+      "id": "ardraka",
+      "sanskrit_name": "Ardraka",
+      "botanical_name": "Zingiber officinale",
+      "common_name": "fresh ginger",
+      "category": "harita",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [165],
+      "source_excerpt": "Ardraka, as also Vishwabheshaja, creates relish (for food), promotes the appetite, and increases the semen. Its juice is directed to be used in retention of urine and stools caused by excitement of wind and phlegm.",
+      "confidence": 0.8,
+      "notes": "Fresh ginger. Vishwabheshaja = dry ginger (treated separately in v.297). 'Creates relish and promotes appetite' = deepana. 'Increases semen' = vajikarana. OCR has 'Zengiber' in footnote — corrected to 'Zingiber'."
+    },
+    {
+      "id": "jamvira",
+      "sanskrit_name": "Jamvira",
+      "botanical_name": "Citrus medica",
+      "common_name": "citron/lemon",
+      "category": "harita",
+      "rasa": [],
+      "guna": ["tikshna"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana", "krimighna", "pachana"],
+      "dosha_effects": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": []
+      },
+      "verses": [166],
+      "source_excerpt": "Jamvira corrects relish, promotes the appetite, is keen, possessed of fragrance, and corrects the mouth. It is destructive of phlegm and wind, operates as a vermifuge, and is a Pachana with respect to food previously taken.",
+      "confidence": 0.85,
+      "notes": "'Keen' = tikshna. 'Promotes appetite' = deepana. 'Vermifuge' = krimighna. 'Pachana' = aids digestion of already-eaten food. Called 'Gonda-nebu' in Bengal."
+    },
+    {
+      "id": "mulaka",
+      "sanskrit_name": "Mulaka",
+      "botanical_name": "Raphanus Sativus",
+      "common_name": "radish",
+      "category": "harita",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": ["vata", "pitta", "kapha"]
+      },
+      "verses": [167],
+      "source_excerpt": "Mulaka, when young, is destructive of all the faults. When ripe, it excites all the faults. When boiled in oil, it becomes destructive of the wind. Dried in the sun, it subdues both phlegm and wind.",
+      "confidence": 0.85,
+      "notes": "Properties vary dramatically with maturity and preparation. Young: tridosha-pacifying. Ripe: tridosha-aggravating. Boiled in oil: pacifies vata. Sun-dried: pacifies kapha and vata. A good example of samskara (processing) changing properties."
+    },
+    {
+      "id": "surasa",
+      "sanskrit_name": "Surasa",
+      "botanical_name": "Ocimum sanctum",
+      "common_name": "holy basil",
+      "category": "harita",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": ["pitta"]
+      },
+      "verses": [168],
+      "source_excerpt": "Surasa alleviates hiccup, consumption, poison, asthma, and shooting pains in the sides. It excites the bile, destroys phlegm and wind, and corrects foetid smell.",
+      "confidence": 0.85,
+      "notes": "A variety of Ocimum sanctum. 'Excites bile' = aggravates pitta. 'Destroys phlegm and wind' = pacifies kapha and vata."
+    },
+    {
+      "id": "palandu",
+      "sanskrit_name": "Palandu",
+      "botanical_name": "Allium cepa",
+      "common_name": "onion",
+      "category": "harita",
+      "rasa": [],
+      "guna": ["guru"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["balya", "vajikarana", "deepana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": ["kapha"]
+      },
+      "verses": [174],
+      "source_excerpt": "Palandu excites phlegm, is destructive of wind, and does not alleviate bile. It is very suitable for food, adds strength, is heavy, enhances the vital seed, and adds relish to food.",
+      "confidence": 0.9,
+      "notes": "'Excites phlegm' = aggravates kapha. 'Destructive of wind' = pacifies vata. 'Does not alleviate bile' = neutral to pitta. 'Adds strength' = balya. 'Enhances vital seed' = vajikarana. 'Adds relish' = deepana."
+    },
+    {
+      "id": "lashuna",
+      "sanskrit_name": "Lashuna",
+      "botanical_name": "Allium sativum",
+      "common_name": "garlic",
+      "category": "harita",
+      "rasa": ["katu"],
+      "guna": ["snigdha", "ushna", "guru"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["krimighna", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [175],
+      "source_excerpt": "Lashuna is destructive of worms, the minor varieties of leprosy, and blotches or scabs. It allays also the wind, and glandular enlargements. It is oily and hot, enhances the vital seed, and is pungent and heavy.",
+      "confidence": 0.9,
+      "notes": "'Destructive of worms' = krimighna. 'Enhances vital seed' = vajikarana. 'Allays wind' = pacifies vata."
+    },
+    {
+      "id": "go-kshira",
+      "sanskrit_name": "Go-kshira",
+      "botanical_name": null,
+      "common_name": "cow's milk",
+      "category": "kshira",
+      "rasa": ["madhura"],
+      "guna": ["sheeta", "mridu", "snigdha", "guru", "picchila", "sukshma"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["rasayana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [220, 221],
+      "source_excerpt": "The milk of the cow has these ten properties, viz., it is sweet, cool, mild, oily, copious, fine, slimy, heavy, not pungent, and free from impurities. In consequence of the possession of these properties and of their parity with the element called ojas, vaccine milk enhances ojas. Vaccine milk is the foremost of all things that prolong life. It has also been said to operate as a Rasayana.",
+      "confidence": 0.9,
+      "notes": "Ten properties stated: sweet (madhura), cool (sheeta), mild (mridu), oily (snigdha), copious, fine (sukshma), slimy (picchila), heavy (guru), not pungent, pure. 'Copious' and 'not pungent' and 'free from impurities' are descriptive rather than guna terms. 'Foremost of all that prolong life' and 'Rasayana' = explicitly stated."
+    },
+    {
+      "id": "mahishi-kshira",
+      "sanskrit_name": "Mahishi-kshira",
+      "botanical_name": null,
+      "common_name": "buffalo's milk",
+      "category": "kshira",
+      "rasa": [],
+      "guna": ["guru", "sheeta", "snigdha"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [222],
+      "source_excerpt": "The milk of buffaloes is heavier than vaccine milk and cooler. Being excessively oily, such milk produces sleeplessness. It is beneficial for those persons whose digestive fire is keen.",
+      "confidence": 0.85,
+      "notes": "'Heavier and cooler than cow's milk' = comparatively more guru and sheeta. 'Excessively oily' = very snigdha. Produces sleeplessness (nidra-nashana — unusual)."
+    },
+    {
+      "id": "ushtra-kshira",
+      "sanskrit_name": "Ushtra-kshira",
+      "botanical_name": null,
+      "common_name": "camel's milk",
+      "category": "kshira",
+      "rasa": ["lavana"],
+      "guna": ["ruksha", "ushna", "laghu"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["vata", "kapha"],
+        "aggravates": []
+      },
+      "verses": [223],
+      "source_excerpt": "The milk of camels is dry and hot. It is slightly saline and light. It has been recommended for alleviating excitements of the wind and the phlegm, in cases of retention of urine, worms, intumescence, stomachic and abdominal diseases, and piles.",
+      "confidence": 0.9,
+      "notes": "'Slightly saline' = lavana rasa. 'Alleviating wind and phlegm' = pacifies vata and kapha."
+    },
+    {
+      "id": "aja-kshira",
+      "sanskrit_name": "Aja-kshira",
+      "botanical_name": null,
+      "common_name": "goat's milk",
+      "category": "kshira",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["sheeta", "laghu"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["grahi"],
+      "dosha_effects": {
+        "pacifies": ["pitta"],
+        "aggravates": []
+      },
+      "verses": [225],
+      "source_excerpt": "The milk of the goat is astringent-sweet, cool, operates as an inspissant, and is light. It alleviates hemorrhage due to excitements of the bile, and diarrhoea. It cures also phthisis and fever.",
+      "confidence": 0.9,
+      "notes": "'Inspissant' = grahi. 'Alleviates bilious hemorrhage' = pacifies pitta. Also beneficial in diarrhea, phthisis, and fever."
+    },
+    {
+      "id": "dadhi",
+      "sanskrit_name": "Dadhi",
+      "botanical_name": null,
+      "common_name": "curds/yogurt",
+      "category": "dadhi",
+      "rasa": ["amla"],
+      "guna": ["ushna"],
+      "veerya": "ushna",
+      "vipaka": "amla",
+      "karma": ["deepana", "vajikarana", "balya", "brimhana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": []
+      },
+      "verses": [228, 229, 230, 231],
+      "source_excerpt": "Curds create relish for food, promote the appetite, increase the semen, operate as emollients, and increase strength. On assimilation they become sour and hot. They are destructive of the wind, and regarded as an auspicious object. They also promote nutrition, adding to the bulk of the body.",
+      "confidence": 0.9,
+      "notes": "'Sour and hot on assimilation' = amla vipaka and ushna veerya. 'Destructive of wind' = pacifies vata. 'Increase semen' = vajikarana. 'Increase strength' = balya. 'Promote nutrition' = brimhana. Harmful in autumn, summer, spring, and in bilious/phlegm diseases (v.230)."
+    },
+    {
+      "id": "takra",
+      "sanskrit_name": "Takra",
+      "botanical_name": null,
+      "common_name": "buttermilk",
+      "category": "dadhi",
+      "rasa": [],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": []
+      },
+      "verses": [232],
+      "source_excerpt": "Butter-milk should be administered in cases of intumescence, piles, ailments of the Grahani, difficulty of micturition, stomachic and abdominal diseases, disgust for food, in maladies brought about by excessive oiling, chlorosis, anaemia, and jaundice, and in vomiting.",
+      "confidence": 0.7,
+      "notes": "Described primarily by therapeutic indications rather than pharmacological properties. No rasa, guna, veerya, or vipaka stated. Extensive disease indications suggest it is light and corrective."
+    },
+    {
+      "id": "ghrita",
+      "sanskrit_name": "Ghrita",
+      "botanical_name": null,
+      "common_name": "ghee/clarified butter",
+      "category": "ghrita",
+      "rasa": ["madhura"],
+      "guna": ["sheeta"],
+      "veerya": "sheeta",
+      "vipaka": "madhura",
+      "karma": ["medhya", "deepana", "rasayana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta"],
+        "aggravates": []
+      },
+      "verses": [234, 235, 236],
+      "source_excerpt": "Ghee strengthens the memory and the understanding, the digestive fire, the element called ojas, phlegm, and serum. It is destructive of wind, bile, poisons, intoxication and insanity, waste, ill-luck, and fever. It is the foremost of oily substances, cool, and sweet in both taste and assimilation. When mixed, agreeably to the ordinance, with the proper substances, it becomes endued with a thousand kinds of energy, and operates in a thousand ways.",
+      "confidence": 0.95,
+      "notes": "'Sweet in both taste and assimilation' = madhura rasa and vipaka. 'Cool' = sheeta. 'Strengthens memory and understanding' = medhya. 'Strengthens digestive fire' = deepana. 'Destructive of wind and bile' = pacifies vata and pitta. 'Foremost of oily substances'. Note: 'strengthens phlegm' = may increase kapha but this is not listed as aggravation since it is considered a nutritive effect."
+    },
+    {
+      "id": "ikshu-rasa",
+      "sanskrit_name": "Ikshu-rasa",
+      "botanical_name": null,
+      "common_name": "sugarcane juice",
+      "category": "ikshu",
+      "rasa": ["madhura"],
+      "guna": ["sheeta", "snigdha"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["brimhana", "vajikarana", "virechana"],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": ["kapha"]
+      },
+      "verses": [240],
+      "source_excerpt": "The juice of the sugar-cane, if the stalk is chewed with the aid of the teeth, increases the semen, is cool, purges the intestines, is oily, promotes nutrition and corpulency, is sweet, and excites the phlegm.",
+      "confidence": 0.85,
+      "notes": "'Purges intestines' = virechana (mild). 'Excites phlegm' = aggravates kapha. 'Increases semen' = vajikarana. 'Promotes nutrition' = brimhana."
+    },
+    {
+      "id": "madhu",
+      "sanskrit_name": "Madhu",
+      "botanical_name": null,
+      "common_name": "honey",
+      "category": "ikshu",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["guru", "sheeta", "ruksha"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["vranaropana"],
+      "dosha_effects": {
+        "pacifies": ["kapha", "pitta"],
+        "aggravates": ["vata"]
+      },
+      "verses": [248, 249],
+      "source_excerpt": "The general properties of honey are these — it is provocative of the wind; heavy and cooling; alleviates phlegm and hemorrhages caused by excitement of the bile; it unites fractures; it operates as a Cchedana; it is dry, and astringent-sweet in taste.",
+      "confidence": 0.9,
+      "notes": "'Provocative of wind' = aggravates vata. 'Alleviates phlegm' = pacifies kapha. 'Alleviates bilious hemorrhages' = pacifies pitta. 'Unites fractures' = vranaropana. 'Cchedana' = expectorant, removes adherent matter. Must never be heated (v.249). Dangerous in excess (v.250-251)."
+    },
+    {
+      "id": "tila-taila",
+      "sanskrit_name": "Tila-taila",
+      "botanical_name": null,
+      "common_name": "sesame oil",
+      "category": "taila",
+      "rasa": ["madhura", "kashaya"],
+      "guna": ["ushna", "sukshma"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["vajikarana", "balya", "medhya", "deepana"],
+      "dosha_effects": {
+        "pacifies": ["vata"],
+        "aggravates": ["pitta"]
+      },
+      "verses": [287, 288, 289],
+      "source_excerpt": "In subsidiary taste, the oil (of sesame) is astringent. It is sweet, capable of penetrating into even the minute nerves of the body, and hot. It operates as an aphrodisiac, enhances the bile, retains both faeces and urine, and does not increase the phlegm. It is the foremost of all things that are destructive of the wind. It is a tonic; it improves the skin, memory and intelligence, and the digestive fire.",
+      "confidence": 0.9,
+      "notes": "'Penetrating into minute nerves' = sukshma guna. 'Foremost of all wind-destroying substances'. 'Enhances bile' = aggravates pitta. 'Does not increase phlegm' = neutral to kapha. 'Improves memory and intelligence' = medhya."
+    },
+    {
+      "id": "eranda-taila",
+      "sanskrit_name": "Eranda-taila",
+      "botanical_name": null,
+      "common_name": "castor oil",
+      "category": "taila",
+      "rasa": ["madhura"],
+      "guna": ["guru"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": [],
+        "aggravates": ["kapha"]
+      },
+      "verses": [290],
+      "source_excerpt": "The oil of Eranda (Ricinus communis, Linn.) is sweet in taste, heavy, and increases phlegm, and is highly efficacious in alleviating leprosy, abdominal tumours, thoracic diseases, and chronic fevers.",
+      "confidence": 0.85,
+      "notes": "'Increases phlegm' = aggravates kapha. Therapeutic indications: leprosy, tumors, thoracic diseases, chronic fevers."
+    },
+    {
+      "id": "sarshapa-taila",
+      "sanskrit_name": "Sarshapa-taila",
+      "botanical_name": null,
+      "common_name": "mustard oil",
+      "category": "taila",
+      "rasa": ["katu"],
+      "guna": ["ushna"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["krimighna"],
+      "dosha_effects": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": ["pitta"]
+      },
+      "verses": [291],
+      "source_excerpt": "The oil of mustard seeds is pungent and hot and injures blood and bile; and destroys phlegm, the vital seed, and the wind, and alleviates itches and urticaria evanida.",
+      "confidence": 0.85,
+      "notes": "'Injures blood and bile' = aggravates pitta/rakta. 'Destroys phlegm and wind' = pacifies kapha and vata. Also destroys vital seed (not vajikarana). 'Alleviates itches' = kandu-hara."
+    },
+    {
+      "id": "vishwabheshaja",
+      "sanskrit_name": "Vishwabheshaja",
+      "botanical_name": "Zingiber officinale",
+      "common_name": "dry ginger",
+      "category": "harita",
+      "rasa": [],
+      "guna": ["snigdha", "ushna"],
+      "veerya": "ushna",
+      "vipaka": "madhura",
+      "karma": ["deepana", "vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "kapha"],
+        "aggravates": []
+      },
+      "verses": [297],
+      "source_excerpt": "Vishwabhesaja (or dry ginger) is oily, excites the appetite, increases the vital seed, is hot, and destructive of wind and phlegm, and sweet in assimilation, and promotes cheerfulness and adds relish to food.",
+      "confidence": 0.9,
+      "notes": "Vishwabheshaja = 'universal medicine', the name for dry ginger (Shunthi). 'Sweet in assimilation' = madhura vipaka. 'Destructive of wind and phlegm' = pacifies vata and kapha."
+    },
+    {
+      "id": "pippali",
+      "sanskrit_name": "Pippali",
+      "botanical_name": "Piper longum",
+      "common_name": "long pepper",
+      "category": "harita",
+      "rasa": ["madhura", "katu"],
+      "guna": ["snigdha", "guru", "ushna"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["vajikarana"],
+      "dosha_effects": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": ["kapha"]
+      },
+      "verses": [298],
+      "source_excerpt": "Pippali (Piper longum, Linn.; syn. Chavica Roxburghii,) when juicy, provokes the phlegm, is sweet in taste, heavy, and oily. When dry, it is regarded as destructive of phlegm and wind, pungent and hot, and capable of increasing the vital seed.",
+      "confidence": 0.9,
+      "notes": "Properties differ between fresh and dry forms. Fresh: sweet, heavy, oily, provokes kapha. Dry: pungent, hot, destroys kapha and vata, vajikarana. Both forms captured. Mentioned in v.4 as exception among pungents for not provoking wind."
+    },
+    {
+      "id": "maricha",
+      "sanskrit_name": "Maricha",
+      "botanical_name": "Piper nigrum",
+      "common_name": "black pepper",
+      "category": "harita",
+      "rasa": [],
+      "guna": ["laghu"],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana"],
+      "dosha_effects": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": []
+      },
+      "verses": [299],
+      "source_excerpt": "Maricha (Piper nigrum, Linn.) is not much hot. It does not increase the vital seed. It is light and adds relish to food. In consequence of its capacity to remove adherent phlegm and other matters, and of drying them, it promotes the appetite and subdues phlegm and wind.",
+      "confidence": 0.9,
+      "notes": "'Not much hot' — moderate heat, not clearly ushna veerya. 'Does not increase vital seed' — explicitly not vajikarana. 'Promotes appetite' = deepana. 'Subdues phlegm and wind' = pacifies kapha and vata. 'Removes adherent phlegm' = cchedana quality."
+    },
+    {
+      "id": "hingu",
+      "sanskrit_name": "Hingu",
+      "botanical_name": "Ferula Asafoetida",
+      "common_name": "asafoetida",
+      "category": "harita",
+      "rasa": ["katu"],
+      "guna": ["ushna", "laghu"],
+      "veerya": "ushna",
+      "vipaka": null,
+      "karma": ["deepana", "pachana", "anulomana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "kapha"],
+        "aggravates": []
+      },
+      "verses": [300],
+      "source_excerpt": "Hingu (Ferula Asafoetida, Linn.) is destructive of wind and phlegm and retention of faeces, pungent and hot, provocative of the appetite, and light. It should also be known as capable of alleviating sharp deep-seated pains and operating as a Pachana and adding relish to food.",
+      "confidence": 0.9,
+      "notes": "'Destructive of wind and phlegm' = pacifies vata and kapha. 'Destructive of retention of faeces' = anulomana. 'Provocative of appetite' = deepana. 'Pachana' = aids digestion."
+    },
+    {
+      "id": "saindhava",
+      "sanskrit_name": "Saindhava",
+      "botanical_name": null,
+      "common_name": "rock salt",
+      "category": "lavana",
+      "rasa": ["madhura", "lavana"],
+      "guna": [],
+      "veerya": null,
+      "vipaka": null,
+      "karma": ["deepana"],
+      "dosha_effects": {
+        "pacifies": ["vata", "pitta", "kapha"],
+        "aggravates": []
+      },
+      "verses": [301],
+      "source_excerpt": "Saindhava (rock) salt is the foremost of all salts. It adds relish to food and excites the appetite. It promotes cheerfulness, strengthens the vision, is not pungent, is destructive of all the three faults, and endued with a sweet taste.",
+      "confidence": 0.9,
+      "notes": "'Foremost of all salts'. 'Destructive of all three faults' = tridosha pacifying — very rare for a salt. 'Not pungent' and 'sweet taste' distinguish it from other salts. 'Excites appetite' = deepana."
+    }
+  ]
+}

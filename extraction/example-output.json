@@ -1,0 +1,52 @@
+{
+  "source": {
+    "text": "Charaka Samhita",
+    "sthana": "Sutra Sthana",
+    "chapter": 27,
+    "translator": "Kaviratna",
+    "translator_year": "1890-1908",
+    "license": "public domain"
+  },
+  "dravyas": [
+    {
+      "id": "yava",
+      "sanskrit_name": "Yava",
+      "botanical_name": "Hordeum hexastichum",
+      "common_name": "barley",
+      "category": "shuka-dhanya",
+      "rasa": ["kashaya"],
+      "guna": ["ruksha", "sheeta", "guru"],
+      "veerya": "sheeta",
+      "vipaka": null,
+      "karma": ["balya"],
+      "dosha_effects": {
+        "pacifies": ["kapha"],
+        "aggravates": ["vata"]
+      },
+      "verses": [21],
+      "source_excerpt": "Yava (Hordeum hexastichum, Linn.) or barley, is dry, cooling, heavy, agreeable, and enhances the wind and the faeces. It makes the body consistent and hard, is of astringent taste, invigorating, and destructive of all affections due to phlegm.",
+      "confidence": 0.9,
+      "notes": "OCR has 'kexastichum' — corrected to 'hexastichum'. Vipaka not stated. 'Enhances wind' = aggravates vata. 'Destructive of phlegm' = pacifies kapha."
+    },
+    {
+      "id": "mudga",
+      "sanskrit_name": "Mudga",
+      "botanical_name": "Phaseolus mungo",
+      "common_name": "mung bean",
+      "category": "shami-dhanya",
+      "rasa": ["kashaya", "madhura"],
+      "guna": ["ruksha", "sheeta", "laghu", "vishada"],
+      "veerya": "sheeta",
+      "vipaka": "katu",
+      "karma": [],
+      "dosha_effects": {
+        "pacifies": ["kapha", "pitta"],
+        "aggravates": []
+      },
+      "verses": [25],
+      "source_excerpt": "Mudga (Phaseolus Mungo, Linn.) is astringent sweet in taste, dry and cooling; in assimilation it is pungent; it is, besides, light, clear, and destructive of both phlegm and bile. It is the foremost of all things whose soup or boiled juice is taken.",
+      "confidence": 0.95,
+      "notes": "Vipaka explicitly stated as pungent ('in assimilation it is pungent'). 'Destructive of phlegm and bile' = pacifies kapha and pitta."
+    }
+  ]
+}
