@@ -1,0 +1,18 @@
+[package]
+name = "ayus"
+version = "0.1.0"
+edition = "2024"
+description = "Ayurveda knowledge explorer — MVP demonstrating vidya's knowledge graph with cited dravyaguna data."
+license = "AGPL-3.0"
+publish = false
+
+[[bin]]
+name = "ayus"
+path = "src/main.rs"
+
+[dependencies]
+vidya-core = { path = "../vidya/vidya-core" }
+iced = { version = "0.14", default-features = true }
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
