@@ -1,3 +1,4 @@
+pub mod explorer;
 pub mod theme;
 
 use std::path::PathBuf;
@@ -6,6 +7,7 @@ use iced::widget::{button, column, container, pick_list, row, space, text, Row};
 use iced::{Center, Element, Fill, Size, Task, Theme};
 
 use crate::data;
+use crate::query::{self, QueryOutcome};
 
 const NOTO_DEVA: &[u8] = include_bytes!("../../fonts/NotoSansDevanagari-Regular.ttf");
 const NOTO_SANS: &[u8] = include_bytes!("../../fonts/NotoSans-Regular.ttf");
@@ -32,6 +34,7 @@ impl Tab {
 struct State {
     data: data::AppData,
     active_tab: Tab,
+    explorer: explorer::ExplorerState,
 }
 
 #[derive(Debug, Clone)]
@@ -40,6 +43,12 @@ enum Message {
     DomainSelected(String),
     LoadTtl,
     TtlLoaded(Option<PathBuf>),
+    QueryInputChanged(String),
+    QuerySubmitted,
+    PresetClicked(usize),
+    ToggleSearchHit(usize),
+    ToggleProvenance(String),
+    ToggleTrace,
 }
 
 fn boot() -> (State, Task<Message>) {
@@ -47,6 +56,7 @@ fn boot() -> (State, Task<Message>) {
     let state = State {
         data,
         active_tab: Tab::Explorer,
+        explorer: explorer::ExplorerState::new(),
     };
     (state, Task::none())
 }
@@ -60,6 +70,9 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
             state.data.active_domain = name;
             state.data.resolve_ctx =
                 state.data.store.resolve_context(&state.data.active_domain);
+            state.explorer.result = None;
+            state.explorer.expanded_predicate = None;
+            state.explorer.expanded_search_hit = None;
         }
         Message::LoadTtl => {
             return Task::perform(
@@ -85,6 +98,69 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
             }
         }
         Message::TtlLoaded(None) => {}
+        Message::QueryInputChanged(s) => {
+            state.explorer.query_input = s;
+        }
+        Message::QuerySubmitted => {
+            let input = state.explorer.query_input.trim().to_string();
+            if !input.is_empty() {
+                state.explorer.result = Some(query::execute(
+                    &input,
+                    &state.data.store,
+                    &state.data.resolve_ctx,
+                    &state.data.active_domain,
+                ));
+                state.explorer.expanded_predicate = None;
+                state.explorer.expanded_search_hit = None;
+                state.explorer.show_trace = false;
+            }
+        }
+        Message::PresetClicked(idx) => {
+            state.explorer.query_input = query::PRESETS[idx].input.to_string();
+            state.explorer.result = Some(query::execute(
+                query::PRESETS[idx].input,
+                &state.data.store,
+                &state.data.resolve_ctx,
+                &state.data.active_domain,
+            ));
+            state.explorer.expanded_predicate = None;
+            state.explorer.expanded_search_hit = None;
+            state.explorer.show_trace = false;
+        }
+        Message::ToggleSearchHit(idx) => {
+            if state.explorer.expanded_search_hit.as_ref().map(|h| h.index) == Some(idx) {
+                state.explorer.expanded_search_hit = None;
+            } else {
+                let hit_name = state.explorer.result.as_ref().and_then(|outcome| {
+                    if let QueryOutcome::Search { result, .. } = outcome {
+                        result.entities.get(idx).map(|h| h.name.clone())
+                    } else {
+                        None
+                    }
+                });
+                if let Some(name) = hit_name {
+                    if let Ok(desc) = state.data.store.describe(
+                        &state.data.active_domain,
+                        &name,
+                        &vidya_core::ProvenanceFilter::default(),
+                    ) {
+                        state.explorer.expanded_search_hit =
+                            Some(explorer::ExpandedHit { index: idx, describe: desc });
+                        state.explorer.expanded_predicate = None;
+                    }
+                }
+            }
+        }
+        Message::ToggleProvenance(pred) => {
+            if state.explorer.expanded_predicate.as_deref() == Some(pred.as_str()) {
+                state.explorer.expanded_predicate = None;
+            } else {
+                state.explorer.expanded_predicate = Some(pred);
+            }
+        }
+        Message::ToggleTrace => {
+            state.explorer.show_trace = !state.explorer.show_trace;
+        }
     }
     Task::none()
 }
@@ -151,7 +227,7 @@ fn view(state: &State) -> Element<'_, Message> {
     let separator = iced::widget::rule::horizontal(1).style(theme::tab_rule);
 
     let content = match state.active_tab {
-        Tab::Explorer => tab_stub("Explorer"),
+        Tab::Explorer => explorer::view(&state.explorer, &state.data),
         Tab::KnowledgeGraph => tab_stub("Knowledge Graph"),
         Tab::About => tab_stub("About"),
     };

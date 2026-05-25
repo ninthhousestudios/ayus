@@ -161,6 +161,54 @@ pub fn label(s: &str) -> Text<'_> {
         .color(TEXT_SECONDARY)
 }
 
+pub fn preset_pill(_theme: &Theme, status: button::Status) -> button::Style {
+    button::Style {
+        background: match status {
+            button::Status::Hovered => Some(Background::Color(ACCENT_LIGHT)),
+            _ => Some(Background::Color(SURFACE)),
+        },
+        text_color: match status {
+            button::Status::Hovered => TEXT_COLOR,
+            _ => TEXT_SECONDARY,
+        },
+        border: Border {
+            color: BORDER_COLOR,
+            width: 1.0,
+            radius: 12.0.into(),
+        },
+        ..button::Style::default()
+    }
+}
+
+pub fn type_badge(_theme: &Theme) -> container::Style {
+    container::Style {
+        background: Some(Background::Color(ACCENT_LIGHT)),
+        border: Border {
+            color: BORDER_COLOR,
+            width: 1.0,
+            radius: 8.0.into(),
+        },
+        ..container::Style::default()
+    }
+}
+
+pub fn provenance_drawer(_theme: &Theme) -> container::Style {
+    container::Style {
+        background: Some(Background::Color(Color {
+            r: BG.r + 0.02,
+            g: BG.g + 0.02,
+            b: BG.b + 0.02,
+            a: 1.0,
+        })),
+        border: Border {
+            color: BORDER_COLOR,
+            width: 0.0,
+            radius: 4.0.into(),
+        },
+        ..container::Style::default()
+    }
+}
+
 pub fn domain_pick_list(_theme: &Theme, status: pick_list::Status) -> pick_list::Style {
     let base = pick_list::Style {
         text_color: TEXT_COLOR,
