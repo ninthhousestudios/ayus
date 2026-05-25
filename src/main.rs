@@ -1,5 +1,6 @@
 mod data;
 mod gui;
+mod query;
 
 fn main() -> anyhow::Result<()> {
     tracing_subscriber::fmt()
