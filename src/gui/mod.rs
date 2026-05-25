@@ -63,7 +63,7 @@ enum Message {
     ToggleSearchHit(usize),
     ToggleProvenance(String),
     ToggleTrace,
-    KgSelectCategory(usize),
+    KgToggleType(usize),
     KgExpandEntity(usize),
     KgCollapseEntity,
 }
@@ -127,6 +127,7 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
             match data::load_custom(&mut state.data, &path) {
                 Ok(info) => {
                     tracing::info!(domain = %info.name, "loaded custom TTL");
+                    state.knowledge_graph.load(&state.data);
                 }
                 Err(e) => {
                     tracing::error!(path = %path.display(), err = %e, "failed to load TTL");
@@ -201,9 +202,16 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
         Message::ToggleTrace => {
             state.explorer.show_trace = !state.explorer.show_trace;
         }
-        Message::KgSelectCategory(idx) => {
-            state.knowledge_graph.active_type = idx;
-            state.knowledge_graph.load_entities(&state.data);
+        Message::KgToggleType(idx) => {
+            if state.knowledge_graph.expanded_type == Some(idx) {
+                state.knowledge_graph.expanded_type = None;
+                state.knowledge_graph.entities.clear();
+                state.knowledge_graph.expanded_entity = None;
+                state.knowledge_graph.expanded_predicate = None;
+            } else {
+                state.knowledge_graph.expanded_type = Some(idx);
+                state.knowledge_graph.load_entities(&state.data);
+            }
         }
         Message::KgExpandEntity(idx) => {
             if state.knowledge_graph.expanded_entity.as_ref().map(|e| e.index) == Some(idx) {
