@@ -1,3 +1,4 @@
+mod data;
 mod gui;
 
 fn main() -> anyhow::Result<()> {
