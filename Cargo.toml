@@ -14,8 +14,12 @@ path = "src/main.rs"
 name = "json2ttl"
 path = "src/json2ttl.rs"
 
+[[bin]]
+name = "theory2ttl"
+path = "src/theory2ttl.rs"
+
 [dependencies]
-vidya-core = { path = "../vidya/vidya-core" }
+vidya-core = { path = "../manas/vidya/vidya-core" }
 iced = { version = "0.14", default-features = true }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
