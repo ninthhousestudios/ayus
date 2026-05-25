@@ -193,7 +193,7 @@ pub(super) fn view<'a>(
         }
 
         sections.push(
-            container(Column::from_vec(section_items).spacing(4))
+            container(Column::from_vec(section_items).spacing(4).width(Fill))
                 .style(theme::card)
                 .padding(8)
                 .width(Fill)
@@ -216,7 +216,7 @@ pub(super) fn view<'a>(
     let content = column![
         stats,
         intro,
-        Column::from_vec(sections).spacing(4),
+        Column::from_vec(sections).spacing(4).width(Fill),
     ]
     .spacing(12)
     .padding([16, 24]);
