@@ -56,8 +56,15 @@ pub(super) fn view<'a>(state: &'a ExplorerState, _data: &'a AppData) -> Element<
             .on_input(Message::QueryInputChanged)
             .on_submit(Message::QuerySubmitted)
             .style(theme::input_style)
-            .size(16)
-            .padding(12);
+            .size(14)
+            .padding(10);
+
+    let search_btn = button(text("Search").size(13).font(theme::latin()))
+        .on_press(Message::QuerySubmitted)
+        .padding([10, 16])
+        .style(theme::accent_btn);
+
+    let input_row = row![input, search_btn].spacing(8).align_y(Center);
 
     let presets = Row::from_vec(
         PRESETS
@@ -79,7 +86,7 @@ pub(super) fn view<'a>(state: &'a ExplorerState, _data: &'a AppData) -> Element<
         None => empty_state(),
     };
 
-    let content = column![input, presets, result_view]
+    let content = column![input_row, presets, result_view]
         .spacing(12)
         .padding([16, 24]);
 
@@ -294,30 +301,35 @@ fn render_search<'a>(
     expanded: &'a Option<ExpandedHit>,
     expanded_pred: &'a Option<String>,
 ) -> Element<'a, Message> {
-    let header = text(format!("Found {} results", result.entities.len()))
-        .size(14)
-        .color(theme::TEXT_SECONDARY);
-
     let mut items: Vec<Element<'_, Message>> = Vec::new();
+
+    items.push(
+        text(format!("Found {} results", result.entities.len()))
+            .size(14)
+            .color(theme::TEXT_SECONDARY)
+            .into(),
+    );
+
     for (i, hit) in result.entities.iter().enumerate() {
         let is_expanded = expanded.as_ref().map(|h| h.index) == Some(i);
         let arrow = if is_expanded { "▾" } else { "▸" };
 
-        let hit_row = button(
-            row![
-                text(&hit.label).size(14).color(theme::TEXT_COLOR),
-                space::horizontal(),
-                text(arrow).size(12).color(theme::TEXT_SECONDARY),
-            ]
-            .align_y(Center)
-            .width(Fill),
-        )
-        .on_press(Message::ToggleSearchHit(i))
-        .style(theme::tab_inactive)
-        .padding([6, 12])
-        .width(Fill);
-
-        items.push(hit_row.into());
+        items.push(
+            button(
+                row![
+                    text(hit.label.clone()).size(14).color(theme::TEXT_COLOR),
+                    space::horizontal(),
+                    text(arrow).size(12).color(theme::TEXT_SECONDARY),
+                ]
+                .align_y(Center)
+                .width(Fill),
+            )
+            .on_press(Message::ToggleSearchHit(i))
+            .style(theme::tab_inactive)
+            .padding([6, 12])
+            .width(Fill)
+            .into(),
+        );
 
         if is_expanded {
             if let Some(exp) = expanded {
@@ -326,9 +338,7 @@ fn render_search<'a>(
         }
     }
 
-    column![header, Column::from_vec(items).spacing(2)]
-        .width(Fill)
-        .into()
+    Column::from_vec(items).spacing(2).width(Fill).into()
 }
 
 // ---- Traverse result ----
