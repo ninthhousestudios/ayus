@@ -1,6 +1,6 @@
 use iced::font::Family;
 use iced::theme::Palette;
-use iced::widget::{button, container, rule, text, text_input, Text};
+use iced::widget::{button, container, pick_list, rule, text, text_input, Text};
 use iced::{Background, Border, Color, Font, Theme};
 
 pub const BG: Color = Color { r: 0.200, g: 0.180, b: 0.160, a: 1.0 };
@@ -159,4 +159,28 @@ pub fn label(s: &str) -> Text<'_> {
         .size(11)
         .font(latin())
         .color(TEXT_SECONDARY)
+}
+
+pub fn domain_pick_list(_theme: &Theme, status: pick_list::Status) -> pick_list::Style {
+    let base = pick_list::Style {
+        text_color: TEXT_COLOR,
+        placeholder_color: TEXT_SECONDARY,
+        handle_color: TEXT_SECONDARY,
+        background: Background::Color(SURFACE),
+        border: Border {
+            color: BORDER_COLOR,
+            width: 1.0,
+            radius: 4.0.into(),
+        },
+    };
+    match status {
+        pick_list::Status::Hovered | pick_list::Status::Opened { .. } => pick_list::Style {
+            border: Border {
+                color: ACCENT,
+                ..base.border
+            },
+            ..base
+        },
+        _ => base,
+    }
 }

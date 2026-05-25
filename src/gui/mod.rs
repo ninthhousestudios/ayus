@@ -1,46 +1,173 @@
 pub mod theme;
 
-use iced::widget::{column, container, text};
+use std::path::PathBuf;
+
+use iced::widget::{button, column, container, pick_list, row, space, text, Row};
 use iced::{Center, Element, Fill, Size, Task, Theme};
+
+use crate::data;
 
 const NOTO_DEVA: &[u8] = include_bytes!("../../fonts/NotoSansDevanagari-Regular.ttf");
 const NOTO_SANS: &[u8] = include_bytes!("../../fonts/NotoSans-Regular.ttf");
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+enum Tab {
+    Explorer,
+    KnowledgeGraph,
+    About,
+}
+
+impl Tab {
+    const ALL: [Tab; 3] = [Tab::Explorer, Tab::KnowledgeGraph, Tab::About];
+
+    fn label(self) -> &'static str {
+        match self {
+            Tab::Explorer => "Explorer",
+            Tab::KnowledgeGraph => "Knowledge Graph",
+            Tab::About => "About",
+        }
+    }
+}
+
 struct State {
-    status: String,
+    data: data::AppData,
+    active_tab: Tab,
 }
 
 #[derive(Debug, Clone)]
-enum Message {}
+enum Message {
+    TabSelected(Tab),
+    DomainSelected(String),
+    LoadTtl,
+    TtlLoaded(Option<PathBuf>),
+}
 
 fn boot() -> (State, Task<Message>) {
+    let data = data::init().expect("failed to initialize knowledge store");
     let state = State {
-        status: "Āyus — Ayurveda Knowledge Explorer".to_string(),
+        data,
+        active_tab: Tab::Explorer,
     };
     (state, Task::none())
 }
 
-fn update(_state: &mut State, _message: Message) -> Task<Message> {
+fn update(state: &mut State, message: Message) -> Task<Message> {
+    match message {
+        Message::TabSelected(tab) => {
+            state.active_tab = tab;
+        }
+        Message::DomainSelected(name) => {
+            state.data.active_domain = name;
+            state.data.resolve_ctx =
+                state.data.store.resolve_context(&state.data.active_domain);
+        }
+        Message::LoadTtl => {
+            return Task::perform(
+                async {
+                    let handle = rfd::AsyncFileDialog::new()
+                        .add_filter("Turtle", &["ttl"])
+                        .set_title("Load TTL knowledge file")
+                        .pick_file()
+                        .await;
+                    handle.map(|h| h.path().to_path_buf())
+                },
+                Message::TtlLoaded,
+            );
+        }
+        Message::TtlLoaded(Some(path)) => {
+            match data::load_custom(&mut state.data, &path) {
+                Ok(info) => {
+                    tracing::info!(domain = %info.name, "loaded custom TTL");
+                }
+                Err(e) => {
+                    tracing::error!(path = %path.display(), err = %e, "failed to load TTL");
+                }
+            }
+        }
+        Message::TtlLoaded(None) => {}
+    }
     Task::none()
 }
 
 fn view(state: &State) -> Element<'_, Message> {
-    let content = column![
-        text(&state.status)
-            .size(24)
-            .font(theme::latin())
-            .color(theme::TEXT_COLOR),
-        text("Ready")
-            .size(14)
+    let title = text("Āyus")
+        .size(24)
+        .font(theme::latin())
+        .color(theme::ACCENT);
+
+    let tabs = Row::from_vec(
+        Tab::ALL
+            .iter()
+            .map(|&tab| {
+                let style: fn(&Theme, button::Status) -> button::Style =
+                    if tab == state.active_tab {
+                        theme::tab_active
+                    } else {
+                        theme::tab_inactive
+                    };
+                button(text(tab.label()).size(14).font(theme::latin()))
+                    .on_press(Message::TabSelected(tab))
+                    .padding([6, 14])
+                    .style(style)
+                    .into()
+            })
+            .collect(),
+    )
+    .spacing(4);
+
+    let mut right_controls: Vec<Element<'_, Message>> = Vec::new();
+
+    if state.data.domains.len() > 1 {
+        let domain_names: Vec<String> =
+            state.data.domains.iter().map(|d| d.name.clone()).collect();
+        let selected = Some(state.data.active_domain.clone());
+        right_controls.push(
+            pick_list(domain_names, selected, Message::DomainSelected)
+                .style(theme::domain_pick_list)
+                .text_size(13)
+                .font(theme::latin())
+                .into(),
+        );
+    }
+
+    right_controls.push(
+        button(text("Load TTL").size(13).font(theme::latin()))
+            .on_press(Message::LoadTtl)
+            .padding([6, 12])
+            .style(theme::accent_btn)
+            .into(),
+    );
+
+    let top_bar = row![
+        title,
+        space::horizontal(),
+        tabs,
+        space::horizontal(),
+        Row::from_vec(right_controls).spacing(8).align_y(Center),
+    ]
+    .padding([8, 16])
+    .align_y(Center);
+
+    let separator = iced::widget::rule::horizontal(1).style(theme::tab_rule);
+
+    let content = match state.active_tab {
+        Tab::Explorer => tab_stub("Explorer"),
+        Tab::KnowledgeGraph => tab_stub("Knowledge Graph"),
+        Tab::About => tab_stub("About"),
+    };
+
+    column![top_bar, separator, content].into()
+}
+
+fn tab_stub(name: &str) -> Element<'_, Message> {
+    container(
+        text(name)
+            .size(18)
             .font(theme::latin())
             .color(theme::TEXT_SECONDARY),
-    ]
-    .spacing(12)
-    .align_x(Center);
-
-    container(content)
-        .center(Fill)
-        .into()
+    )
+    .center(Fill)
+    .into()
 }
 
 fn app_theme(_state: &State) -> Theme {
