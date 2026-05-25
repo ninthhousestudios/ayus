@@ -1,3 +1,4 @@
+pub mod about;
 pub mod explorer;
 pub mod knowledge_graph;
 pub mod theme;
@@ -325,7 +326,7 @@ fn view(state: &State) -> Element<'_, Message> {
     let content = match state.active_tab {
         Tab::Explorer => explorer::view(&state.explorer, &state.data),
         Tab::KnowledgeGraph => knowledge_graph::view(&state.knowledge_graph, &state.data),
-        Tab::About => tab_stub("About"),
+        Tab::About => about::view(),
     };
 
     column![top_bar, separator, content].into()
