@@ -19,7 +19,9 @@ name = "theory2ttl"
 path = "src/theory2ttl.rs"
 
 [dependencies]
-vidya-core = { path = "../manas/vidya/vidya-core" }
+# To track the active development branch explicitly:
+vidya-core = { path = "../manas/vidya/vidya-core/" }
+# vidya-core = { git = "https://github.com/ninthhousestudios/vidya", branch = "main" }
 iced = { version = "0.14", default-features = true }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
