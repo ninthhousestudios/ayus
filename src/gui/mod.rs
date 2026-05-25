@@ -64,18 +64,20 @@ enum Message {
     ToggleProvenance(String),
     ToggleTrace,
     KgSelectCategory(usize),
-    KgExpandDravya(usize),
-    KgCollapseDravya,
+    KgExpandEntity(usize),
+    KgCollapseEntity,
 }
 
 fn boot() -> (State, Task<Message>) {
     let data = data::init().expect("failed to initialize knowledge store");
+    let mut kg = knowledge_graph::KnowledgeGraphState::new();
+    kg.load(&data);
     let state = State {
         data,
         active_tab: Tab::Explorer,
         scale: SCALE_DEFAULT,
         explorer: explorer::ExplorerState::new(),
-        knowledge_graph: knowledge_graph::KnowledgeGraphState::new(),
+        knowledge_graph: kg,
     };
     (state, Task::none())
 }
@@ -106,7 +108,7 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
             state.explorer.result = None;
             state.explorer.expanded_predicate = None;
             state.explorer.expanded_search_hit = None;
-            state.knowledge_graph = knowledge_graph::KnowledgeGraphState::new();
+            state.knowledge_graph.load(&state.data);
         }
         Message::LoadTtl => {
             return Task::perform(
@@ -200,30 +202,26 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
             state.explorer.show_trace = !state.explorer.show_trace;
         }
         Message::KgSelectCategory(idx) => {
-            state.knowledge_graph.active_category = idx;
-            state.knowledge_graph.expanded_dravya = None;
-            state.knowledge_graph.expanded_predicate = None;
+            state.knowledge_graph.active_type = idx;
+            state.knowledge_graph.load_entities(&state.data);
         }
-        Message::KgExpandDravya(idx) => {
-            if state.knowledge_graph.expanded_dravya.as_ref().map(|e| e.index) == Some(idx) {
-                state.knowledge_graph.expanded_dravya = None;
-            } else if let Some(cat) = state.data.catalog.get(state.knowledge_graph.active_category)
-            {
-                if let Some(name) = cat.dravyas.get(idx) {
-                    if let Ok(desc) = state.data.store.describe(
-                        &state.data.active_domain,
-                        name,
-                        &vidya_core::ProvenanceFilter::default(),
-                    ) {
-                        state.knowledge_graph.expanded_dravya =
-                            Some(knowledge_graph::ExpandedDravya { index: idx, describe: desc });
-                        state.knowledge_graph.expanded_predicate = None;
-                    }
+        Message::KgExpandEntity(idx) => {
+            if state.knowledge_graph.expanded_entity.as_ref().map(|e| e.index) == Some(idx) {
+                state.knowledge_graph.expanded_entity = None;
+            } else if let Some(hit) = state.knowledge_graph.entities.get(idx) {
+                if let Ok(desc) = state.data.store.describe(
+                    &state.data.active_domain,
+                    &hit.name,
+                    &vidya_core::ProvenanceFilter::default(),
+                ) {
+                    state.knowledge_graph.expanded_entity =
+                        Some(knowledge_graph::ExpandedEntity { index: idx, describe: desc });
+                    state.knowledge_graph.expanded_predicate = None;
                 }
             }
         }
-        Message::KgCollapseDravya => {
-            state.knowledge_graph.expanded_dravya = None;
+        Message::KgCollapseEntity => {
+            state.knowledge_graph.expanded_entity = None;
             state.knowledge_graph.expanded_predicate = None;
         }
     }
