@@ -33,10 +33,15 @@ pub(super) fn view<'a>(state: &'a KnowledgeGraphState, data: &'a AppData) -> Ele
     let total_dravyas: usize = data.catalog.iter().map(|c| c.dravyas.len()).sum();
     let triple_count = data.store.triple_count().unwrap_or(0);
     let domain_count = data.domains.len();
+    let coverage_pct = data
+        .store
+        .provenance_coverage(&data.active_domain)
+        .map(|c| (c.coverage * 100.0).round() as u32)
+        .unwrap_or(0);
 
     let stats = container(
         text(format!(
-            "{total_dravyas} dravyas \u{00b7} {triple_count} triples \u{00b7} {domain_count} domain(s)"
+            "{total_dravyas} dravyas \u{00b7} {triple_count} triples \u{00b7} {domain_count} domain(s) \u{00b7} {coverage_pct}% cited"
         ))
         .size(13)
         .font(theme::latin())
