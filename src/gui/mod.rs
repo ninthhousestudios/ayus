@@ -1,10 +1,14 @@
 pub mod explorer;
+pub mod knowledge_graph;
 pub mod theme;
+pub mod widgets;
 
 use std::path::PathBuf;
 
 use iced::widget::{button, column, container, pick_list, row, space, text, Row};
 use iced::{Center, Element, Fill, Size, Task, Theme};
+
+use vidya_core;
 
 use crate::data;
 use crate::query::{self, QueryOutcome};
@@ -41,6 +45,7 @@ struct State {
     active_tab: Tab,
     scale: f32,
     explorer: explorer::ExplorerState,
+    knowledge_graph: knowledge_graph::KnowledgeGraphState,
 }
 
 #[derive(Debug, Clone)]
@@ -58,6 +63,9 @@ enum Message {
     ToggleSearchHit(usize),
     ToggleProvenance(String),
     ToggleTrace,
+    KgSelectCategory(usize),
+    KgExpandDravya(usize),
+    KgCollapseDravya,
 }
 
 fn boot() -> (State, Task<Message>) {
@@ -67,6 +75,7 @@ fn boot() -> (State, Task<Message>) {
         active_tab: Tab::Explorer,
         scale: SCALE_DEFAULT,
         explorer: explorer::ExplorerState::new(),
+        knowledge_graph: knowledge_graph::KnowledgeGraphState::new(),
     };
     (state, Task::none())
 }
@@ -89,9 +98,15 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
             state.data.active_domain = name;
             state.data.resolve_ctx =
                 state.data.store.resolve_context(&state.data.active_domain);
+            if let Ok(catalog) =
+                data::build_catalog(&state.data.store, &state.data.active_domain)
+            {
+                state.data.catalog = catalog;
+            }
             state.explorer.result = None;
             state.explorer.expanded_predicate = None;
             state.explorer.expanded_search_hit = None;
+            state.knowledge_graph = knowledge_graph::KnowledgeGraphState::new();
         }
         Message::LoadTtl => {
             return Task::perform(
@@ -171,14 +186,45 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
             }
         }
         Message::ToggleProvenance(pred) => {
-            if state.explorer.expanded_predicate.as_deref() == Some(pred.as_str()) {
-                state.explorer.expanded_predicate = None;
+            let expanded = match state.active_tab {
+                Tab::KnowledgeGraph => &mut state.knowledge_graph.expanded_predicate,
+                _ => &mut state.explorer.expanded_predicate,
+            };
+            if expanded.as_deref() == Some(pred.as_str()) {
+                *expanded = None;
             } else {
-                state.explorer.expanded_predicate = Some(pred);
+                *expanded = Some(pred);
             }
         }
         Message::ToggleTrace => {
             state.explorer.show_trace = !state.explorer.show_trace;
+        }
+        Message::KgSelectCategory(idx) => {
+            state.knowledge_graph.active_category = idx;
+            state.knowledge_graph.expanded_dravya = None;
+            state.knowledge_graph.expanded_predicate = None;
+        }
+        Message::KgExpandDravya(idx) => {
+            if state.knowledge_graph.expanded_dravya.as_ref().map(|e| e.index) == Some(idx) {
+                state.knowledge_graph.expanded_dravya = None;
+            } else if let Some(cat) = state.data.catalog.get(state.knowledge_graph.active_category)
+            {
+                if let Some(name) = cat.dravyas.get(idx) {
+                    if let Ok(desc) = state.data.store.describe(
+                        &state.data.active_domain,
+                        name,
+                        &vidya_core::ProvenanceFilter::default(),
+                    ) {
+                        state.knowledge_graph.expanded_dravya =
+                            Some(knowledge_graph::ExpandedDravya { index: idx, describe: desc });
+                        state.knowledge_graph.expanded_predicate = None;
+                    }
+                }
+            }
+        }
+        Message::KgCollapseDravya => {
+            state.knowledge_graph.expanded_dravya = None;
+            state.knowledge_graph.expanded_predicate = None;
         }
     }
     Task::none()
@@ -272,7 +318,7 @@ fn view(state: &State) -> Element<'_, Message> {
 
     let content = match state.active_tab {
         Tab::Explorer => explorer::view(&state.explorer, &state.data),
-        Tab::KnowledgeGraph => tab_stub("Knowledge Graph"),
+        Tab::KnowledgeGraph => knowledge_graph::view(&state.knowledge_graph, &state.data),
         Tab::About => tab_stub("About"),
     };
 

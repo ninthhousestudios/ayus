@@ -60,7 +60,7 @@ pub fn load_custom(data: &mut AppData, path: &Path) -> Result<DomainInfo> {
     Ok(info)
 }
 
-fn build_catalog(store: &KnowledgeStore, domain: &str) -> Result<Vec<CategoryGroup>> {
+pub fn build_catalog(store: &KnowledgeStore, domain: &str) -> Result<Vec<CategoryGroup>> {
     let no_filter = ProvenanceFilter::default();
     let vargas = store.search(domain, "Varga", &[], &no_filter)?;
 

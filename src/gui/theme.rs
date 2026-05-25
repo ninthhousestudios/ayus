@@ -227,6 +227,68 @@ pub fn provenance_drawer(_theme: &Theme) -> container::Style {
     }
 }
 
+pub fn category_btn_active(_theme: &Theme, _status: button::Status) -> button::Style {
+    button::Style {
+        background: Some(Background::Color(ACCENT_LIGHT)),
+        text_color: ACCENT,
+        border: Border {
+            color: ACCENT,
+            width: 1.0,
+            radius: 4.0.into(),
+        },
+        ..button::Style::default()
+    }
+}
+
+pub fn category_btn_inactive(_theme: &Theme, status: button::Status) -> button::Style {
+    button::Style {
+        background: match status {
+            button::Status::Hovered => Some(Background::Color(ACCENT_LIGHT)),
+            _ => None,
+        },
+        text_color: match status {
+            button::Status::Hovered => TEXT_COLOR,
+            _ => TEXT_SECONDARY,
+        },
+        border: Border {
+            radius: 4.0.into(),
+            ..Border::default()
+        },
+        ..button::Style::default()
+    }
+}
+
+pub fn dravya_pill(_theme: &Theme, status: button::Status) -> button::Style {
+    button::Style {
+        background: match status {
+            button::Status::Hovered => Some(Background::Color(ACCENT_LIGHT)),
+            _ => Some(Background::Color(SURFACE)),
+        },
+        text_color: match status {
+            button::Status::Hovered => TEXT_COLOR,
+            _ => TEXT_SECONDARY,
+        },
+        border: Border {
+            color: BORDER_COLOR,
+            width: 1.0,
+            radius: 12.0.into(),
+        },
+        ..button::Style::default()
+    }
+}
+
+pub fn stats_bar(_theme: &Theme) -> container::Style {
+    container::Style {
+        background: Some(Background::Color(SURFACE)),
+        border: Border {
+            color: BORDER_COLOR,
+            width: 1.0,
+            radius: 4.0.into(),
+        },
+        ..container::Style::default()
+    }
+}
+
 pub fn domain_pick_list(_theme: &Theme, status: pick_list::Status) -> pick_list::Style {
     let base = pick_list::Style {
         text_color: TEXT_COLOR,
