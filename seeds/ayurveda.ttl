@@ -29,6 +29,9 @@ ayurveda:oppositeGuna     a rdf:Property ; rdfs:domain ayurveda:Guna  ; rdfs:ran
 ayurveda:botanicalName    a rdf:Property ; rdfs:domain ayurveda:Dravya .
 ayurveda:commonName       a rdf:Property ; rdfs:domain ayurveda:Dravya .
 
+ayurveda:Varga    a rdfs:Class ; rdfs:label "varga" .
+ayurveda:hasVarga a rdf:Property ; rdfs:domain ayurveda:Dravya ; rdfs:range ayurveda:Varga .
+
 # Theory-level properties (rasa/guna → dosha)
 ayurveda:aggravatesDosha  a rdf:Property .
 ayurveda:pacifiesDosha    a rdf:Property .

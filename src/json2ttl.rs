@@ -118,11 +118,27 @@ fn write_new_karma_entities(out: &mut String, dravyas: &[Dravya]) {
     out.push('\n');
 }
 
+fn varga_id(category: &str) -> String {
+    format!("varga_{}", category.replace('-', "_"))
+}
+
+fn write_varga_entities(out: &mut String, dravyas: &[Dravya]) {
+    let vargas: BTreeSet<&str> = dravyas.iter().map(|d| d.category.as_str()).collect();
+    out.push_str("# Varga (category) entities\n");
+    for cat in &vargas {
+        let id = varga_id(cat);
+        let _ = writeln!(out, "ayurveda:{id}  a ayurveda:Varga ; rdfs:label \"{cat}\" .");
+    }
+    out.push('\n');
+}
+
 fn write_dravya(out: &mut String, d: &Dravya) {
     let id = ttl_id(&d.id);
+    let vid = varga_id(&d.category);
     let _ = writeln!(out, "# -- {} ({}) --", d.sanskrit_name, d.category);
     let _ = writeln!(out, "ayurveda:{id}  a ayurveda:Dravya ;");
     let _ = writeln!(out, "    rdfs:label              \"{}\" ;", d.id);
+    let _ = writeln!(out, "    ayurveda:hasVarga       ayurveda:{vid} ;");
 
     if let Some(cn) = &d.common_name {
         let _ = writeln!(out, "    ayurveda:commonName     \"{}\" ;", escape_ttl(cn));
@@ -256,6 +272,7 @@ fn main() -> Result<()> {
 
     write_prefixes(&mut ttl);
     write_new_karma_entities(&mut ttl, &extraction.dravyas);
+    write_varga_entities(&mut ttl, &extraction.dravyas);
 
     ttl.push_str("# ══════════════════════════════════════════════════\n");
     ttl.push_str("# Dravya Entities\n");
