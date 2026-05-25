@@ -94,6 +94,24 @@ pub fn tab_inactive(_theme: &Theme, status: button::Status) -> button::Style {
     }
 }
 
+pub fn zoom_btn(_theme: &Theme, status: button::Status) -> button::Style {
+    button::Style {
+        background: match status {
+            button::Status::Hovered => Some(Background::Color(ACCENT_LIGHT)),
+            _ => None,
+        },
+        text_color: match status {
+            button::Status::Hovered => TEXT_COLOR,
+            _ => TEXT_SECONDARY,
+        },
+        border: Border {
+            radius: 4.0.into(),
+            ..Border::default()
+        },
+        ..button::Style::default()
+    }
+}
+
 pub fn card(_theme: &Theme) -> container::Style {
     container::Style {
         background: Some(Background::Color(SURFACE)),

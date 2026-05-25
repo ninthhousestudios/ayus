@@ -12,6 +12,11 @@ use crate::query::{self, QueryOutcome};
 const NOTO_DEVA: &[u8] = include_bytes!("../../fonts/NotoSansDevanagari-Regular.ttf");
 const NOTO_SANS: &[u8] = include_bytes!("../../fonts/NotoSans-Regular.ttf");
 
+const SCALE_STEP: f32 = 0.1;
+const SCALE_MIN: f32 = 0.6;
+const SCALE_MAX: f32 = 2.0;
+const SCALE_DEFAULT: f32 = 1.1;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Tab {
     Explorer,
@@ -34,12 +39,16 @@ impl Tab {
 struct State {
     data: data::AppData,
     active_tab: Tab,
+    scale: f32,
     explorer: explorer::ExplorerState,
 }
 
 #[derive(Debug, Clone)]
 enum Message {
     TabSelected(Tab),
+    ZoomIn,
+    ZoomOut,
+    ZoomReset,
     DomainSelected(String),
     LoadTtl,
     TtlLoaded(Option<PathBuf>),
@@ -56,6 +65,7 @@ fn boot() -> (State, Task<Message>) {
     let state = State {
         data,
         active_tab: Tab::Explorer,
+        scale: SCALE_DEFAULT,
         explorer: explorer::ExplorerState::new(),
     };
     (state, Task::none())
@@ -65,6 +75,15 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
     match message {
         Message::TabSelected(tab) => {
             state.active_tab = tab;
+        }
+        Message::ZoomIn => {
+            state.scale = (state.scale + SCALE_STEP).min(SCALE_MAX);
+        }
+        Message::ZoomOut => {
+            state.scale = (state.scale - SCALE_STEP).max(SCALE_MIN);
+        }
+        Message::ZoomReset => {
+            state.scale = SCALE_DEFAULT;
         }
         Message::DomainSelected(name) => {
             state.data.active_domain = name;
@@ -191,7 +210,32 @@ fn view(state: &State) -> Element<'_, Message> {
     )
     .spacing(4);
 
+    let pct = format!("{}%", (state.scale * 100.0).round() as i32);
+    let zoom_controls = row![
+        button(text("\u{2212}").size(14))
+            .on_press(Message::ZoomOut)
+            .padding([2, 8])
+            .style(theme::zoom_btn),
+        button(
+            text(pct)
+                .size(11)
+                .font(theme::latin())
+                .color(theme::TEXT_SECONDARY),
+        )
+        .on_press(Message::ZoomReset)
+        .padding([2, 6])
+        .style(theme::zoom_btn),
+        button(text("+").size(14))
+            .on_press(Message::ZoomIn)
+            .padding([2, 8])
+            .style(theme::zoom_btn),
+    ]
+    .spacing(2)
+    .align_y(Center);
+
     let mut right_controls: Vec<Element<'_, Message>> = Vec::new();
+
+    right_controls.push(zoom_controls.into());
 
     if state.data.domains.len() > 1 {
         let domain_names: Vec<String> =
@@ -254,6 +298,7 @@ pub fn run() -> iced::Result {
     iced::application(boot, update, view)
         .title("Āyus")
         .theme(app_theme)
+        .scale_factor(|state: &State| state.scale)
         .font(NOTO_DEVA)
         .font(NOTO_SANS)
         .default_font(theme::latin())
