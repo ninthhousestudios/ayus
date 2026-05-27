@@ -1,4 +1,4 @@
-use iced::widget::{Column, column, container, scrollable, text};
+use iced::widget::{Column, column, container, rich_text, scrollable, span, text};
 use iced::{Element, Fill};
 
 use super::Message;
@@ -56,16 +56,40 @@ fn prompt_block<'a>(title: &'a str, content: &'a str) -> Element<'a, Message> {
 }
 
 pub(super) fn view<'a>() -> Element<'a, Message> {
+    let vidya_section: Element<'_, Message> = container(
+        column![
+            text("What is Vidya")
+                .size(16)
+                .font(theme::latin())
+                .color(theme::ACCENT),
+            rich_text![
+                span("Vidya is a domain-agnostic knowledge store built on RDF/Turtle and \
+                      Oxigraph. It provides both a human interface (a CLI) and an agent \
+                      interface (MCP server) for browsing, querying, and reasoning over \
+                      structured knowledge from traditional texts. Vidya is not tied to \
+                      Ayurveda \u{2014} the same infrastructure can host Jyotish, Vastu, or any \
+                      domain where source texts encode structured relationships. ")
+                    .size(13)
+                    .font(theme::latin())
+                    .color(theme::TEXT_COLOR),
+                span("github.com/ninthhousestudios/vidya")
+                    .link("https://github.com/ninthhousestudios/vidya".to_string())
+                    .size(13)
+                    .font(theme::latin())
+                    .color(theme::ACCENT)
+                    .underline(true),
+            ]
+            .on_link_click(Message::LinkClicked),
+        ]
+        .spacing(8),
+    )
+    .style(theme::card)
+    .padding([12, 16])
+    .width(Fill)
+    .into();
+
     let sections: Vec<Element<'_, Message>> = vec![
-        section(
-            "What is Vidya",
-            "Vidya is a domain-agnostic knowledge store built on RDF/Turtle and \
-             Oxigraph. It provides both a human interface (a CLI) and an agent \
-             interface (MCP server) for browsing, querying, and reasoning over \
-             structured knowledge from traditional texts. Vidya is not tied to \
-             Ayurveda — the same infrastructure can host Jyotish, Vastu, or any \
-             domain where source texts encode structured relationships.",
-        ),
+        vidya_section,
         section(
             "What is Ayus",
             "Ayus is a demonstration of Vidya applied to Ayurvedic pharmacology. \
@@ -114,7 +138,7 @@ pub(super) fn view<'a>() -> Element<'a, Message> {
              \u{2022} Curate extractions: the JSON output is human-editable. Fix \
              errors, add missing substances, refine citations, then regenerate TTL.\n\
              \u{2022} MCP for agent workflows: Vidya exposes an MCP server so AI \
-             agents can query the knowledge graph programmatically.\n\
+             agents can query the knowledge graph programmatically. Ayus itself currently does not expose an MCP, but that is easy to add.\n\
              \u{2022} Repeatable methodology: the extraction prompt structure works \
              with other chapters and texts. Adapt the prompts, run extraction, \
              validate, convert.",

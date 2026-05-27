@@ -67,6 +67,7 @@ enum Message {
     KgToggleType(usize),
     KgExpandEntity(usize),
     KgCollapseEntity,
+    LinkClicked(String),
 }
 
 fn boot() -> (State, Task<Message>) {
@@ -232,6 +233,9 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
         Message::KgCollapseEntity => {
             state.knowledge_graph.expanded_entity = None;
             state.knowledge_graph.expanded_predicate = None;
+        }
+        Message::LinkClicked(url) => {
+            let _ = open::that(&url);
         }
     }
     Task::none()
