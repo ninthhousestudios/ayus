@@ -1,8 +1,8 @@
 use vidya_core::resolve::assemble;
 use vidya_core::resolve::matcher;
-use vidya_core::resolve::{QueryMode, ResolvedQuery, ResolvedToken, ResolutionReport};
+use vidya_core::resolve::{self, QueryMode, ResolvedQuery, ResolvedToken, ResolutionReport};
 use vidya_core::{KnowledgeStore, ProvenanceFilter, ResolveContext};
-use vidya_core::{DescribeResult, ProvenanceResult, SearchResult, TraverseResult};
+use vidya_core::{DescribeResult, ProvenanceResult, SearchResult, SimilarityResult, TraverseResult};
 
 #[derive(Debug)]
 pub enum QueryOutcome {
@@ -20,6 +20,14 @@ pub enum QueryOutcome {
     },
     Provenance {
         result: ProvenanceResult,
+        report: ResolutionReport,
+    },
+    Similar {
+        result: SimilarityResult,
+        report: ResolutionReport,
+    },
+    Unbind {
+        result: SimilarityResult,
         report: ResolutionReport,
     },
     NoMatch {
@@ -51,8 +59,12 @@ pub const PRESETS: &[Preset] = &[
         input: "pippali haskarma",
     },
     Preset {
-        label: "Haritaki",
-        input: "haritaki",
+        label: "Similar to pippali",
+        input: "similar to pippali",
+    },
+    Preset {
+        label: "What is haritaki?",
+        input: "what is haritaki?",
     },
 ];
 
@@ -62,6 +74,17 @@ pub fn execute(
     resolve_ctx: &ResolveContext,
     domain: &str,
 ) -> QueryOutcome {
+    // Tier 1: try full NL pipeline (intent detection + ranked alternatives)
+    match resolve::resolve_nl(input, &resolve_ctx.vocab, Some(&resolve_ctx.vsa), domain) {
+        Ok(report) => match dispatch(report, store, domain, &[]) {
+            Ok(outcome) => return outcome,
+            Err(_) => {}
+        },
+        Err(resolve::IntentError::NoIntentDetected) => {}
+        Err(_) => {}
+    }
+
+    // Tier 2: keyword pipeline (tokenize → match → infer mode → fallback)
     let tokens = matcher::tokenize(input);
     let matched = matcher::match_tokens(&tokens, &resolve_ctx.vocab, Some(&resolve_ctx.vsa), domain);
 
@@ -75,7 +98,7 @@ pub fn execute(
     let mode = infer_mode(&matched);
 
     for m in fallback_order(mode) {
-        match assemble::assemble(m, &matched) {
+        match assemble::assemble(m, &matched, &resolve_ctx.vocab) {
             Ok(report) => match dispatch(report, store, domain, &matched) {
                 Ok(outcome) => return outcome,
                 Err(_) => continue,
@@ -131,16 +154,12 @@ fn fallback_order(primary: QueryMode) -> Vec<QueryMode> {
         QueryMode::Search,
         QueryMode::Traverse,
         QueryMode::Provenance,
+        QueryMode::Similar,
+        QueryMode::Unbind,
     ];
     let mut order = vec![primary];
     for m in all {
-        if !matches!(
-            (&primary, &m),
-            (QueryMode::Describe, QueryMode::Describe)
-                | (QueryMode::Search, QueryMode::Search)
-                | (QueryMode::Traverse, QueryMode::Traverse)
-                | (QueryMode::Provenance, QueryMode::Provenance)
-        ) {
+        if std::mem::discriminant(&primary) != std::mem::discriminant(&m) {
             order.push(m);
         }
     }
@@ -153,11 +172,11 @@ fn dispatch(
     domain: &str,
     matched: &[ResolvedToken],
 ) -> vidya_core::Result<QueryOutcome> {
-    let no_filter = ProvenanceFilter::default();
+    let filter = scope_to_filter(&report.scope);
     match &report.query {
         ResolvedQuery::Describe { subject_iri } => {
             let local = local_name(subject_iri);
-            let result = store.describe(domain, &local, &no_filter)?;
+            let result = store.describe(domain, &local, &filter)?;
             Ok(QueryOutcome::Describe { result, report })
         }
         ResolvedQuery::Search { type_iri, filters } => {
@@ -167,7 +186,7 @@ fn dispatch(
             } else {
                 filters.clone()
             };
-            let result = store.search(domain, &kind, &effective_filters, &no_filter)?;
+            let result = store.search(domain, &kind, &effective_filters, &filter)?;
             Ok(QueryOutcome::Search { result, report })
         }
         ResolvedQuery::Traverse {
@@ -176,7 +195,7 @@ fn dispatch(
         } => {
             let subject = local_name(subject_iri);
             let predicate = local_name(predicate_iri);
-            let result = store.traverse(domain, &subject, &predicate, 3, &no_filter)?;
+            let result = store.traverse(domain, &subject, &predicate, 3, &filter)?;
             Ok(QueryOutcome::Traverse { result, report })
         }
         ResolvedQuery::Provenance {
@@ -187,10 +206,39 @@ fn dispatch(
         } => {
             let subject = local_name(subject_iri);
             let predicate = local_name(predicate_iri);
-            let result = store.provenance(domain, &subject, &predicate, object, &no_filter)?;
+            let result = store.provenance(domain, &subject, &predicate, object, &filter)?;
             Ok(QueryOutcome::Provenance { result, report })
         }
+        ResolvedQuery::Similar { subject_iri } => {
+            let local = local_name(subject_iri);
+            let result = store.similar(domain, &local, 10)?;
+            Ok(QueryOutcome::Similar { result, report })
+        }
+        ResolvedQuery::Unbind {
+            subject_iri,
+            predicate_iri,
+        } => {
+            let subject = local_name(subject_iri);
+            let predicate = local_name(predicate_iri);
+            let result = store.unbind(domain, &subject, &predicate, 10)?;
+            Ok(QueryOutcome::Unbind { result, report })
+        }
     }
+}
+
+fn scope_to_filter(scope: &vidya_core::ProvenanceScope) -> ProvenanceFilter {
+    ProvenanceFilter {
+        tradition: scope.tradition.as_deref().map(local_name_ref),
+        source: scope.source.as_deref().map(local_name_ref),
+        pramana: scope.pramana.clone(),
+    }
+}
+
+fn local_name_ref(iri: &str) -> String {
+    iri.rsplit_once('/')
+        .map(|(_, l)| l)
+        .unwrap_or(iri)
+        .to_string()
 }
 
 fn local_name(iri: &str) -> String {

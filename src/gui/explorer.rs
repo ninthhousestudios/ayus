@@ -4,7 +4,8 @@ use iced::widget::{
 use iced::{Center, Element, Fill};
 
 use vidya_core::{
-    DescribeResult, ProvenanceResult, ResolvedQuery, ResolutionReport, SearchResult, TraverseResult,
+    DescribeResult, ProvenanceResult, ResolvedQuery, ResolutionReport, SearchResult,
+    SimilarityResult, TraverseResult,
 };
 
 use super::theme;
@@ -115,6 +116,14 @@ fn render_outcome<'a>(
         ]
         .spacing(12)
         .into(),
+        QueryOutcome::Similar { result, report } | QueryOutcome::Unbind { result, report } => {
+            column![
+                render_similarity(result),
+                render_trace(report, state.show_trace),
+            ]
+            .spacing(12)
+            .into()
+        }
         QueryOutcome::NoMatch {
             unknown_tokens, ..
         } => render_no_match(unknown_tokens),
@@ -241,6 +250,37 @@ fn render_provenance_result(result: &ProvenanceResult) -> Element<'_, Message> {
     .into()
 }
 
+// ---- Similarity results ----
+
+fn render_similarity(result: &SimilarityResult) -> Element<'_, Message> {
+    let header = column![
+        text(&result.query).size(16).color(theme::ACCENT),
+        text(format!("{} matches", result.matches.len()))
+            .size(12)
+            .color(theme::TEXT_SECONDARY),
+    ]
+    .spacing(4);
+
+    let items: Vec<Element<'_, Message>> = result
+        .matches
+        .iter()
+        .map(|m| {
+            text(format!("{}  ({:.3})", m.label, m.score))
+                .size(14)
+                .color(theme::TEXT_COLOR)
+                .into()
+        })
+        .collect();
+
+    container(
+        column![header, Column::from_vec(items).spacing(4).width(Fill)].spacing(8),
+    )
+    .style(theme::card)
+    .padding(16)
+    .width(Fill)
+    .into()
+}
+
 // ---- Empty / no-match states ----
 
 fn empty_state<'a>() -> Element<'a, Message> {
@@ -305,6 +345,8 @@ fn render_trace(report: &ResolutionReport, show: bool) -> Element<'_, Message> {
         ResolvedQuery::Search { .. } => "Search",
         ResolvedQuery::Traverse { .. } => "Traverse",
         ResolvedQuery::Provenance { .. } => "Provenance",
+        ResolvedQuery::Similar { .. } => "Similar",
+        ResolvedQuery::Unbind { .. } => "Unbind",
     };
 
     let details: Vec<Element<'_, Message>> = report
