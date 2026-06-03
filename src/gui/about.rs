@@ -110,6 +110,28 @@ pub(super) fn view<'a>() -> Element<'a, Message> {
     let sections: Vec<Element<'_, Message>> = vec![
         beyond_section,
         section("About Me", ABOUT_ME),
+        container(
+            column![
+                text("Contact")
+                    .size(16)
+                    .font(theme::latin())
+                    .color(theme::ACCENT),
+                rich_text![
+                    span("josh@ninthhouse.studio")
+                        .link("mailto:josh@ninthhouse.studio".to_string())
+                        .size(13)
+                        .font(theme::latin())
+                        .color(theme::ACCENT)
+                        .underline(true),
+                ]
+                .on_link_click(Message::LinkClicked),
+            ]
+            .spacing(8),
+        )
+        .style(theme::card)
+        .padding([12, 16])
+        .width(Fill)
+        .into(),
         section(
             "License",
             "Ayus is licensed under the AGPL-3.0. Most of my projects are \

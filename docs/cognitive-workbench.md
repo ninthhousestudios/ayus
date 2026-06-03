@@ -225,7 +225,7 @@ domain-specific renderers exist.
 ### Current state
 
 A canvas interaction prototype exists
-([gui-spike](https://github.com/ninthhousestudios/aion-gui-spike),
+([aion](https://github.com/ninthhousestudios/aion),
 Flutter desktop) covering card physics, gesture handling, and layout
 animation. The domain-aware plugin contribution system described above
 is design-level — not yet implemented. The cognitive subsystems
