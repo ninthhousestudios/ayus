@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Āyus
+Comment=Ayurveda knowledge explorer
+Exec=ayus
+Icon=ayus
+Terminal=false
+Type=Application
+Categories=Education;
