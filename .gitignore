@@ -1,9 +1,4 @@
 /target
-docs/aiar-positioning.md
-docs/gemini-ideas.md
-docs/windows-error.md
-docs/about-me.md
-docs/research-os.md
 docs/
 !docs/cognitive-workbench.md
 .sutra/
