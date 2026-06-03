@@ -1,6 +1,7 @@
 /target
 docs/
 !docs/cognitive-workbench.md
+!docs/about-me.md
 .sutra/
 sources/.gemini
 sources/kaviratna-charaka-full-part-01.txt
