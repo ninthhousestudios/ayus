@@ -6,8 +6,10 @@ pub mod theme;
 pub mod widgets;
 
 use std::path::PathBuf;
+use std::sync::Arc;
 
-use iced::widget::{button, column, container, pick_list, row, space, text, Row};
+use iced::widget::{Row, button, column, container, pick_list, row, space, text};
+use iced::window::icon;
 use iced::{Center, Element, Fill, Size, Task, Theme};
 
 use vidya_core;
@@ -32,7 +34,12 @@ enum Tab {
 }
 
 impl Tab {
-    const ALL: [Tab; 4] = [Tab::Explorer, Tab::KnowledgeGraph, Tab::HowThisWorks, Tab::About];
+    const ALL: [Tab; 4] = [
+        Tab::Explorer,
+        Tab::KnowledgeGraph,
+        Tab::HowThisWorks,
+        Tab::About,
+    ];
 
     fn label(self) -> &'static str {
         match self {
@@ -104,11 +111,8 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
         }
         Message::DomainSelected(name) => {
             state.data.active_domain = name;
-            state.data.resolve_ctx =
-                state.data.store.resolve_context(&state.data.active_domain);
-            if let Ok(catalog) =
-                data::build_catalog(&state.data.store, &state.data.active_domain)
-            {
+            state.data.resolve_ctx = state.data.store.resolve_context(&state.data.active_domain);
+            if let Ok(catalog) = data::build_catalog(&state.data.store, &state.data.active_domain) {
                 state.data.catalog = catalog;
             }
             state.explorer.result = None;
@@ -129,17 +133,15 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
                 Message::TtlLoaded,
             );
         }
-        Message::TtlLoaded(Some(path)) => {
-            match data::load_custom(&mut state.data, &path) {
-                Ok(info) => {
-                    tracing::info!(domain = %info.name, "loaded custom TTL");
-                    state.knowledge_graph.load(&state.data);
-                }
-                Err(e) => {
-                    tracing::error!(path = %path.display(), err = %e, "failed to load TTL");
-                }
+        Message::TtlLoaded(Some(path)) => match data::load_custom(&mut state.data, &path) {
+            Ok(info) => {
+                tracing::info!(domain = %info.name, "loaded custom TTL");
+                state.knowledge_graph.load(&state.data);
             }
-        }
+            Err(e) => {
+                tracing::error!(path = %path.display(), err = %e, "failed to load TTL");
+            }
+        },
         Message::TtlLoaded(None) => {}
         Message::QueryInputChanged(s) => {
             state.explorer.query_input = s;
@@ -187,8 +189,10 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
                         &name,
                         &vidya_core::ProvenanceFilter::default(),
                     ) {
-                        state.explorer.expanded_search_hit =
-                            Some(explorer::ExpandedHit { index: idx, describe: desc });
+                        state.explorer.expanded_search_hit = Some(explorer::ExpandedHit {
+                            index: idx,
+                            describe: desc,
+                        });
                         state.explorer.expanded_predicate = None;
                     }
                 }
@@ -220,7 +224,13 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
             }
         }
         Message::KgExpandEntity(idx) => {
-            if state.knowledge_graph.expanded_entity.as_ref().map(|e| e.index) == Some(idx) {
+            if state
+                .knowledge_graph
+                .expanded_entity
+                .as_ref()
+                .map(|e| e.index)
+                == Some(idx)
+            {
                 state.knowledge_graph.expanded_entity = None;
             } else if let Some(hit) = state.knowledge_graph.entities.get(idx) {
                 if let Ok(desc) = state.data.store.describe(
@@ -228,8 +238,10 @@ fn update(state: &mut State, message: Message) -> Task<Message> {
                     &hit.name,
                     &vidya_core::ProvenanceFilter::default(),
                 ) {
-                    state.knowledge_graph.expanded_entity =
-                        Some(knowledge_graph::ExpandedEntity { index: idx, describe: desc });
+                    state.knowledge_graph.expanded_entity = Some(knowledge_graph::ExpandedEntity {
+                        index: idx,
+                        describe: desc,
+                    });
                     state.knowledge_graph.expanded_predicate = None;
                 }
             }
@@ -261,12 +273,12 @@ fn view(state: &State) -> Element<'_, Message> {
         Tab::ALL
             .iter()
             .map(|&tab| {
-                let style: fn(&Theme, button::Status) -> button::Style =
-                    if tab == state.active_tab {
-                        theme::tab_active
-                    } else {
-                        theme::tab_inactive
-                    };
+                let style: fn(&Theme, button::Status) -> button::Style = if tab == state.active_tab
+                {
+                    theme::tab_active
+                } else {
+                    theme::tab_inactive
+                };
                 button(text(tab.label()).size(14).font(theme::latin()))
                     .on_press(Message::TabSelected(tab))
                     .padding([6, 14])
@@ -305,8 +317,7 @@ fn view(state: &State) -> Element<'_, Message> {
     right_controls.push(zoom_controls.into());
 
     if state.data.domains.len() > 1 {
-        let domain_names: Vec<String> =
-            state.data.domains.iter().map(|d| d.name.clone()).collect();
+        let domain_names: Vec<String> = state.data.domains.iter().map(|d| d.name.clone()).collect();
         let selected = Some(state.data.active_domain.clone());
         right_controls.push(
             pick_list(domain_names, selected, Message::DomainSelected)
@@ -362,6 +373,20 @@ fn app_theme(_state: &State) -> Theme {
     theme::ayus_theme()
 }
 
+fn load_icon() -> Option<icon::Icon> {
+    // Include the icon bytes at compile time
+    let image_bytes = include_bytes!("../../assets/her-feet2.jpg");
+
+    // Load the image from the text bytes
+    let image = image::load_from_memory(image_bytes).ok()?.to_rgba8();
+
+    let (width, height) = image.dimensions();
+    let rgba = image.into_raw();
+
+    // Create the iced Icon
+    icon::from_rgba(rgba, width, height).ok()
+}
+
 pub fn run() -> iced::Result {
     iced::application(boot, update, view)
         .title("Āyus")
@@ -371,6 +396,10 @@ pub fn run() -> iced::Result {
         .font(NOTO_SANS)
         .default_font(theme::latin())
         .window_size(Size::new(1100.0, 800.0))
+        .window(iced::window::Settings {
+            icon: load_icon(),
+            ..Default::default()
+        })
         .centered()
         .antialiasing(true)
         .run()
