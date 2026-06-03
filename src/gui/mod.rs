@@ -1,5 +1,6 @@
 pub mod about;
 pub mod explorer;
+pub mod how_this_works;
 pub mod knowledge_graph;
 pub mod theme;
 pub mod widgets;
@@ -26,16 +27,18 @@ const SCALE_DEFAULT: f32 = 1.1;
 enum Tab {
     Explorer,
     KnowledgeGraph,
+    HowThisWorks,
     About,
 }
 
 impl Tab {
-    const ALL: [Tab; 3] = [Tab::Explorer, Tab::KnowledgeGraph, Tab::About];
+    const ALL: [Tab; 4] = [Tab::Explorer, Tab::KnowledgeGraph, Tab::HowThisWorks, Tab::About];
 
     fn label(self) -> &'static str {
         match self {
             Tab::Explorer => "Explorer",
             Tab::KnowledgeGraph => "Knowledge Graph",
+            Tab::HowThisWorks => "How This Works",
             Tab::About => "About",
         }
     }
@@ -330,6 +333,7 @@ fn view(state: &State) -> Element<'_, Message> {
     let content = match state.active_tab {
         Tab::Explorer => explorer::view(&state.explorer, &state.data),
         Tab::KnowledgeGraph => knowledge_graph::view(&state.knowledge_graph, &state.data),
+        Tab::HowThisWorks => how_this_works::view(),
         Tab::About => about::view(),
     };
 

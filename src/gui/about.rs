@@ -4,8 +4,7 @@ use iced::{Element, Fill};
 use super::Message;
 use super::theme;
 
-const CH26_PROMPT: &str = include_str!("../../extraction/extract-charaka-ss-26.md");
-const CH27_PROMPT: &str = include_str!("../../extraction/extract-charaka-ss-27.md");
+const ABOUT_ME: &str = include_str!("../../docs/about-me.md");
 
 fn section<'a>(title: &'a str, body: &'a str) -> Element<'a, Message> {
     container(
@@ -27,53 +26,73 @@ fn section<'a>(title: &'a str, body: &'a str) -> Element<'a, Message> {
     .into()
 }
 
-fn prompt_block<'a>(title: &'a str, content: &'a str) -> Element<'a, Message> {
-    container(
-        column![
-            text(title)
-                .size(14)
-                .font(theme::latin())
-                .color(theme::ACCENT),
-            container(
-                scrollable(
-                    text(content)
-                        .size(11)
-                        .font(iced::Font::MONOSPACE)
-                        .color(theme::TEXT_SECONDARY),
-                )
-                .height(300),
-            )
-            .style(theme::provenance_drawer)
-            .padding(12)
-            .width(Fill),
-        ]
-        .spacing(8),
-    )
-    .style(theme::card)
-    .padding([12, 16])
-    .width(Fill)
-    .into()
-}
-
 pub(super) fn view<'a>() -> Element<'a, Message> {
-    let vidya_section: Element<'_, Message> = container(
+    let beyond_section: Element<'_, Message> = container(
         column![
-            text("What is Vidya")
+            text("Beyond This Demo")
                 .size(16)
                 .font(theme::latin())
                 .color(theme::ACCENT),
             rich_text![
-                span("Vidya is a domain-agnostic knowledge store built on RDF/Turtle and \
-                      Oxigraph. It provides both a human interface (a CLI) and an agent \
-                      interface (MCP server) for browsing, querying, and reasoning over \
-                      structured knowledge from traditional texts. Vidya is not tied to \
-                      Ayurveda \u{2014} the same infrastructure can host Jyotish, Vastu, or any \
-                      domain where source texts encode structured relationships. ")
+                span(
+                    "Vidya is one layer of a broader cognitive infrastructure \
+                     designed for tradition-rich, knowledge-dense domains. Three \
+                     independent subsystems form the core:\n\n\
+                     \u{2022} Vidya \u{2014} structured domain knowledge with provenance \
+                     and tradition-scoping. What the domain knows, with citations \
+                     to who said it and from which school. The foundation \
+                     demonstrated here.\n\n\
+                     \u{2022} Chitta (\u{091A}\u{093F}\u{0924}\u{094D}\u{0924}) \u{2014} \
+                     a practitioner\u{2019}s research memory. Session notes, clinical \
+                     observations, evolving hypotheses \u{2014} bi-temporal and \
+                     semantically searchable. Not the domain\u{2019}s knowledge, but \
+                     the researcher\u{2019}s relationship to it. ",
+                )
+                .size(13)
+                .font(theme::latin())
+                .color(theme::TEXT_COLOR),
+                span("github.com/ninthhousestudios/chitta")
+                    .link("https://github.com/ninthhousestudios/chitta".to_string())
                     .size(13)
                     .font(theme::latin())
-                    .color(theme::TEXT_COLOR),
-                span("github.com/ninthhousestudios/vidya")
-                    .link("https://github.com/ninthhousestudios/vidya".to_string())
+                    .color(theme::ACCENT)
+                    .underline(true),
+                span(
+                    "\n\n\
+                     \u{2022} Kosha (\u{0915}\u{094B}\u{0936}) \u{2014} \
+                     library perception. Classical texts, research papers, \
+                     pharmacopeias \u{2014} indexed with semantic search and citation \
+                     anchoring down to the page or verse. ",
+                )
+                .size(13)
+                .font(theme::latin())
+                .color(theme::TEXT_COLOR),
+                span("github.com/ninthhousestudios/kosha")
+                    .link("https://github.com/ninthhousestudios/kosha".to_string())
+                    .size(13)
+                    .font(theme::latin())
+                    .color(theme::ACCENT)
+                    .underline(true),
+                span(
+                    "\n\n\
+                     Each subsystem is domain-agnostic. Chitta holds whatever a \
+                     practitioner writes, whether that practitioner is a vaidya or \
+                     an astronomer. Kosha indexes whatever texts you point it at. \
+                     Vidya hosts whatever domain you load.\n\n\
+                     An AI agent with access to all three can cross-reference \
+                     verified domain facts (vidya) with the researcher\u{2019}s own \
+                     notes and hypotheses (chitta) and primary source texts (kosha) \
+                     in a single query \u{2014} without hallucinating, because every \
+                     assertion carries provenance. These subsystems have working \
+                     implementations today. A desktop workspace shell to bring \
+                     them together visually is the natural next step.\n\n\
+                     A fuller design document for this cognitive workbench idea is available here: ",
+                )
+                .size(13)
+                .font(theme::latin())
+                .color(theme::TEXT_COLOR),
+                span("cognitive-workbench.md")
+                    .link("https://github.com/ninthhousestudios/vidya/blob/main/docs/cognitive-workbench.md".to_string())
                     .size(13)
                     .font(theme::latin())
                     .color(theme::ACCENT)
@@ -89,60 +108,8 @@ pub(super) fn view<'a>() -> Element<'a, Message> {
     .into();
 
     let sections: Vec<Element<'_, Message>> = vec![
-        vidya_section,
-        section(
-            "What is Ayus",
-            "Ayus is a demonstration of Vidya applied to Ayurvedic pharmacology. \
-             It contains dravya (substance) data extracted from the Charaka Samhita, \
-             Sutra Sthana — chapter 26 (rasa theory: the six tastes, dosha mappings, \
-             veerya, vipaka, and viruddha ahara) and chapter 27 (the dravya catalog: \
-             grains, pulses, meats, vegetables, fruits, wines, waters, dairy, and more).\n\n\
-             Every extracted fact carries verse-level provenance — you can \
-             trace any property back to the specific verse it came from.\n\n\
-             This is not expert-curated data. It was extracted using Claude (Anthropic's \
-             LLM) to demonstrate what a non-specialist with AI access can produce from \
-             classical texts. The knowledge would need to be verified and curated by \
-             domain experts before any scholarly or clinical use.",
-        ),
-        section(
-            "Extraction Pipeline",
-            "Source text (OCR'd public-domain translation)\n\
-             \u{2192} LLM extraction prompt (structured task with JSON schema)\n\
-             \u{2192} JSON output (substances, properties, verse citations)\n\
-             \u{2192} Validation (validate.py checks schema, cross-references)\n\
-             \u{2192} TTL generation (json2ttl converts to RDF/Turtle)\n\
-             \u{2192} Oxigraph (loaded into the knowledge store at startup)\n\n\
-             The actual extraction prompts given to Claude are shown below. \
-             The methodology is designed to be repeatable — give the same prompt \
-             structure to a different chapter or text and produce comparable output.",
-        ),
-        prompt_block("Extraction prompt: Ch.26 (Rasa Theory)", CH26_PROMPT),
-        prompt_block("Extraction prompt: Ch.27 (Dravya Catalog)", CH27_PROMPT),
-        section(
-            "Limitations",
-            "\u{2022} Small dataset: ~95 dravyas from two chapters of one text. \
-             Projects like GRAYU have 157K nodes.\n\
-             \u{2022} Single source: only the Charaka Samhita SS ch.26\u{2013}27 so far.\n\
-             \u{2022} LLM-extracted: Claude did the extraction, not a vaidya or \
-             Ayurveda scholar. Errors are likely.\n\
-             \u{2022} No clinical applicability: this is a knowledge exploration tool, \
-             not medical guidance.\n\
-             \u{2022} Verse-Substance Attribution (VSA) is approximate: the OCR text \
-             doesn't always have clean verse boundaries, so some citations may be \
-             off by a verse.",
-        ),
-        section(
-            "For Researchers",
-            "\u{2022} Load your own TTL: use the \"Load TTL\" button to bring in \
-             your own RDF data. The viewer works with any domain.\n\
-             \u{2022} Curate extractions: the JSON output is human-editable. Fix \
-             errors, add missing substances, refine citations, then regenerate TTL.\n\
-             \u{2022} MCP for agent workflows: Vidya exposes an MCP server so AI \
-             agents can query the knowledge graph programmatically. Ayus itself currently does not expose an MCP, but that is easy to add.\n\
-             \u{2022} Repeatable methodology: the extraction prompt structure works \
-             with other chapters and texts. Adapt the prompts, run extraction, \
-             validate, convert.",
-        ),
+        beyond_section,
+        section("About Me", ABOUT_ME),
         section(
             "License",
             "Ayus is licensed under the AGPL-3.0. Most of my projects are \

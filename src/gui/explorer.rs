@@ -71,14 +71,18 @@ pub(super) fn view<'a>(state: &'a ExplorerState, _data: &'a AppData) -> Element<
     )
     .spacing(6);
 
-    let result_view = match &state.result {
-        Some(outcome) => render_outcome(outcome, state),
-        None => empty_state(),
-    };
+    let mut sections: Vec<Element<'_, Message>> = vec![input_row.into(), presets.into()];
 
-    let content = column![input_row, presets, result_view]
+    if let Some(outcome) = &state.result {
+        sections.push(render_outcome(outcome, state));
+    }
+
+    sections.push(guide_card());
+
+    let content = Column::from_vec(sections)
         .spacing(12)
-        .padding([16, 24]);
+        .padding([16, 24])
+        .width(Fill);
 
     scrollable(content).height(Fill).into()
 }
@@ -283,20 +287,42 @@ fn render_similarity(result: &SimilarityResult) -> Element<'_, Message> {
 
 // ---- Empty / no-match states ----
 
-fn empty_state<'a>() -> Element<'a, Message> {
+fn guide_row<'a>(preset_idx: usize, desc: &'a str) -> Element<'a, Message> {
+    button(
+        text(desc)
+            .size(13)
+            .font(theme::latin())
+            .color(theme::TEXT_COLOR),
+    )
+    .on_press(Message::PresetClicked(preset_idx))
+    .style(theme::tab_inactive)
+    .padding([6, 12])
+    .width(Fill)
+    .into()
+}
+
+fn guide_card<'a>() -> Element<'a, Message> {
     container(
         column![
-            text("Search the knowledge graph")
-                .size(18)
-                .color(theme::TEXT_SECONDARY),
-            text("Try typing a dravya name or click a preset above")
-                .size(14)
+            text("What you can discover here")
+                .size(16)
+                .font(theme::latin())
+                .color(theme::ACCENT),
+            guide_row(0, "\u{25b8} Look up a substance \u{2014} click to see Pippali\u{2019}s tastes, energies, and effects"),
+            guide_row(2, "\u{25b8} Query by property \u{2014} find every substance that pacifies Vata dosha"),
+            guide_row(3, "\u{25b8} Explore relationships \u{2014} see Pippali\u{2019}s therapeutic actions (karma)"),
+            guide_row(5, "\u{25b8} Ask a question \u{2014} try \u{201c}What is haritaki?\u{201d} for a natural-language lookup"),
+            guide_row(4, "\u{25b8} Find similar substances \u{2014} uses vector similarity to find dravyas related to Pippali"),
+            text("Click any example to try it, or type your own query above.")
+                .size(12)
+                .font(theme::latin())
                 .color(theme::TEXT_SECONDARY),
         ]
-        .spacing(8)
-        .align_x(Center),
+        .spacing(4),
     )
-    .center(Fill)
+    .style(theme::card)
+    .padding([16, 20])
+    .width(Fill)
     .into()
 }
 

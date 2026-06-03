@@ -1,5 +1,5 @@
 use iced::widget::{button, column, container, scrollable, text, Column, Row};
-use iced::{Element, Fill, Theme};
+use iced::{Center, Element, Fill, Theme};
 
 use vidya_core::query::SearchHit;
 use vidya_core::{DescribeResult, ProvenanceFilter, TypeSummary};
@@ -81,18 +81,26 @@ pub(super) fn view<'a>(
         .unwrap_or(0);
 
     let stats = container(
-        text(format!(
-            "{total_entities} entities \u{00b7} {type_count} types \u{00b7} {triple_count} triples \u{00b7} {coverage_pct}% cited"
-        ))
-        .size(13)
-        .font(theme::latin())
-        .color(theme::TEXT_SECONDARY),
+        column![
+            text(format!(
+                "{total_entities} substances \u{00b7} {type_count} categories \u{00b7} {triple_count} textual relationships \u{00b7} {coverage_pct}% verse-cited"
+            ))
+            .size(13)
+            .font(theme::latin())
+            .color(theme::TEXT_SECONDARY),
+            text("Each \u{201c}relationship\u{201d} is a structured fact linking a substance to a property \u{2014} e.g., Pippali \u{2192} has rasa \u{2192} Katu")
+                .size(11)
+                .font(theme::latin())
+                .color(theme::TEXT_SECONDARY),
+        ]
+        .spacing(4)
+        .align_x(Center),
     )
     .style(theme::stats_bar)
     .padding([8, 16])
     .width(Fill);
 
-    let intro = text("Entity types in this domain. Expand a type to browse its entities, then click one to see its properties and provenance.")
+    let intro = text("Expand a category to browse its substances, then click one to see its properties and provenance back to the source verse.")
         .size(13)
         .font(theme::latin())
         .color(theme::TEXT_SECONDARY);

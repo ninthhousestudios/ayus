@@ -6,6 +6,7 @@ use vidya_core::{KnowledgeStore, ProvenanceFilter, ResolveContext, Result};
 const SEED_TTL: &str = include_str!("../seeds/ayurveda.ttl");
 const CH27_TTL: &str = include_str!("../seeds/charaka-ss-27.ttl");
 const CH26_TTL: &str = include_str!("../seeds/charaka-ss-26.ttl");
+const SYNONYMS: &str = include_str!("../seeds/ayurveda-synonyms.toml");
 
 pub struct AppData {
     pub store: KnowledgeStore,
@@ -34,6 +35,7 @@ pub fn init() -> Result<AppData> {
     store.load_domain("ayurveda", SEED_TTL)?;
     store.load_domain("ayurveda", CH27_TTL)?;
     store.load_domain("ayurveda", CH26_TTL)?;
+    store.load_synonyms("ayurveda", SYNONYMS)?;
 
     let resolve_ctx = store.resolve_context("ayurveda");
     let catalog = build_catalog(&store, "ayurveda")?;
