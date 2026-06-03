@@ -56,6 +56,11 @@ pub fn load_custom(data: &mut AppData, path: &Path) -> Result<DomainInfo> {
         .and_then(|s| s.to_str())
         .unwrap_or("custom");
     data.store.load_domain_from_file(name, path)?;
+    let synonym_path = path.with_file_name(format!("{name}-synonyms.toml"));
+    if synonym_path.exists() {
+        let content = std::fs::read_to_string(&synonym_path)?;
+        data.store.load_synonyms(name, &content)?;
+    }
     data.resolve_ctx = data.store.resolve_context(&data.active_domain);
     let info = build_domain_info(&data.store, name, &path.display().to_string());
     data.domains.push(info.clone());
