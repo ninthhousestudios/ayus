@@ -92,7 +92,7 @@ pub(super) fn view<'a>() -> Element<'a, Message> {
                 .font(theme::latin())
                 .color(theme::TEXT_COLOR),
                 span("cognitive-workbench.md")
-                    .link("https://github.com/ninthhousestudios/vidya/blob/main/docs/cognitive-workbench.md".to_string())
+                    .link("https://github.com/ninthhousestudios/ayus/blob/main/docs/cognitive-workbench.md".to_string())
                     .size(13)
                     .font(theme::latin())
                     .color(theme::ACCENT)
