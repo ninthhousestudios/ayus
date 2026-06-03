@@ -20,8 +20,8 @@ path = "src/theory2ttl.rs"
 
 [dependencies]
 # To track the active development branch explicitly:
-vidya-core = { path = "../manas/vidya/vidya-core/" }
-# vidya-core = { git = "https://github.com/ninthhousestudios/vidya", branch = "main" }
+# vidya-core = { path = "../manas/vidya/vidya-core/" }
+vidya-core = { git = "https://github.com/ninthhousestudios/vidya", branch = "main" }
 iced = { version = "0.14", default-features = true }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
@@ -39,6 +39,8 @@ winresource = "0.1"
 name = "Āyus"
 identifier = "studio.ninthhouse.ayus"
 icon = [
+    "assets/ayus.icns",
+    "assets/ayus.ico",
     "assets/ayus-32x32.png",
     "assets/ayus-128x128.png",
     "assets/ayus-256x256.png",
