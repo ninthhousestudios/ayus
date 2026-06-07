@@ -28,7 +28,8 @@ demonstration of one potential way of working with these ideas.
 
 Ayus was written in Rust, designed and directed by me in collaboration with Claude. I am
 currently pursuing a deeper study of Rust and machine learning. I would love to
-contribute to Amma's projects in some way — most of the conversation around AI is about
-using it to make more money faster, and that is not what I want my life to focus on.
+contribute to Amma's projects in some way. At the moment most of the conversation around
+AI is about using it to make more money faster, but I think there are much better uses
+to which we can put this technology.
 
 Om Namah Shivaya
