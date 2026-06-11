@@ -182,7 +182,14 @@ fn write_prefixes(out: &mut String) {
     );
 }
 
-fn write_provenance(out: &mut String, subj: &str, pred: &str, obj: &str, verses: &[u32], confidence: f64) {
+fn write_provenance(
+    out: &mut String,
+    subj: &str,
+    pred: &str,
+    obj: &str,
+    verses: &[u32],
+    confidence: f64,
+) {
     let verse = verses.first().copied().unwrap_or(0);
     let _ = writeln!(out, "<< {subj} {pred} {obj} >>");
     let _ = writeln!(out, "    vidya:assertedBy [");
@@ -192,7 +199,11 @@ fn write_provenance(out: &mut String, subj: &str, pred: &str, obj: &str, verses:
     let _ = writeln!(out, "        vidya:chapter    \"26\"^^xsd:integer ;");
     let _ = writeln!(out, "        vidya:verse      \"{}\"^^xsd:integer ;", verse);
     let _ = writeln!(out, "        vidya:pramana    vidya:shabda ;");
-    let _ = writeln!(out, "        vidya:confidence \"{}\"^^xsd:float", confidence);
+    let _ = writeln!(
+        out,
+        "        vidya:confidence \"{}\"^^xsd:float",
+        confidence
+    );
     let _ = writeln!(out, "    ] .\n");
 }
 
@@ -210,10 +221,10 @@ fn main() -> Result<()> {
         input.with_extension("ttl")
     };
 
-    let json_str = fs::read_to_string(&input)
-        .with_context(|| format!("reading {}", input.display()))?;
-    let extraction: TheoryExtraction = serde_json::from_str(&json_str)
-        .with_context(|| "parsing JSON")?;
+    let json_str =
+        fs::read_to_string(&input).with_context(|| format!("reading {}", input.display()))?;
+    let extraction: TheoryExtraction =
+        serde_json::from_str(&json_str).with_context(|| "parsing JSON")?;
 
     let mut ttl = String::with_capacity(64 * 1024);
     let mut triple_count: usize = 0;
@@ -251,13 +262,30 @@ fn main() -> Result<()> {
     ttl.push_str("# ══════════════════════════════════════════════════\n\n");
 
     for mapping in &extraction.rasa_dosha_mappings {
-        let _ = writeln!(ttl, "# {} ({})", mapping.rasa, if mapping.pacifies.is_empty() { "" } else { "rasa-dosha theory" });
+        let _ = writeln!(
+            ttl,
+            "# {} ({})",
+            mapping.rasa,
+            if mapping.pacifies.is_empty() {
+                ""
+            } else {
+                "rasa-dosha theory"
+            }
+        );
         for d in &mapping.pacifies {
-            let _ = writeln!(ttl, "ayurveda:{}  ayurveda:pacifiesDosha   ayurveda:{} .", mapping.rasa, d);
+            let _ = writeln!(
+                ttl,
+                "ayurveda:{}  ayurveda:pacifiesDosha   ayurveda:{} .",
+                mapping.rasa, d
+            );
             triple_count += 1;
         }
         for d in &mapping.aggravates {
-            let _ = writeln!(ttl, "ayurveda:{}  ayurveda:aggravatesDosha ayurveda:{} .", mapping.rasa, d);
+            let _ = writeln!(
+                ttl,
+                "ayurveda:{}  ayurveda:aggravatesDosha ayurveda:{} .",
+                mapping.rasa, d
+            );
             triple_count += 1;
         }
         ttl.push('\n');
@@ -271,7 +299,12 @@ fn main() -> Result<()> {
 
     for assoc in &extraction.rasa_guna_associations {
         let gunas: Vec<String> = assoc.guna.iter().map(|g| format!("ayurveda:{g}")).collect();
-        let _ = writeln!(ttl, "ayurveda:{}  ayurveda:hasGuna  {} .", assoc.rasa, gunas.join(", "));
+        let _ = writeln!(
+            ttl,
+            "ayurveda:{}  ayurveda:hasGuna  {} .",
+            assoc.rasa,
+            gunas.join(", ")
+        );
         triple_count += assoc.guna.len();
     }
     ttl.push('\n');
@@ -304,9 +337,17 @@ fn main() -> Result<()> {
 
     for rule in &extraction.vipaka_rules.rules {
         let id = format!("vipaka_rule_{}", rule.vipaka);
-        let inputs: Vec<String> = rule.input_rasas.iter().map(|r| format!("ayurveda:{r}")).collect();
+        let inputs: Vec<String> = rule
+            .input_rasas
+            .iter()
+            .map(|r| format!("ayurveda:{r}"))
+            .collect();
         let _ = writeln!(ttl, "ayurveda:{id}  a ayurveda:VipakaRule ;");
-        let _ = writeln!(ttl, "    rdfs:label          \"{} vipaka rule\" ;", rule.vipaka);
+        let _ = writeln!(
+            ttl,
+            "    rdfs:label          \"{} vipaka rule\" ;",
+            rule.vipaka
+        );
         let _ = writeln!(ttl, "    ayurveda:inputRasa   {} ;", inputs.join(", "));
         let _ = writeln!(ttl, "    ayurveda:resultVipaka ayurveda:{} .", rule.vipaka);
         ttl.push('\n');
@@ -330,13 +371,31 @@ fn main() -> Result<()> {
     ttl.push_str("# Veerya Classification\n");
     ttl.push_str("# ══════════════════════════════════════════════════\n\n");
 
-    let two_types: Vec<String> = extraction.veerya_rules.two_fold.types.iter().map(|t| format!("ayurveda:{t}")).collect();
-    let _ = writeln!(ttl, "ayurveda:veerya_twofold  rdfs:label \"two-fold veerya\" ;");
+    let two_types: Vec<String> = extraction
+        .veerya_rules
+        .two_fold
+        .types
+        .iter()
+        .map(|t| format!("ayurveda:{t}"))
+        .collect();
+    let _ = writeln!(
+        ttl,
+        "ayurveda:veerya_twofold  rdfs:label \"two-fold veerya\" ;"
+    );
     let _ = writeln!(ttl, "    rdf:value  {} .\n", two_types.join(", "));
     triple_count += 2;
 
-    let eight_types: Vec<String> = extraction.veerya_rules.eight_fold.types.iter().map(|t| format!("ayurveda:{t}")).collect();
-    let _ = writeln!(ttl, "ayurveda:veerya_eightfold  rdfs:label \"eight-fold veerya\" ;");
+    let eight_types: Vec<String> = extraction
+        .veerya_rules
+        .eight_fold
+        .types
+        .iter()
+        .map(|t| format!("ayurveda:{t}"))
+        .collect();
+    let _ = writeln!(
+        ttl,
+        "ayurveda:veerya_eightfold  rdfs:label \"eight-fold veerya\" ;"
+    );
     let _ = writeln!(ttl, "    rdf:value  {} .\n", eight_types.join(", "));
     triple_count += 2;
 
@@ -363,12 +422,23 @@ fn main() -> Result<()> {
     ttl.push_str("# ══════════════════════════════════════════════════\n\n");
 
     let ex = &extraction.prabhava_definition.example;
-    let _ = writeln!(ttl, "ayurveda:prabhava_example  rdfs:label \"prabhava example\" ;");
-    let _ = writeln!(ttl, "    rdfs:comment \"{}\" ;", escape_ttl(&format!(
-        "{} and {} — {}. {} {}",
-        ex.substance_1, ex.substance_2, ex.shared, ex.difference, ex.explanation
-    )));
-    let _ = writeln!(ttl, "    rdf:value    \"{}\" .", escape_ttl(&ex.explanation));
+    let _ = writeln!(
+        ttl,
+        "ayurveda:prabhava_example  rdfs:label \"prabhava example\" ;"
+    );
+    let _ = writeln!(
+        ttl,
+        "    rdfs:comment \"{}\" ;",
+        escape_ttl(&format!(
+            "{} and {} — {}. {} {}",
+            ex.substance_1, ex.substance_2, ex.shared, ex.difference, ex.explanation
+        ))
+    );
+    let _ = writeln!(
+        ttl,
+        "    rdf:value    \"{}\" .",
+        escape_ttl(&ex.explanation)
+    );
     ttl.push('\n');
     triple_count += 3;
 
@@ -381,9 +451,21 @@ fn main() -> Result<()> {
     for entry in &extraction.viruddha {
         let id = viruddha_id(&entry.combination);
         let _ = writeln!(ttl, "ayurveda:viruddha_{id}  a ayurveda:ViruddhaRule ;");
-        let _ = writeln!(ttl, "    rdfs:label          \"{}\" ;", escape_ttl(&entry.combination));
-        let _ = writeln!(ttl, "    ayurveda:combination \"{}\" ;", escape_ttl(&entry.combination));
-        let _ = writeln!(ttl, "    ayurveda:effect      \"{}\" .", escape_ttl(&entry.effect));
+        let _ = writeln!(
+            ttl,
+            "    rdfs:label          \"{}\" ;",
+            escape_ttl(&entry.combination)
+        );
+        let _ = writeln!(
+            ttl,
+            "    ayurveda:combination \"{}\" ;",
+            escape_ttl(&entry.combination)
+        );
+        let _ = writeln!(
+            ttl,
+            "    ayurveda:effect      \"{}\" .",
+            escape_ttl(&entry.effect)
+        );
         ttl.push('\n');
         triple_count += 4;
     }
@@ -457,7 +539,7 @@ fn main() -> Result<()> {
         );
     }
 
-    // Viruddha provenance
+    // Viruddha provenance (combination + effect)
     for entry in &extraction.viruddha {
         let id = viruddha_id(&entry.combination);
         write_provenance(
@@ -465,6 +547,14 @@ fn main() -> Result<()> {
             &format!("ayurveda:viruddha_{id}"),
             "ayurveda:combination",
             &format!("\"{}\"", escape_ttl(&entry.combination)),
+            &entry.verses,
+            entry.confidence,
+        );
+        write_provenance(
+            &mut ttl,
+            &format!("ayurveda:viruddha_{id}"),
+            "ayurveda:effect",
+            &format!("\"{}\"", escape_ttl(&entry.effect)),
             &entry.verses,
             entry.confidence,
         );
@@ -488,14 +578,22 @@ fn main() -> Result<()> {
             &mut ttl,
             &format!("ayurveda:{concept}"),
             "ayurveda:hierarchyRank",
-            &format!("\"{}\"^^xsd:integer", extraction.hierarchy.order.iter().position(|c| c == concept).unwrap() + 1),
+            &format!(
+                "\"{}\"^^xsd:integer",
+                extraction
+                    .hierarchy
+                    .order
+                    .iter()
+                    .position(|c| c == concept)
+                    .unwrap()
+                    + 1
+            ),
             &extraction.hierarchy.verses,
             0.95,
         );
     }
 
-    fs::write(&output, &ttl)
-        .with_context(|| format!("writing {}", output.display()))?;
+    fs::write(&output, &ttl).with_context(|| format!("writing {}", output.display()))?;
 
     eprintln!(
         "Wrote ch.26 theory ({} triples with provenance, {} viruddha entries) to {}",
