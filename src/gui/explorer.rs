@@ -1,18 +1,18 @@
 use iced::widget::{
-    button, column, container, row, scrollable, space, text, text_input, Column, Row,
+    Column, Row, button, column, container, row, scrollable, space, text, text_input,
 };
 use iced::{Center, Element, Fill};
 
 use vidya_core::{
-    DescribeResult, ProvenanceResult, ResolvedQuery, ResolutionReport, SearchResult,
+    DescribeResult, ProvenanceResult, ResolutionReport, ResolvedQuery, SearchResult,
     SimilarityResult, TraverseResult,
 };
 
+use super::Message;
 use super::theme;
 use super::widgets;
-use super::Message;
 use crate::data::AppData;
-use crate::query::{QueryOutcome, PRESETS};
+use crate::query::{PRESETS, QueryOutcome};
 
 pub struct ExplorerState {
     pub query_input: String,
@@ -39,15 +39,16 @@ impl ExplorerState {
     }
 }
 
-
 pub(super) fn view<'a>(state: &'a ExplorerState, _data: &'a AppData) -> Element<'a, Message> {
-    let input =
-        text_input("Search dravyas, properties, or try a preset...", &state.query_input)
-            .on_input(Message::QueryInputChanged)
-            .on_submit(Message::QuerySubmitted)
-            .style(theme::input_style)
-            .size(14)
-            .padding(10);
+    let input = text_input(
+        "Search dravyas, properties, or try a preset...",
+        &state.query_input,
+    )
+    .on_input(Message::QueryInputChanged)
+    .on_submit(Message::QuerySubmitted)
+    .style(theme::input_style)
+    .size(14)
+    .padding(10);
 
     let search_btn = button(text("Search").size(13).font(theme::latin()))
         .on_press(Message::QuerySubmitted)
@@ -82,15 +83,15 @@ pub(super) fn view<'a>(state: &'a ExplorerState, _data: &'a AppData) -> Element<
     let content = Column::from_vec(sections)
         .spacing(12)
         .padding([16, 24])
-        .width(Fill);
+        .width(Fill)
+        .max_width(900);
 
-    scrollable(content).height(Fill).into()
+    let centered_layout = container(content).center_x(Fill);
+
+    scrollable(centered_layout).height(Fill).into()
 }
 
-fn render_outcome<'a>(
-    outcome: &'a QueryOutcome,
-    state: &'a ExplorerState,
-) -> Element<'a, Message> {
+fn render_outcome<'a>(outcome: &'a QueryOutcome, state: &'a ExplorerState) -> Element<'a, Message> {
     match outcome {
         QueryOutcome::Describe { result, report } => column![
             widgets::render_describe(result, &state.expanded_predicate),
@@ -128,12 +129,9 @@ fn render_outcome<'a>(
             .spacing(12)
             .into()
         }
-        QueryOutcome::NoMatch {
-            unknown_tokens, ..
-        } => render_no_match(unknown_tokens),
+        QueryOutcome::NoMatch { unknown_tokens, .. } => render_no_match(unknown_tokens),
     }
 }
-
 
 // ---- Search results ----
 
@@ -208,13 +206,11 @@ fn render_traverse(result: &TraverseResult) -> Element<'_, Message> {
         })
         .collect();
 
-    container(
-        column![header, Column::from_vec(items).spacing(2)].spacing(8),
-    )
-    .style(theme::card)
-    .padding(16)
-    .width(Fill)
-    .into()
+    container(column![header, Column::from_vec(items).spacing(2)].spacing(8))
+        .style(theme::card)
+        .padding(16)
+        .width(Fill)
+        .into()
 }
 
 // ---- Provenance result ----
@@ -245,13 +241,11 @@ fn render_provenance_result(result: &ProvenanceResult) -> Element<'_, Message> {
         })
         .collect();
 
-    container(
-        column![header, Column::from_vec(assertions).spacing(4)].spacing(8),
-    )
-    .style(theme::card)
-    .padding(16)
-    .width(Fill)
-    .into()
+    container(column![header, Column::from_vec(assertions).spacing(4)].spacing(8))
+        .style(theme::card)
+        .padding(16)
+        .width(Fill)
+        .into()
 }
 
 // ---- Similarity results ----
@@ -276,13 +270,11 @@ fn render_similarity(result: &SimilarityResult) -> Element<'_, Message> {
         })
         .collect();
 
-    container(
-        column![header, Column::from_vec(items).spacing(4).width(Fill)].spacing(8),
-    )
-    .style(theme::card)
-    .padding(16)
-    .width(Fill)
-    .into()
+    container(column![header, Column::from_vec(items).spacing(4).width(Fill)].spacing(8))
+        .style(theme::card)
+        .padding(16)
+        .width(Fill)
+        .into()
 }
 
 // ---- Empty / no-match states ----
@@ -387,21 +379,20 @@ fn render_trace(report: &ResolutionReport, show: bool) -> Element<'_, Message> {
         })
         .collect();
 
-    let mut trace_rows: Vec<Element<'_, Message>> = vec![text(format!("Query mode: {mode}"))
-        .size(11)
-        .color(theme::TEXT_SECONDARY)
-        .into()];
+    let mut trace_rows: Vec<Element<'_, Message>> = vec![
+        text(format!("Query mode: {mode}"))
+            .size(11)
+            .color(theme::TEXT_SECONDARY)
+            .into(),
+    ];
     trace_rows.extend(details);
 
     if !report.unknown_tokens.is_empty() {
         trace_rows.push(
-            text(format!(
-                "Unknown: {}",
-                report.unknown_tokens.join(", ")
-            ))
-            .size(11)
-            .color(theme::ACCENT)
-            .into(),
+            text(format!("Unknown: {}", report.unknown_tokens.join(", ")))
+                .size(11)
+                .color(theme::ACCENT)
+                .into(),
         );
     }
 

@@ -208,7 +208,10 @@ pub(super) fn view<'a>() -> Element<'a, Message> {
     let content = Column::from_vec(sections)
         .spacing(12)
         .padding([16, 24])
-        .width(Fill);
+        .width(Fill)
+        .max_width(900);
 
-    scrollable(content).height(Fill).into()
+    let centered_layout = container(content).center_x(Fill);
+
+    scrollable(centered_layout).height(Fill).into()
 }

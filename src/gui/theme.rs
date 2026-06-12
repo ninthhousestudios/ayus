@@ -1,15 +1,50 @@
 use iced::font::Family;
 use iced::theme::Palette;
-use iced::widget::{button, container, pick_list, rule, text, text_input, Text};
+use iced::widget::{Text, button, container, pick_list, rule, text, text_input};
 use iced::{Background, Border, Color, Font, Theme};
 
-pub const BG: Color = Color { r: 0.200, g: 0.180, b: 0.160, a: 1.0 };
-pub const SURFACE: Color = Color { r: 0.250, g: 0.230, b: 0.210, a: 1.0 };
-pub const BORDER_COLOR: Color = Color { r: 0.350, g: 0.320, b: 0.290, a: 1.0 };
-pub const TEXT_COLOR: Color = Color { r: 0.900, g: 0.880, b: 0.850, a: 1.0 };
-pub const TEXT_SECONDARY: Color = Color { r: 0.620, g: 0.580, b: 0.530, a: 1.0 };
-pub const ACCENT: Color = Color { r: 0.780, g: 0.530, b: 0.280, a: 1.0 };
-pub const ACCENT_LIGHT: Color = Color { r: 0.280, g: 0.255, b: 0.230, a: 1.0 };
+pub const BG: Color = Color {
+    r: 0.200,
+    g: 0.180,
+    b: 0.160,
+    a: 1.0,
+};
+pub const SURFACE: Color = Color {
+    r: 0.250,
+    g: 0.230,
+    b: 0.210,
+    a: 1.0,
+};
+pub const BORDER_COLOR: Color = Color {
+    r: 0.350,
+    g: 0.320,
+    b: 0.290,
+    a: 1.0,
+};
+pub const TEXT_COLOR: Color = Color {
+    r: 0.900,
+    g: 0.880,
+    b: 0.850,
+    a: 1.0,
+};
+pub const TEXT_SECONDARY: Color = Color {
+    r: 0.620,
+    g: 0.580,
+    b: 0.530,
+    a: 1.0,
+};
+pub const ACCENT: Color = Color {
+    r: 0.780,
+    g: 0.530,
+    b: 0.280,
+    a: 1.0,
+};
+pub const ACCENT_LIGHT: Color = Color {
+    r: 0.280,
+    g: 0.255,
+    b: 0.230,
+    a: 1.0,
+};
 
 pub fn ayus_theme() -> Theme {
     Theme::custom(
@@ -18,9 +53,24 @@ pub fn ayus_theme() -> Theme {
             background: BG,
             text: TEXT_COLOR,
             primary: ACCENT,
-            success: Color { r: 0.450, g: 0.850, b: 0.550, a: 1.0 },
-            warning: Color { r: 0.718, g: 0.494, b: 0.200, a: 1.0 },
-            danger: Color { r: 0.950, g: 0.450, b: 0.450, a: 1.0 },
+            success: Color {
+                r: 0.450,
+                g: 0.850,
+                b: 0.550,
+                a: 1.0,
+            },
+            warning: Color {
+                r: 0.718,
+                g: 0.494,
+                b: 0.200,
+                a: 1.0,
+            },
+            danger: Color {
+                r: 0.950,
+                g: 0.450,
+                b: 0.450,
+                a: 1.0,
+            },
         },
     )
 }
@@ -47,10 +97,7 @@ pub fn accent_btn(_theme: &Theme, status: button::Status) -> button::Style {
             b: ACCENT.b * 0.85,
             a: 1.0,
         },
-        button::Status::Disabled => Color {
-            a: 0.5,
-            ..ACCENT
-        },
+        button::Status::Disabled => Color { a: 0.5, ..ACCENT },
         _ => ACCENT,
     };
     button::Style {

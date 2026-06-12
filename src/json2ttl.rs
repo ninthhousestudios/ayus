@@ -69,9 +69,19 @@ fn write_prefixes(out: &mut String) {
 
 fn write_new_karma_entities(out: &mut String, dravyas: &[Dravya]) {
     let known: BTreeSet<&str> = [
-        "deepana", "pachana", "rasayana", "anulomana", "medhya", "balya",
-        "shothahara", "krimighna", "jwaraghna", "vajikarana", "virechana",
-        "medoghna", "vatanulomana",
+        "deepana",
+        "pachana",
+        "rasayana",
+        "anulomana",
+        "medhya",
+        "balya",
+        "shothahara",
+        "krimighna",
+        "jwaraghna",
+        "vajikarana",
+        "virechana",
+        "medoghna",
+        "vatanulomana",
     ]
     .into_iter()
     .collect();
@@ -127,7 +137,10 @@ fn write_varga_entities(out: &mut String, dravyas: &[Dravya]) {
     out.push_str("# Varga (category) entities\n");
     for cat in &vargas {
         let id = varga_id(cat);
-        let _ = writeln!(out, "ayurveda:{id}  a ayurveda:Varga ; rdfs:label \"{cat}\" .");
+        let _ = writeln!(
+            out,
+            "ayurveda:{id}  a ayurveda:Varga ; rdfs:label \"{cat}\" ."
+        );
     }
     out.push('\n');
 }
@@ -166,11 +179,21 @@ fn write_dravya(out: &mut String, d: &Dravya) {
         let _ = writeln!(out, "    ayurveda:hasKarma       {} ;", vals.join(", "));
     }
     if !d.dosha_effects.pacifies.is_empty() {
-        let vals: Vec<String> = d.dosha_effects.pacifies.iter().map(|x| format!("ayurveda:{x}")).collect();
+        let vals: Vec<String> = d
+            .dosha_effects
+            .pacifies
+            .iter()
+            .map(|x| format!("ayurveda:{x}"))
+            .collect();
         let _ = writeln!(out, "    ayurveda:pacifiesDosha  {} ;", vals.join(", "));
     }
     if !d.dosha_effects.aggravates.is_empty() {
-        let vals: Vec<String> = d.dosha_effects.aggravates.iter().map(|x| format!("ayurveda:{x}")).collect();
+        let vals: Vec<String> = d
+            .dosha_effects
+            .aggravates
+            .iter()
+            .map(|x| format!("ayurveda:{x}"))
+            .collect();
         let _ = writeln!(out, "    ayurveda:aggravatesDosha {} ;", vals.join(", "));
     }
 
@@ -194,25 +217,46 @@ fn write_provenance(out: &mut String, d: &Dravya, src: &Source) {
     let mut triples: Vec<Triple> = Vec::new();
 
     for r in &d.rasa {
-        triples.push(Triple { pred: "ayurveda:hasRasa", obj: format!("ayurveda:{r}") });
+        triples.push(Triple {
+            pred: "ayurveda:hasRasa",
+            obj: format!("ayurveda:{r}"),
+        });
     }
     for g in &d.guna {
-        triples.push(Triple { pred: "ayurveda:hasGuna", obj: format!("ayurveda:{g}") });
+        triples.push(Triple {
+            pred: "ayurveda:hasGuna",
+            obj: format!("ayurveda:{g}"),
+        });
     }
     if let Some(v) = &d.veerya {
-        triples.push(Triple { pred: "ayurveda:hasVeerya", obj: format!("ayurveda:{v}") });
+        triples.push(Triple {
+            pred: "ayurveda:hasVeerya",
+            obj: format!("ayurveda:{v}"),
+        });
     }
     if let Some(v) = &d.vipaka {
-        triples.push(Triple { pred: "ayurveda:hasVipaka", obj: format!("ayurveda:{v}") });
+        triples.push(Triple {
+            pred: "ayurveda:hasVipaka",
+            obj: format!("ayurveda:{v}"),
+        });
     }
     for k in &d.karma {
-        triples.push(Triple { pred: "ayurveda:hasKarma", obj: format!("ayurveda:{k}") });
+        triples.push(Triple {
+            pred: "ayurveda:hasKarma",
+            obj: format!("ayurveda:{k}"),
+        });
     }
     for p in &d.dosha_effects.pacifies {
-        triples.push(Triple { pred: "ayurveda:pacifiesDosha", obj: format!("ayurveda:{p}") });
+        triples.push(Triple {
+            pred: "ayurveda:pacifiesDosha",
+            obj: format!("ayurveda:{p}"),
+        });
     }
     for a in &d.dosha_effects.aggravates {
-        triples.push(Triple { pred: "ayurveda:aggravatesDosha", obj: format!("ayurveda:{a}") });
+        triples.push(Triple {
+            pred: "ayurveda:aggravatesDosha",
+            obj: format!("ayurveda:{a}"),
+        });
     }
 
     let verse_str = if d.verses.len() == 1 {
@@ -227,10 +271,18 @@ fn write_provenance(out: &mut String, d: &Dravya, src: &Source) {
         let _ = writeln!(out, "        vidya:tradition  ayurveda:tradition-atreya ;");
         let _ = writeln!(out, "        vidya:source     {} ;", source_iri);
         let _ = writeln!(out, "        vidya:sthana     \"{}\" ;", src.sthana);
-        let _ = writeln!(out, "        vidya:chapter    \"{}\"^^xsd:integer ;", src.chapter);
+        let _ = writeln!(
+            out,
+            "        vidya:chapter    \"{}\"^^xsd:integer ;",
+            src.chapter
+        );
         let _ = writeln!(out, "        vidya:verse      {} ;", verse_str);
         let _ = writeln!(out, "        vidya:pramana    vidya:shabda ;");
-        let _ = writeln!(out, "        vidya:confidence \"{}\"^^xsd:float", d.confidence);
+        let _ = writeln!(
+            out,
+            "        vidya:confidence \"{}\"^^xsd:float",
+            d.confidence
+        );
         let _ = writeln!(out, "    ] .\n");
     }
 }
@@ -253,10 +305,9 @@ fn main() -> Result<()> {
         input.with_extension("ttl")
     };
 
-    let json_str = fs::read_to_string(&input)
-        .with_context(|| format!("reading {}", input.display()))?;
-    let extraction: Extraction = serde_json::from_str(&json_str)
-        .with_context(|| "parsing JSON")?;
+    let json_str =
+        fs::read_to_string(&input).with_context(|| format!("reading {}", input.display()))?;
+    let extraction: Extraction = serde_json::from_str(&json_str).with_context(|| "parsing JSON")?;
 
     let mut ttl = String::with_capacity(64 * 1024);
 
@@ -290,20 +341,24 @@ fn main() -> Result<()> {
         write_provenance(&mut ttl, d, &extraction.source);
     }
 
-    fs::write(&output, &ttl)
-        .with_context(|| format!("writing {}", output.display()))?;
+    fs::write(&output, &ttl).with_context(|| format!("writing {}", output.display()))?;
 
     eprintln!(
         "Wrote {} dravyas ({} triples with provenance) to {}",
         extraction.dravyas.len(),
-        extraction.dravyas.iter().map(|d| {
-            d.rasa.len() + d.guna.len()
-                + d.veerya.as_ref().map_or(0, |_| 1)
-                + d.vipaka.as_ref().map_or(0, |_| 1)
-                + d.karma.len()
-                + d.dosha_effects.pacifies.len()
-                + d.dosha_effects.aggravates.len()
-        }).sum::<usize>(),
+        extraction
+            .dravyas
+            .iter()
+            .map(|d| {
+                d.rasa.len()
+                    + d.guna.len()
+                    + d.veerya.as_ref().map_or(0, |_| 1)
+                    + d.vipaka.as_ref().map_or(0, |_| 1)
+                    + d.karma.len()
+                    + d.dosha_effects.pacifies.len()
+                    + d.dosha_effects.aggravates.len()
+            })
+            .sum::<usize>(),
         output.display(),
     );
 

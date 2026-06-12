@@ -1,12 +1,12 @@
-use iced::widget::{button, column, container, scrollable, text, Column, Row};
+use iced::widget::{Column, Row, button, column, container, scrollable, text};
 use iced::{Center, Element, Fill, Theme};
 
 use vidya_core::query::SearchHit;
 use vidya_core::{DescribeResult, ProvenanceFilter, TypeSummary};
 
+use super::Message;
 use super::theme;
 use super::widgets;
-use super::Message;
 use crate::data::AppData;
 
 pub struct KnowledgeGraphState {
@@ -67,10 +67,7 @@ impl KnowledgeGraphState {
     }
 }
 
-pub(super) fn view<'a>(
-    state: &'a KnowledgeGraphState,
-    data: &'a AppData,
-) -> Element<'a, Message> {
+pub(super) fn view<'a>(state: &'a KnowledgeGraphState, data: &'a AppData) -> Element<'a, Message> {
     let total_entities: usize = state.types.iter().map(|t| t.count).sum();
     let type_count = state.types.len();
     let triple_count = data.store.triple_count().unwrap_or(0);
@@ -187,10 +184,7 @@ pub(super) fn view<'a>(
                         .on_press(Message::KgCollapseEntity)
                         .style(theme::tab_inactive)
                         .padding([4, 8]),
-                        widgets::render_describe(
-                            &expanded.describe,
-                            &state.expanded_predicate,
-                        ),
+                        widgets::render_describe(&expanded.describe, &state.expanded_predicate,),
                     ]
                     .spacing(8),
                 )
@@ -227,7 +221,11 @@ pub(super) fn view<'a>(
         Column::from_vec(sections).spacing(4).width(Fill),
     ]
     .spacing(12)
-    .padding([16, 24]);
+    .padding([16, 24])
+    .width(Fill)
+    .max_width(900);
 
-    scrollable(content).height(Fill).into()
+    let centered_layout = container(content).center_x(Fill);
+
+    scrollable(centered_layout).height(Fill).into()
 }

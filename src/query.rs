@@ -1,8 +1,10 @@
 use vidya_core::resolve::assemble;
 use vidya_core::resolve::matcher;
-use vidya_core::resolve::{self, QueryMode, ResolvedQuery, ResolvedToken, ResolutionReport};
+use vidya_core::resolve::{self, QueryMode, ResolutionReport, ResolvedQuery, ResolvedToken};
+use vidya_core::{
+    DescribeResult, ProvenanceResult, SearchResult, SimilarityResult, TraverseResult,
+};
 use vidya_core::{KnowledgeStore, ProvenanceFilter, ResolveContext};
-use vidya_core::{DescribeResult, ProvenanceResult, SearchResult, SimilarityResult, TraverseResult};
 
 #[derive(Debug)]
 pub enum QueryOutcome {
@@ -86,7 +88,8 @@ pub fn execute(
 
     // Tier 2: keyword pipeline (tokenize → match → infer mode → fallback)
     let tokens = matcher::tokenize(input);
-    let matched = matcher::match_tokens(&tokens, &resolve_ctx.vocab, Some(&resolve_ctx.vsa), domain);
+    let matched =
+        matcher::match_tokens(&tokens, &resolve_ctx.vocab, Some(&resolve_ctx.vsa), domain);
 
     if matched.is_empty() {
         return QueryOutcome::NoMatch {
@@ -291,11 +294,20 @@ mod tests {
     #[test]
     fn describe_pippali() {
         let data = setup();
-        let outcome = execute("pippali", &data.store, &data.resolve_ctx, &data.active_domain);
+        let outcome = execute(
+            "pippali",
+            &data.store,
+            &data.resolve_ctx,
+            &data.active_domain,
+        );
         match outcome {
             QueryOutcome::Describe { result, .. } => {
                 assert_eq!(result.label.as_deref(), Some("pippali"));
-                let preds: Vec<&str> = result.properties.iter().map(|p| p.predicate.as_str()).collect();
+                let preds: Vec<&str> = result
+                    .properties
+                    .iter()
+                    .map(|p| p.predicate.as_str())
+                    .collect();
                 assert!(preds.iter().any(|p| p.contains("hasRasa")));
                 assert!(preds.iter().any(|p| p.contains("hasGuna")));
             }
@@ -306,7 +318,12 @@ mod tests {
     #[test]
     fn search_dravya_katu() {
         let data = setup();
-        let outcome = execute("dravya katu", &data.store, &data.resolve_ctx, &data.active_domain);
+        let outcome = execute(
+            "dravya katu",
+            &data.store,
+            &data.resolve_ctx,
+            &data.active_domain,
+        );
         match outcome {
             QueryOutcome::Search { result, .. } => {
                 let names: Vec<&str> = result.entities.iter().map(|e| e.label.as_str()).collect();
@@ -319,7 +336,12 @@ mod tests {
     #[test]
     fn unknown_input_no_match() {
         let data = setup();
-        let outcome = execute("xyzzyplugh", &data.store, &data.resolve_ctx, &data.active_domain);
+        let outcome = execute(
+            "xyzzyplugh",
+            &data.store,
+            &data.resolve_ctx,
+            &data.active_domain,
+        );
         match outcome {
             QueryOutcome::NoMatch { unknown_tokens, .. } => {
                 assert!(unknown_tokens.contains(&"xyzzyplugh".to_string()));
@@ -332,7 +354,12 @@ mod tests {
     fn presets_all_resolve() {
         let data = setup();
         for preset in PRESETS {
-            let outcome = execute(preset.input, &data.store, &data.resolve_ctx, &data.active_domain);
+            let outcome = execute(
+                preset.input,
+                &data.store,
+                &data.resolve_ctx,
+                &data.active_domain,
+            );
             assert!(
                 !matches!(outcome, QueryOutcome::NoMatch { .. }),
                 "preset '{}' (input: '{}') returned NoMatch",

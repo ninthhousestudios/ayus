@@ -1,13 +1,13 @@
 use std::collections::HashSet;
 
-use iced::widget::{button, column, container, row, text, Column, Row};
+use iced::widget::{Column, Row, button, column, container, row, text};
 use iced::{Center, Element, Fill};
 
-use vidya_core::query::AnnotatedTriple;
 use vidya_core::DescribeResult;
+use vidya_core::query::AnnotatedTriple;
 
-use super::theme;
 use super::Message;
+use super::theme;
 
 pub(super) const PREDICATE_ORDER: &[(&str, &str)] = &[
     ("hasRasa", "RASA"),
@@ -64,7 +64,13 @@ pub(super) fn render_describe<'a>(
 
         let has_prov = result.annotated_triples.iter().any(|t| t.predicate == pred);
         let is_expanded = expanded_pred.as_deref() == Some(pred);
-        prop_rows.push(property_row(display_name, &values, has_prov, is_expanded, pred));
+        prop_rows.push(property_row(
+            display_name,
+            &values,
+            has_prov,
+            is_expanded,
+            pred,
+        ));
 
         if is_expanded {
             let prov_triples: Vec<&AnnotatedTriple> = result
@@ -101,7 +107,11 @@ pub(super) fn render_describe<'a>(
         let is_expanded = expanded_pred.as_deref() == Some(pv.predicate.as_str());
         let display = pv.predicate.to_uppercase();
         prop_rows.push(property_row(
-            &display, &values, has_prov, is_expanded, &pv.predicate,
+            &display,
+            &values,
+            has_prov,
+            is_expanded,
+            &pv.predicate,
         ));
 
         if is_expanded {
@@ -116,13 +126,11 @@ pub(super) fn render_describe<'a>(
         }
     }
 
-    container(
-        column![header, Column::from_vec(prop_rows).spacing(2)].spacing(12),
-    )
-    .style(theme::card)
-    .padding(16)
-    .width(Fill)
-    .into()
+    container(column![header, Column::from_vec(prop_rows).spacing(2)].spacing(12))
+        .style(theme::card)
+        .padding(16)
+        .width(Fill)
+        .into()
 }
 
 pub(super) fn property_row(
