@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "vidya": {
+      "type": "streamable-http",
+      "url": "http://127.0.0.1:3300/mcp",
+      "headers": {
+        "Authorization": "Bearer 50deb42afa79006c119614a1944864a936c187d452e465f6c53cf0170ec3a11b"
+      }
+    }
+  }
+}
